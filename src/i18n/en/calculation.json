@@ -1,0 +1,101 @@
+{
+  "title": "Everyday math",
+  "lead": "Everyday sums, no calculator. What matters is doing it at the checkout and at the table too.",
+  "practiceCta": "Solve 5 problems",
+  "estimateCta": "Estimate and check",
+  "realWorldNote": "Some days the mission will be real-life math: those are the ones that raise your rank.",
+  "estimatesTitle": "Your estimates",
+  "estimatesEmpty": "Before looking up a price or a fact, estimate it. You'll see how close you were here.",
+  "categories": {
+    "groceries": "Groceries",
+    "tip": "Tip",
+    "split": "Splitting the bill",
+    "discount": "Discount",
+    "budget": "Budget",
+    "travel": "Travel time",
+    "recipe": "Recipe"
+  },
+  "problems": {
+    "groceries": "At the checkout you have: {{list}}. What's the total?",
+    "tip": "The bill is {{bill}}. How much is a {{pct}}% tip?",
+    "split": "The bill is {{total}} split evenly among {{people}} people. How much does each pay?",
+    "discount": "Something costs {{price}} with {{pct}}% off. How much do you pay?",
+    "budget": "Your monthly budget is {{budget}}. You've spent {{a}} on food, {{b}} on transport and {{c}} on fun. How much is left?",
+    "travel": "You need to cover {{km}} km at {{speed}} km/h. How many minutes does it take?",
+    "recipe": "A recipe for {{base}} people uses {{grams}} g of {{ingredient}}. How many grams for {{target}}?"
+  },
+  "tips": {
+    "groceries": "Round each price to the unit, add up, then fix the cents at the end.",
+    "tip": "10% is moving the decimal point one place. 20% is double that. 15% is 10% plus half of it.",
+    "split": "Divide the whole part first, then share out what's left.",
+    "discount": "Work out what you pay, not what you save: 25% off means paying three quarters.",
+    "budget": "Add up the expenses first and subtract once.",
+    "travel": "Km divided by km/h gives hours; multiply by 60. At 60 km/h, one km is one minute.",
+    "recipe": "Work out the amount per person and multiply by the new number of people."
+  },
+  "units": {
+    "minutes_one": "{{count}} minute",
+    "minutes_other": "{{count}} minutes",
+    "grams_one": "{{count}} g",
+    "grams_other": "{{count}} g"
+  },
+  "progressAria": "Problem {{n}} of {{total}}",
+  "yourAnswer": "Your answer",
+  "check": "Check",
+  "right": "Exactly!",
+  "notQuite": "Almost.",
+  "answerWas": "The answer is {{answer}}.",
+  "next": "Next",
+  "finish": "Finish",
+  "doneTitle": "Set finished",
+  "doneLead": "You got {{correct}} of {{total}} right.",
+  "doneInvite": "Next time you pay for something, work out the total before you're told.",
+  "back": "Back to Everyday math",
+  "simTitle_one": "Math: {{count}} problem",
+  "simTitle_other": "Math: {{count}} problems",
+  "estimateTitle": "Estimate and check",
+  "estimateLead": "First say what you think; then look up the real figure. Estimating well is a muscle.",
+  "estimateQuestion": "What will you estimate?",
+  "estimateQuestionHint": "Something from your life you can check today.",
+  "ideasLabel": "Ideas",
+  "ideas": {
+    "idea1": "How much is a kilo of coffee at your store?",
+    "idea2": "How much did you spend on food this week?",
+    "idea3": "How many minutes does it take you to get to work?",
+    "idea4": "How much was last month's electricity bill?",
+    "idea5": "How many steps do you take on a normal day?"
+  },
+  "yourEstimate": "Your estimate",
+  "lockEstimate": "Lock in my estimate",
+  "lockedAt": "Your estimate: {{value}}",
+  "nowCheck": "Now look up the real figure: the receipt, the bill, the map, the store.",
+  "actualValue": "The real value",
+  "compareEstimate": "Compare",
+  "estimateResultTitle": "Result",
+  "estimateResultLead": "You were off by {{pct}}%.",
+  "estimateGreat": "Very close. Your sense of quantities is sharp.",
+  "estimateOk": "Reasonable. With practice, that margin narrows.",
+  "estimateFar": "Far off, and that's fine: now you have that figure as a reference.",
+  "estimateAnother": "Estimate something else",
+  "words": {
+    "items": [
+      "bread",
+      "milk",
+      "eggs",
+      "coffee",
+      "rice",
+      "apples",
+      "cheese",
+      "tomatoes",
+      "soap",
+      "pasta"
+    ],
+    "ingredients": [
+      "flour",
+      "sugar",
+      "rice",
+      "cheese",
+      "butter"
+    ]
+  }
+}

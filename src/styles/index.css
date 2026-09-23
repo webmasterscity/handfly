@@ -1,0 +1,203 @@
+@import 'tailwindcss';
+
+/*
+ * Tokens de Handfly. La paleta viene del horizonte artificial (cielo y tierra) y de los
+ * colores de anuncio de cabina: ámbar = precaución, magenta = rumbo, verde = rango normal.
+ * Todo color de componente usa estas variables; el modo oscuro solo redefine variables.
+ */
+:root {
+  --bg: #e9eef2;
+  --panel: #ffffff;
+  --panel-2: #f3f6f8;
+  --line: #c9d3dc;
+  --ink: #0f1d2a;
+  --ink-dim: #4a5d6e;
+  --accent: #1f6fae;
+  --on-accent: #ffffff;
+  --sky: #3f86c2;
+  --sky-deep: #1f5d93;
+  --earth: #8a5a37;
+  --earth-deep: #5e3b22;
+  --amber: #8f5f00;
+  --magenta: #a8328e;
+  --green: #1d7a4c;
+  --red: #b42318;
+  --focus: #a8328e;
+  --shadow: 0 1px 0 rgb(15 29 42 / 0.06);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #0e1822;
+    --panel: #15222f;
+    --panel-2: #1c2c3b;
+    --line: #2c3f52;
+    --ink: #e6edf2;
+    --ink-dim: #a3b5c5;
+    --accent: #6cb0e4;
+    --on-accent: #071521;
+    --sky: #3d7fb8;
+    --sky-deep: #24527c;
+    --earth: #7b4f30;
+    --earth-deep: #4d311d;
+    --amber: #f0b429;
+    --magenta: #e07ac8;
+    --green: #56c995;
+    --red: #f27b7b;
+    --focus: #f0b429;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #0e1822;
+  --panel: #15222f;
+  --panel-2: #1c2c3b;
+  --line: #2c3f52;
+  --ink: #e6edf2;
+  --ink-dim: #a3b5c5;
+  --accent: #6cb0e4;
+  --on-accent: #071521;
+  --sky: #3d7fb8;
+  --sky-deep: #24527c;
+  --earth: #7b4f30;
+  --earth-deep: #4d311d;
+  --amber: #f0b429;
+  --magenta: #e07ac8;
+  --green: #56c995;
+  --red: #f27b7b;
+  --focus: #f0b429;
+  --shadow: none;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-sky: var(--sky);
+  --color-earth: var(--earth);
+  --color-amber: var(--amber);
+  --color-magenta: var(--magenta);
+  --color-green: var(--green);
+  --color-red: var(--red);
+  --font-sans: 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --font-display: 'B612', 'Atkinson Hyperlegible Next', system-ui, sans-serif;
+  --font-readout: 'B612 Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--bg);
+    /* El foco y el desplazamiento automático no dejan nada debajo de la barra de pestañas. */
+    scroll-padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+  @media (min-width: 64rem) {
+    html {
+      scroll-padding-bottom: 1rem;
+    }
+  }
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    -webkit-tap-highlight-color: transparent;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+}
+
+@layer components {
+  /* Texto corrido largo (Acerca de, Evidencia): justificado con partición de palabras. */
+  .prose-text p,
+  .prose-text li {
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  .prose-text p + p {
+    margin-top: 0.75rem;
+  }
+  .readout {
+    font-family: var(--font-readout);
+    font-variant-numeric: tabular-nums;
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* El usuario puede apagar el movimiento desde Ajustes aunque su sistema no lo pida. */
+:root[data-motion='off'] *,
+:root[data-motion='off'] *::before,
+:root[data-motion='off'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@keyframes hf-pop {
+  0% {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-pop {
+  animation: hf-pop 220ms ease-out both;
+}
+
+@keyframes hf-think {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.hf-think-bar {
+  animation: hf-think 3000ms linear both;
+}

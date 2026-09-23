@@ -1,0 +1,456 @@
+{
+  "common": {
+    "back": "Back",
+    "close": "Close",
+    "cancel": "Cancel"
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "label": "Main navigation",
+    "labelTabs": "Main tabs",
+    "today": "Today",
+    "practice": "Practice",
+    "log": "Flight",
+    "progress": "Progress",
+    "settings": "Settings"
+  },
+  "update": {
+    "available": "A new version of Handfly is ready.",
+    "later": "Later",
+    "reload": "Update"
+  },
+  "modules": {
+    "think-first": "Think first",
+    "recall": "Active recall",
+    "people": "People's names",
+    "navigation": "No-GPS navigation",
+    "writing": "Your own writing",
+    "calculation": "Everyday math"
+  },
+  "moduleBlurbs": {
+    "think-first": "Before asking an AI, write your own answer. Then compare.",
+    "recall": "What you learn comes back as a question, right before you would forget it.",
+    "people": "Remember the names of people you meet, with no photos and a proven technique.",
+    "navigation": "Plan the route on a map, travel it without GPS and rebuild it from memory.",
+    "writing": "Write your real messages and emails in your own words, no pasting.",
+    "calculation": "Grocery totals, tips and estimates, without a calculator."
+  },
+  "ranks": {
+    "student": "Student pilot",
+    "private": "Private pilot",
+    "commercial": "Commercial pilot",
+    "firstOfficer": "First officer",
+    "captain": "Captain",
+    "instructor": "Instructor"
+  },
+  "evidence": {
+    "badge": "{{level}} evidence",
+    "levels": {
+      "alta": "High",
+      "moderada": "Moderate",
+      "preliminar": "Preliminary"
+    },
+    "title": "Evidence",
+    "lead": "Which studies each exercise relies on, how solid they are and what they do not show. No promises of more intelligence.",
+    "levelsTitle": "How to read the levels",
+    "levelDesc": {
+      "alta": "Many studies and several reviews pooling them agree, including outside the lab.",
+      "moderada": "There are solid studies, but few in real life, or results that do not always agree.",
+      "preliminar": "The idea is reasonable and there are signs, but good studies confirming it are still missing."
+    },
+    "notPeerReviewed": "not peer reviewed",
+    "transfer": "Why it helps outside the app"
+  },
+  "review": {
+    "kinds": {
+      "think": "Think first",
+      "fact": "Fact",
+      "person": "Person"
+    },
+    "progressAria": "Card {{current}} of {{total}}",
+    "cardHeading": "Card {{n}}",
+    "attemptLabel": "Your answer",
+    "attemptHint": "Type it or say it out loud. Recalling before looking is what makes it work.",
+    "reveal": "Show the answer",
+    "thinking": "Try to recall…",
+    "yourAttempt": "Your attempt:",
+    "howWasIt": "How did it go?",
+    "ratings": {
+      "again": "Forgot it",
+      "hard": "With effort",
+      "good": "Good",
+      "easy": "Easy"
+    },
+    "interval": {
+      "minutes_one": "in {{count}} min",
+      "minutes_other": "in {{count}} min",
+      "hours_one": "in {{count}} h",
+      "hours_other": "in {{count}} h",
+      "days_one": "in {{count}} day",
+      "days_other": "in {{count}} days",
+      "months_one": "in {{count}} month",
+      "months_other": "in {{count}} months"
+    },
+    "answer": "Answer"
+  },
+  "session": {
+    "simFlightTitle_one": "Daily session: {{count}} review",
+    "simFlightTitle_other": "Daily session: {{count}} reviews",
+    "exit": "Leave the session",
+    "phase": {
+      "briefing": "Before takeoff",
+      "reviews": "Reviews",
+      "mission": "Mission",
+      "landing": "Landing"
+    },
+    "briefingTitle": "Today's flight",
+    "stepReviews_one": "{{count}} review due",
+    "stepReviews_other": "{{count}} reviews due",
+    "stepReviewsHint": "Recall first, look second. A few minutes.",
+    "noReviews": "Nothing to review today. Straight to the mission.",
+    "stepMission": "One mission for your day",
+    "takeoff": "Take off",
+    "missionTitle": "Today's mission",
+    "missionLead": "It happens outside the app. Accept it now and mark it when you are done.",
+    "land": "Land",
+    "landedTitle": "Landed",
+    "landedReviews": "You recalled {{recalled}} of {{total}}.",
+    "applyLabel": "Now, in your day:",
+    "applyGeneric": "Next time you reach for the AI, the map or the calculator, try it yourself first.",
+    "goodbye": "That's all for today. The practice that counts happens out there. See you tomorrow.",
+    "close": "Close"
+  },
+  "missions": {
+    "label": "Mission",
+    "surpriseLabel": "Surprise mission",
+    "doneLabel": "Done. It's in your flight log.",
+    "fallbackTitle": "Real-world mission",
+    "minutes": "How many minutes did it take?",
+    "note": "A note (optional)",
+    "noteHint": "What happened, what was hard, what you'd do differently.",
+    "logIt": "Log it",
+    "accept": "Accept: I'll do it today",
+    "didIt": "I did it",
+    "alreadyDone": "Already did it",
+    "swap": "Swap mission",
+    "thinkFirst": {
+      "beforeChat": "Before your next AI question, write your own answer in Think first.",
+      "sayIt": "Before looking something up today, say out loud what you think the answer is. Then check.",
+      "solveAlone": "Solve one work or study problem today without AI. Compare with it only at the end."
+    },
+    "recall": {
+      "explain": "Explain something you learned this week to someone, without notes.",
+      "agenda": "Before checking your calendar, recall what you have today. Then check.",
+      "shopping": "Shop from memory. Check the list only at the end."
+    },
+    "people": {
+      "greet": "Greet someone you met recently by name today.",
+      "register": "When you meet someone today, repeat their name in the conversation and log it afterwards.",
+      "meeting": "Before a meeting, go over the names of who will be there in your head."
+    },
+    "navigation": {
+      "plan": "Plan one of today's trips on the map and do it without GPS.",
+      "return": "Go home a different way, without looking at the map.",
+      "landmarks": "On a familiar trip, notice 5 landmarks and write them down when you arrive.",
+      "pointHome": "When leaving a new place, point toward home. Check afterwards."
+    },
+    "writing": {
+      "message": "Write your next important message without AI or autocomplete.",
+      "email": "Draft a real email in Your own writing before sending it.",
+      "summary": "Summarize in writing, without looking, something you read today."
+    },
+    "calculation": {
+      "groceries": "Today, work out the grocery total before paying.",
+      "tip": "Work out the tip or your share of the bill without a calculator.",
+      "budget": "Estimate how much you spent this week and compare with your bank.",
+      "arrival": "Before leaving, work out what time you'll arrive.",
+      "estimate": "Before looking up a price or a fact, say what you think it is."
+    },
+    "surprise": {
+      "phone": "Memorize a close person's phone number and dial it without contacts.",
+      "askWay": "Ask someone for directions instead of using the map.",
+      "teach": "Teach someone how to do something you know, without looking anything up.",
+      "birthday": "Recall three close people's birthdays without checking the calendar.",
+      "handwrite": "Handwrite a short note or letter to someone.",
+      "clock": "Work out how many minutes until your next meal, checking the clock only once."
+    }
+  },
+  "achievements": {
+    "unlocked": "Achievement unlocked: {{name}}",
+    "unlockedSr": "Unlocked",
+    "lockedSr": "Locked",
+    "hiddenLeft_one": "{{count}} hidden achievement left to discover.",
+    "hiddenLeft_other": "{{count}} hidden achievements left to discover.",
+    "items": {
+      "firstFlight": {
+        "name": "First flight",
+        "desc": "You solved something real without help."
+      },
+      "firstThink": {
+        "name": "Me first",
+        "desc": "You closed your first Think first question."
+      },
+      "streak7": {
+        "name": "A week aloft",
+        "desc": "7 days in a row of practice."
+      },
+      "streak30": {
+        "name": "A month aloft",
+        "desc": "30 days in a row of practice."
+      },
+      "rankPrivate": {
+        "name": "Private license",
+        "desc": "You reached Private pilot."
+      },
+      "names10": {
+        "name": "Good with names",
+        "desc": "You recalled 10 names."
+      },
+      "firstRoute": {
+        "name": "No GPS",
+        "desc": "Your first route without GPS."
+      },
+      "firstDraft": {
+        "name": "In my own words",
+        "desc": "You wrote a text of more than 150 words."
+      },
+      "calc10": {
+        "name": "Spot on",
+        "desc": "10 problems solved correctly without a calculator."
+      },
+      "firstCheck": {
+        "name": "Logbook",
+        "desc": "You did your first weekly check."
+      },
+      "calibrated": {
+        "name": "Well calibrated",
+        "desc": "5 times your confidence matched what you knew."
+      },
+      "humble": {
+        "name": "You knew more than you thought",
+        "desc": "Low confidence, yet very close."
+      },
+      "allRunways": {
+        "name": "Every runway",
+        "desc": "You practiced all six modules in one week."
+      },
+      "nightFlight": {
+        "name": "Night flight",
+        "desc": "A real flight at night."
+      },
+      "cartographer": {
+        "name": "Cartographer",
+        "desc": "You recalled three routes well."
+      },
+      "welcomeBack": {
+        "name": "Back in the cockpit",
+        "desc": "You came back after a break. That counts too."
+      }
+    }
+  },
+  "onboarding": {
+    "title": "Switch off the autopilot",
+    "p1": "Pilots practice hand-flying so they don't lose the skill. Handfly does the same for what we now hand over to AI, GPS and calculators.",
+    "b1": "About 5 to 10 minutes a day, plus one mission for your real life.",
+    "b2": "Your \"real flights\" are what count: what you solve on your own, outside the app.",
+    "b3": "Everything stays on your phone. No accounts, ads or tracking.",
+    "cta": "Get started",
+    "more": "How it works"
+  },
+  "today": {
+    "streakShort_one": "{{count}}-day streak",
+    "streakShort_other": "{{count}}-day streak",
+    "panelTitle": "Instrument panel",
+    "altimeterAria": "Real flight hours: {{hours}}",
+    "altimeterLabel": "Real flight hours",
+    "horizon": {
+      "noData": "The horizon moves once you log real flights and do the weekly check.",
+      "climbing": "Climbing: this week you're solving more on your own than with crutches.",
+      "descending": "Descending: more crutches than solo flights this week. A mission helps level off.",
+      "level": "Level flight: as much on your own as with help.",
+      "banked": "Banked toward a single skill: try another module."
+    },
+    "sessionTitle": "Today's session",
+    "sessionDone": "Session complete.",
+    "sessionDoneHint": "What's left is using it out there. See you tomorrow.",
+    "sessionPlan_one": "{{count}} review (≈ {{minutes}} min) and one mission.",
+    "sessionPlan_other": "{{count}} reviews (≈ {{minutes}} min) and one mission.",
+    "sessionPlanNoCards": "No reviews due: just a mission today.",
+    "resume": "Resume the session",
+    "start": "Start the session",
+    "missionTitle": "Today's mission",
+    "pendingTitle": "Pending",
+    "openThinks_one": "{{count}} Think first question to close",
+    "openThinks_other": "{{count}} Think first questions to close",
+    "weeklyPrompt": "Do the weekly check (2 minutes)"
+  },
+  "practice": {
+    "title": "Practice",
+    "lead": "Each module is a real task, not a game. The badge tells you how well tested it is.",
+    "whyNoGames": "Why no memory games or puzzles?",
+    "seeEvidence": "See the evidence."
+  },
+  "log": {
+    "title": "Log a flight",
+    "lead": "A real flight is anything you solved in your life without AI, GPS or a calculator.",
+    "what": "What did you solve on your own?",
+    "whatHint": "For example: \"Wrote the proposal without AI\" or \"Got to the doctor without GPS\".",
+    "which": "Which help did you skip?",
+    "minutes": "Minutes",
+    "date": "Date",
+    "save": "Log flight",
+    "saved": "Flight logged.",
+    "recent": "Recent flights",
+    "empty": "No real flights yet. The first one can be today.",
+    "minutesShort_one": "{{count}} min",
+    "minutesShort_other": "{{count}} min",
+    "delete": "Delete \"{{title}}\""
+  },
+  "progress": {
+    "title": "Progress",
+    "lead": "First, what you do in real life; then, how practice is going.",
+    "realHours": "Real flight hours",
+    "realFlights_one": "{{count}} flight",
+    "realFlights_other": "{{count}} flights",
+    "simHours": "Simulator hours",
+    "simHint": "Practice inside the app",
+    "rank": "Rank",
+    "rankProgressAria": "{{pct}}% toward the next rank",
+    "nextRank": "Next: {{rank}} ({{hours}} h and {{flights}} flights)",
+    "streak": "Current streak",
+    "bestStreak_one": "best: {{count}} day",
+    "bestStreak_other": "best: {{count}} days",
+    "restUsed": "this week's rest day used",
+    "restAvailable": "1 rest day available this week",
+    "chartTitle": "Flights per week",
+    "chartSummary": "Real flights this week: {{thisWeek}}. Last week: {{lastWeek}}.",
+    "legendReal": "Real flights",
+    "legendSim": "Simulator",
+    "autonomyTitle": "On your own or with a crutch",
+    "doWeekly": "Weekly check",
+    "solo_one": "{{count}} on your own",
+    "solo_other": "{{count}} on your own",
+    "crutch_one": "{{count}} with a crutch",
+    "crutch_other": "{{count}} with a crutch",
+    "noWeekly": "No weekly checks yet.",
+    "modulesTitle": "By module",
+    "m": {
+      "thinkCloseness": "How close your attempts were",
+      "thinkClosenessHint_one": "{{count}} closed question",
+      "thinkClosenessHint_other": "{{count}} closed questions",
+      "calibration": "Confidence–accuracy gap",
+      "calibrationHint": "0 = you know exactly how much you know",
+      "recall": "Recall (30 days)",
+      "recallHint_one": "{{count}} review",
+      "recallHint_other": "{{count}} reviews",
+      "names": "Names recalled",
+      "namesHint_one": "{{count}} person logged",
+      "namesHint_other": "{{count}} people logged",
+      "routes": "Routes without GPS",
+      "routesHint": "average reconstruction: {{recall}}",
+      "writing": "Finished texts",
+      "writingHint_one": "{{count}} minute writing",
+      "writingHint_other": "{{count}} minutes writing",
+      "calc": "Math accuracy",
+      "calcHint_one": "{{count}} problem",
+      "calcHint_other": "{{count}} problems",
+      "estimate": "Typical estimation error",
+      "estimateHint_one": "{{count}} estimate",
+      "estimateHint_other": "{{count}} estimates"
+    },
+    "achievementsTitle": "Achievements"
+  },
+  "weekly": {
+    "title": "Weekly check",
+    "lead": "Two minutes of honesty. One real situation per line. Nobody else sees it.",
+    "soloLabel": "What did you solve on your own this week?",
+    "soloHint": "Real things: an email, a route, a sum, a decision.",
+    "crutchLabel": "Where did you use AI, GPS or a calculator as a crutch?",
+    "crutchHint": "When you used it to avoid thinking, not because it was needed. Not a judgment, just data.",
+    "noteLabel": "Something for next week (optional)",
+    "noteHint": "A situation you want to try on your own.",
+    "save": "Save check",
+    "saved": "Check saved."
+  },
+  "notFound": {
+    "title": "This screen doesn't exist",
+    "lead": "The link may be incomplete.",
+    "cta": "Go to Today"
+  },
+  "settings": {
+    "title": "Settings",
+    "display": "Display",
+    "language": "Language",
+    "langAuto": "Phone's",
+    "theme": "Theme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "sounds": "Sounds",
+    "haptics": "Vibration",
+    "hapticsHint": "Only on phones that support it.",
+    "motion": "Animations",
+    "motionHint": "If your system asks for reduced motion, that always wins.",
+    "practice": "Practice",
+    "sessionSize": "Maximum reviews per session",
+    "cards_one": "{{count}}",
+    "cards_other": "{{count}}",
+    "allowPaste": "Allow pasting in Your own writing",
+    "allowPasteHint": "Turn it on if you dictate or use assistive tech that pastes text.",
+    "reminder": "Daily reminder",
+    "reminderLead": "One reminder a day, in your calendar. Handfly sends no notifications and doesn't know whether you use it.",
+    "reminderTime": "Time",
+    "reminderAdd": "Add to calendar",
+    "reminderEventTitle": "Handfly: 5 minutes of hand-flying",
+    "reminderEventBody": "Today's reviews and one mission for your real life.",
+    "data": "Your data",
+    "dataLead": "Everything lives on this device. Download a backup so you don't lose it or to move it to another phone.",
+    "export": "Download backup",
+    "import": "Load backup",
+    "exported": "Backup downloaded.",
+    "imported": "Backup loaded.",
+    "importAsk": "Backup from {{date}}. Merge it with what you have, or replace everything?",
+    "importMerge": "Merge",
+    "importReplace": "Replace everything",
+    "importErrors": {
+      "notJson": "That file isn't a valid backup (not JSON).",
+      "notBackup": "That file isn't a Handfly backup.",
+      "newerVersion": "That backup comes from a newer Handfly version. Update the app and try again."
+    },
+    "wipe": "Delete all my data",
+    "wipeConfirm": "Your questions, cards, people, routes, texts and flights on this device will be deleted forever. Without a backup they can't be recovered.",
+    "wipeYes": "Yes, delete everything",
+    "wiped": "Data deleted.",
+    "aboutTitle": "About",
+    "aboutLink": "What Handfly is and what it can't do",
+    "evidenceLink": "The evidence behind each exercise",
+    "sourceLink": "Open source on GitHub"
+  },
+  "about": {
+    "title": "About Handfly",
+    "slogan": "Switch off the autopilot.",
+    "origin": "The name comes from aviation. Pilots who almost always fly on autopilot slowly lose the ability to fly by hand. That's why they practice hand-flying, even when they don't need to.",
+    "idea": "The same happens to us with AI, GPS and calculators. They are great tools, but if we never do things without them, we stop knowing how. Handfly helps you practice on purpose, with tasks from your real life, so those skills are still there when you need them.",
+    "canTitle": "What it can do",
+    "can": [
+      "Help you build the habit of trying first before asking an AI.",
+      "Help you remember what you learn and the names of people you meet, using well-studied techniques.",
+      "Give you real practice finding your way, writing and doing math in everyday situations.",
+      "Show you, with honest data, how much you solve on your own and how much you hand off."
+    ],
+    "cannotTitle": "What it can't do",
+    "cannot": [
+      "It won't make you smarter. No exercise has shown that, so be wary of anyone who promises it.",
+      "It doesn't improve memory \"in general\": it improves what you practice and very similar things.",
+      "It doesn't replace real-life practice. What counts is what you do outside the app.",
+      "It isn't a treatment. If you're worried about your memory or attention, talk to a health professional."
+    ],
+    "privacyTitle": "Privacy",
+    "privacy": "Everything you write (questions, names, notes, routes, texts) is stored only on this device. There are no accounts, no servers receiving your data, no ads and no usage analytics. You decide whether to download a backup and where to keep it.",
+    "ethicsTitle": "Designed not to hook you",
+    "ethics": "There is no endless content. A session lasts 5 to 10 minutes and, when it ends, the app says goodbye and invites you to go practice. There's one optional reminder a day and no guilt-tripping messages. Your streak gets one rest day a week.",
+    "openTitle": "Open source",
+    "open": "Handfly is free and open source under the MIT license. Every new module must explain why its practice helps in real life and cite the evidence behind it.",
+    "evidenceLink": "See the evidence"
+  }
+}

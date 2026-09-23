@@ -1,0 +1,456 @@
+{
+  "common": {
+    "back": "Volver",
+    "close": "Cerrar",
+    "cancel": "Cancelar"
+  },
+  "nav": {
+    "skip": "Saltar al contenido",
+    "label": "Navegación principal",
+    "labelTabs": "Pestañas principales",
+    "today": "Hoy",
+    "practice": "Practicar",
+    "log": "Vuelo",
+    "progress": "Progreso",
+    "settings": "Ajustes"
+  },
+  "update": {
+    "available": "Hay una versión nueva de Handfly lista.",
+    "later": "Más tarde",
+    "reload": "Actualizar"
+  },
+  "modules": {
+    "think-first": "Pensar primero",
+    "recall": "Recuerdo activo",
+    "people": "Nombres de personas",
+    "navigation": "Navegación sin GPS",
+    "writing": "Escritura propia",
+    "calculation": "Cálculo cotidiano"
+  },
+  "moduleBlurbs": {
+    "think-first": "Antes de preguntarle a una IA, escribe tu propia respuesta. Luego compara.",
+    "recall": "Lo que aprendes vuelve a preguntarse, justo antes de que se te olvide.",
+    "people": "Recuerda el nombre de la gente que conoces, sin fotos y con una técnica probada.",
+    "navigation": "Planea la ruta con el mapa, recórrela sin GPS y reconstrúyela de memoria.",
+    "writing": "Escribe tus mensajes y correos reales con tus palabras, sin pegar nada.",
+    "calculation": "Cuentas del súper, propinas y estimaciones, sin calculadora."
+  },
+  "ranks": {
+    "student": "Alumno piloto",
+    "private": "Piloto privado",
+    "commercial": "Piloto comercial",
+    "firstOfficer": "Primer oficial",
+    "captain": "Comandante",
+    "instructor": "Instructor"
+  },
+  "evidence": {
+    "badge": "Evidencia {{level}}",
+    "levels": {
+      "alta": "alta",
+      "moderada": "moderada",
+      "preliminar": "preliminar"
+    },
+    "title": "Evidencia",
+    "lead": "En qué estudios se apoya cada ejercicio, qué tan sólidos son y qué no demuestran. Sin promesas de más inteligencia.",
+    "levelsTitle": "Cómo leer los niveles",
+    "levelDesc": {
+      "alta": "Muchos estudios y varias revisiones que los reúnen coinciden, también fuera del laboratorio.",
+      "moderada": "Hay estudios sólidos, pero pocos en la vida real o con resultados que no siempre coinciden.",
+      "preliminar": "La idea es razonable y hay indicios, pero todavía faltan estudios buenos que la confirmen."
+    },
+    "notPeerReviewed": "sin revisión por pares",
+    "transfer": "Por qué sirve fuera de la app"
+  },
+  "review": {
+    "kinds": {
+      "think": "Pensar primero",
+      "fact": "Dato",
+      "person": "Persona"
+    },
+    "progressAria": "Tarjeta {{current}} de {{total}}",
+    "cardHeading": "Tarjeta {{n}}",
+    "attemptLabel": "Tu respuesta",
+    "attemptHint": "Escríbela o dila en voz alta. Recordar antes de mirar es lo que hace que funcione.",
+    "reveal": "Mostrar la respuesta",
+    "thinking": "Intenta recordar…",
+    "yourAttempt": "Tu intento:",
+    "howWasIt": "¿Cómo te fue?",
+    "ratings": {
+      "again": "No la recordé",
+      "hard": "Con esfuerzo",
+      "good": "Bien",
+      "easy": "Fácil"
+    },
+    "interval": {
+      "minutes_one": "en {{count}} min",
+      "minutes_other": "en {{count}} min",
+      "hours_one": "en {{count}} h",
+      "hours_other": "en {{count}} h",
+      "days_one": "en {{count}} día",
+      "days_other": "en {{count}} días",
+      "months_one": "en {{count}} mes",
+      "months_other": "en {{count}} meses"
+    },
+    "answer": "Respuesta"
+  },
+  "session": {
+    "simFlightTitle_one": "Sesión diaria: {{count}} repaso",
+    "simFlightTitle_other": "Sesión diaria: {{count}} repasos",
+    "exit": "Salir de la sesión",
+    "phase": {
+      "briefing": "Antes de despegar",
+      "reviews": "Repasos",
+      "mission": "Misión",
+      "landing": "Aterrizaje"
+    },
+    "briefingTitle": "Tu vuelo de hoy",
+    "stepReviews_one": "{{count}} repaso pendiente",
+    "stepReviews_other": "{{count}} repasos pendientes",
+    "stepReviewsHint": "Primero recuerdas, después miras. Unos minutos.",
+    "noReviews": "Hoy no toca repasar nada. Pasamos directo a la misión.",
+    "stepMission": "Una misión para tu día",
+    "takeoff": "Despegar",
+    "missionTitle": "Tu misión de hoy",
+    "missionLead": "Se hace fuera de la app. Acéptala ahora y márcala cuando la cumplas.",
+    "land": "Aterrizar",
+    "landedTitle": "Aterrizaje completado",
+    "landedReviews": "Recordaste {{recalled}} de {{total}}.",
+    "applyLabel": "Ahora, en tu día:",
+    "applyGeneric": "La próxima vez que vayas a abrir la IA, el mapa o la calculadora, inténtalo tú primero.",
+    "goodbye": "Eso es todo por hoy. La práctica que cuenta es la de afuera. Nos vemos mañana.",
+    "close": "Cerrar"
+  },
+  "missions": {
+    "label": "Misión",
+    "surpriseLabel": "Misión sorpresa",
+    "doneLabel": "Cumplida. Quedó en tu registro de vuelo.",
+    "fallbackTitle": "Misión del mundo real",
+    "minutes": "¿Cuántos minutos te llevó?",
+    "note": "Una nota (opcional)",
+    "noteHint": "Qué pasó, qué te costó, qué harías distinto.",
+    "logIt": "Registrar",
+    "accept": "La acepto: la haré hoy",
+    "didIt": "La cumplí",
+    "alreadyDone": "Ya la hice",
+    "swap": "Cambiar misión",
+    "thinkFirst": {
+      "beforeChat": "Antes de tu próxima consulta a una IA, escribe tu propia respuesta en Pensar primero.",
+      "sayIt": "Antes de buscar algo hoy, di en voz alta qué crees que es la respuesta. Después compruébalo.",
+      "solveAlone": "Resuelve hoy un problema de trabajo o estudio sin IA. Solo al final compara con ella."
+    },
+    "recall": {
+      "explain": "Explícale a alguien, sin mirar notas, algo que aprendiste esta semana.",
+      "agenda": "Antes de mirar tu agenda, recuerda qué tienes hoy. Luego comprueba.",
+      "shopping": "Haz la compra recordando la lista. Revisa la nota solo al final."
+    },
+    "people": {
+      "greet": "Saluda hoy por su nombre a alguien que conociste hace poco.",
+      "register": "Cuando conozcas a alguien hoy, repite su nombre en la conversación y regístralo después.",
+      "meeting": "Antes de una reunión, repasa mentalmente el nombre de quienes estarán."
+    },
+    "navigation": {
+      "plan": "Planea con el mapa un trayecto de hoy y hazlo sin GPS.",
+      "return": "Vuelve a casa por un camino distinto, sin mirar el mapa.",
+      "landmarks": "En un trayecto conocido, fíjate en 5 puntos de referencia y anótalos al llegar.",
+      "pointHome": "Al salir de un lugar nuevo, señala hacia dónde queda tu casa. Compruébalo después."
+    },
+    "writing": {
+      "message": "Escribe tu próximo mensaje importante sin IA ni autocompletado.",
+      "email": "Redacta hoy un correo real en Escritura propia antes de enviarlo.",
+      "summary": "Resume por escrito, sin mirar, algo que leíste hoy."
+    },
+    "calculation": {
+      "groceries": "Hoy calcula el total de la compra antes de pagar.",
+      "tip": "Calcula la propina o tu parte de la cuenta sin calculadora.",
+      "budget": "Estima cuánto gastaste esta semana y compáralo con tu banco.",
+      "arrival": "Antes de salir, calcula a qué hora llegarás a tu destino.",
+      "estimate": "Antes de buscar un precio o un dato, di cuánto crees que es."
+    },
+    "surprise": {
+      "phone": "Aprende de memoria el teléfono de una persona cercana y márcalo sin la agenda.",
+      "askWay": "Pregúntale a alguien cómo llegar a un sitio en vez de usar el mapa.",
+      "teach": "Enséñale a alguien a hacer algo que sabes, sin buscar nada.",
+      "birthday": "Recuerda el cumpleaños de tres personas cercanas sin mirar el calendario.",
+      "handwrite": "Escribe a mano una nota o una carta corta para alguien.",
+      "clock": "Calcula cuántos minutos faltan para tu próxima comida sin mirar el reloj dos veces."
+    }
+  },
+  "achievements": {
+    "unlocked": "Logro desbloqueado: {{name}}",
+    "unlockedSr": "Desbloqueado",
+    "lockedSr": "Bloqueado",
+    "hiddenLeft_one": "Queda {{count}} logro oculto por descubrir.",
+    "hiddenLeft_other": "Quedan {{count}} logros ocultos por descubrir.",
+    "items": {
+      "firstFlight": {
+        "name": "Primer vuelo",
+        "desc": "Resolviste algo real sin ayuda."
+      },
+      "firstThink": {
+        "name": "Primero yo",
+        "desc": "Cerraste tu primera pregunta de Pensar primero."
+      },
+      "streak7": {
+        "name": "Una semana en el aire",
+        "desc": "7 días seguidos practicando."
+      },
+      "streak30": {
+        "name": "Un mes en el aire",
+        "desc": "30 días seguidos practicando."
+      },
+      "rankPrivate": {
+        "name": "Licencia privada",
+        "desc": "Subiste a Piloto privado."
+      },
+      "names10": {
+        "name": "Buena memoria para caras",
+        "desc": "Recordaste 10 nombres."
+      },
+      "firstRoute": {
+        "name": "Sin GPS",
+        "desc": "Hiciste tu primera ruta sin GPS."
+      },
+      "firstDraft": {
+        "name": "Con mis palabras",
+        "desc": "Escribiste un texto de más de 150 palabras."
+      },
+      "calc10": {
+        "name": "Cuenta exacta",
+        "desc": "10 problemas bien resueltos sin calculadora."
+      },
+      "firstCheck": {
+        "name": "Bitácora",
+        "desc": "Hiciste tu primer chequeo semanal."
+      },
+      "calibrated": {
+        "name": "Bien calibrado",
+        "desc": "5 veces tu confianza coincidió con lo que sabías."
+      },
+      "humble": {
+        "name": "Sabías más de lo que creías",
+        "desc": "Poca confianza, pero estuviste muy cerca."
+      },
+      "allRunways": {
+        "name": "Todas las pistas",
+        "desc": "Practicaste los seis módulos en una misma semana."
+      },
+      "nightFlight": {
+        "name": "Vuelo nocturno",
+        "desc": "Un vuelo real de noche."
+      },
+      "cartographer": {
+        "name": "Cartógrafo",
+        "desc": "Recordaste bien tres rutas."
+      },
+      "welcomeBack": {
+        "name": "De vuelta en cabina",
+        "desc": "Volviste después de una pausa. Eso también cuenta."
+      }
+    }
+  },
+  "onboarding": {
+    "title": "Apaga el piloto automático",
+    "p1": "Los pilotos practican volar a mano para no perder la habilidad. Handfly hace lo mismo con lo que hoy le dejamos a la IA, al GPS y a la calculadora.",
+    "b1": "Unos 5 a 10 minutos al día, y una misión para tu vida real.",
+    "b2": "Cuentan tus «vuelos reales»: lo que resuelves solo, fuera de la app.",
+    "b3": "Todo se queda en tu teléfono. No hay cuentas, anuncios ni rastreo.",
+    "cta": "Empezar",
+    "more": "Cómo funciona"
+  },
+  "today": {
+    "streakShort_one": "racha {{count}} día",
+    "streakShort_other": "racha {{count}} días",
+    "panelTitle": "Panel de instrumentos",
+    "altimeterAria": "Horas de vuelo real: {{hours}}",
+    "altimeterLabel": "Horas de vuelo real",
+    "horizon": {
+      "noData": "El horizonte se mueve cuando registras vuelos reales y haces el chequeo semanal.",
+      "climbing": "Subiendo: esta semana resuelves más cosas por tu cuenta que con muletas.",
+      "descending": "Descendiendo: esta semana hubo más muletas que vuelos propios. Una misión ayuda a nivelar.",
+      "level": "Vuelo nivelado: tanto por tu cuenta como con ayuda.",
+      "banked": "Inclinado hacia una sola habilidad: prueba otro módulo."
+    },
+    "sessionTitle": "Sesión de hoy",
+    "sessionDone": "Sesión completada.",
+    "sessionDoneHint": "Lo que queda es aplicarlo fuera. Hasta mañana.",
+    "sessionPlan_one": "{{count}} repaso (≈ {{minutes}} min) y una misión.",
+    "sessionPlan_other": "{{count}} repasos (≈ {{minutes}} min) y una misión.",
+    "sessionPlanNoCards": "Sin repasos pendientes: hoy solo hay misión.",
+    "resume": "Continuar la sesión",
+    "start": "Empezar la sesión",
+    "missionTitle": "Misión del día",
+    "pendingTitle": "Pendiente",
+    "openThinks_one": "{{count}} pregunta de Pensar primero por cerrar",
+    "openThinks_other": "{{count}} preguntas de Pensar primero por cerrar",
+    "weeklyPrompt": "Haz el chequeo semanal (2 minutos)"
+  },
+  "practice": {
+    "title": "Practicar",
+    "lead": "Cada módulo es una tarea real, no un juego. La insignia dice qué tan probada está.",
+    "whyNoGames": "¿Por qué no hay juegos de memoria ni acertijos?",
+    "seeEvidence": "Mira la evidencia."
+  },
+  "log": {
+    "title": "Registrar un vuelo",
+    "lead": "Un vuelo real es cualquier cosa que resolviste en tu vida sin IA, GPS o calculadora.",
+    "what": "¿Qué resolviste por tu cuenta?",
+    "whatHint": "Por ejemplo: «Escribí la propuesta sin IA» o «Llegué al médico sin GPS».",
+    "which": "¿Qué ayuda dejaste de usar?",
+    "minutes": "Minutos",
+    "date": "Fecha",
+    "save": "Registrar vuelo",
+    "saved": "Vuelo registrado.",
+    "recent": "Vuelos recientes",
+    "empty": "Todavía no hay vuelos reales. El primero puede ser hoy.",
+    "minutesShort_one": "{{count}} min",
+    "minutesShort_other": "{{count}} min",
+    "delete": "Borrar «{{title}}»"
+  },
+  "progress": {
+    "title": "Progreso",
+    "lead": "Primero lo que haces en tu vida real; después, cómo te va en la práctica.",
+    "realHours": "Horas de vuelo real",
+    "realFlights_one": "{{count}} vuelo",
+    "realFlights_other": "{{count}} vuelos",
+    "simHours": "Horas de simulador",
+    "simHint": "Práctica dentro de la app",
+    "rank": "Rango",
+    "rankProgressAria": "{{pct}} % hacia el siguiente rango",
+    "nextRank": "Siguiente: {{rank}} ({{hours}} h y {{flights}} vuelos)",
+    "streak": "Racha actual",
+    "bestStreak_one": "mejor: {{count}} día",
+    "bestStreak_other": "mejor: {{count}} días",
+    "restUsed": "descanso de la semana usado",
+    "restAvailable": "tienes 1 día de descanso esta semana",
+    "chartTitle": "Vuelos por semana",
+    "chartSummary": "Vuelos reales esta semana: {{thisWeek}}. La semana pasada: {{lastWeek}}.",
+    "legendReal": "Vuelos reales",
+    "legendSim": "Simulador",
+    "autonomyTitle": "Por tu cuenta o con muleta",
+    "doWeekly": "Chequeo semanal",
+    "solo_one": "{{count}} por tu cuenta",
+    "solo_other": "{{count}} por tu cuenta",
+    "crutch_one": "{{count}} con muleta",
+    "crutch_other": "{{count}} con muleta",
+    "noWeekly": "Todavía no hay chequeos semanales.",
+    "modulesTitle": "Por módulo",
+    "m": {
+      "thinkCloseness": "Cercanía de tus intentos",
+      "thinkClosenessHint_one": "{{count}} pregunta cerrada",
+      "thinkClosenessHint_other": "{{count}} preguntas cerradas",
+      "calibration": "Distancia confianza–acierto",
+      "calibrationHint": "0 = sabes exactamente cuánto sabes",
+      "recall": "Recuerdo (30 días)",
+      "recallHint_one": "{{count}} repaso",
+      "recallHint_other": "{{count}} repasos",
+      "names": "Nombres recordados",
+      "namesHint_one": "{{count}} persona registrada",
+      "namesHint_other": "{{count}} personas registradas",
+      "routes": "Rutas sin GPS",
+      "routesHint": "reconstrucción media: {{recall}}",
+      "writing": "Textos terminados",
+      "writingHint_one": "{{count}} minuto escribiendo",
+      "writingHint_other": "{{count}} minutos escribiendo",
+      "calc": "Acierto en cálculo",
+      "calcHint_one": "{{count}} problema",
+      "calcHint_other": "{{count}} problemas",
+      "estimate": "Error típico al estimar",
+      "estimateHint_one": "{{count}} estimación",
+      "estimateHint_other": "{{count}} estimaciones"
+    },
+    "achievementsTitle": "Logros"
+  },
+  "weekly": {
+    "title": "Chequeo semanal",
+    "lead": "Dos minutos de honestidad. Una situación real por línea. Nadie más lo ve.",
+    "soloLabel": "¿Qué resolviste por tu cuenta esta semana?",
+    "soloHint": "Cosas reales: un correo, una ruta, una cuenta, una decisión.",
+    "crutchLabel": "¿Dónde usaste la IA, el GPS o la calculadora como muleta?",
+    "crutchHint": "Cuando lo usaste para no pensar, no porque hiciera falta. No es un juicio: es un dato.",
+    "noteLabel": "Algo para la próxima semana (opcional)",
+    "noteHint": "Una situación que quieras intentar por tu cuenta.",
+    "save": "Guardar chequeo",
+    "saved": "Chequeo guardado."
+  },
+  "notFound": {
+    "title": "Esta pantalla no existe",
+    "lead": "Puede que el enlace esté incompleto.",
+    "cta": "Ir a Hoy"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "display": "Pantalla",
+    "language": "Idioma",
+    "langAuto": "Del teléfono",
+    "theme": "Tema",
+    "themeSystem": "Sistema",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro",
+    "sounds": "Sonidos",
+    "haptics": "Vibración",
+    "hapticsHint": "Solo en teléfonos que la permiten.",
+    "motion": "Animaciones",
+    "motionHint": "Si tu sistema pide menos movimiento, se respeta siempre.",
+    "practice": "Práctica",
+    "sessionSize": "Repasos máximos por sesión",
+    "cards_one": "{{count}}",
+    "cards_other": "{{count}}",
+    "allowPaste": "Permitir pegar en Escritura propia",
+    "allowPasteHint": "Actívalo si dictas o usas tecnologías de apoyo que pegan texto.",
+    "reminder": "Recordatorio diario",
+    "reminderLead": "Un solo aviso al día, en tu calendario. Handfly no envía notificaciones ni sabe si lo usas.",
+    "reminderTime": "Hora",
+    "reminderAdd": "Añadir al calendario",
+    "reminderEventTitle": "Handfly: 5 minutos de vuelo manual",
+    "reminderEventBody": "Repasos del día y una misión para tu vida real.",
+    "data": "Tus datos",
+    "dataLead": "Todo vive en este dispositivo. Descarga un respaldo para no perderlo o para pasarlo a otro teléfono.",
+    "export": "Descargar respaldo",
+    "import": "Cargar respaldo",
+    "exported": "Respaldo descargado.",
+    "imported": "Respaldo cargado.",
+    "importAsk": "Respaldo del {{date}}. ¿Quieres combinarlo con lo que ya tienes o reemplazarlo todo?",
+    "importMerge": "Combinar",
+    "importReplace": "Reemplazar todo",
+    "importErrors": {
+      "notJson": "Ese archivo no es un respaldo válido (no es JSON).",
+      "notBackup": "Ese archivo no es un respaldo de Handfly.",
+      "newerVersion": "Ese respaldo es de una versión más nueva de Handfly. Actualiza la app y vuelve a intentarlo."
+    },
+    "wipe": "Borrar todos mis datos",
+    "wipeConfirm": "Se borrarán para siempre tus preguntas, tarjetas, personas, rutas, textos y vuelos de este dispositivo. Si no tienes respaldo, no se pueden recuperar.",
+    "wipeYes": "Sí, borrar todo",
+    "wiped": "Datos borrados.",
+    "aboutTitle": "Acerca de",
+    "aboutLink": "Qué es Handfly y qué no puede hacer",
+    "evidenceLink": "La evidencia detrás de cada ejercicio",
+    "sourceLink": "Código abierto en GitHub"
+  },
+  "about": {
+    "title": "Acerca de Handfly",
+    "slogan": "Apaga el piloto automático.",
+    "origin": "El nombre viene de la aviación. Los pilotos que vuelan casi siempre con piloto automático pierden, poco a poco, la habilidad de volar a mano. Por eso practican el «hand-flying» —volar sin automatismos— aunque no les haga falta.",
+    "idea": "A nosotros nos pasa lo mismo con la IA, el GPS y la calculadora. Son herramientas estupendas, pero si nunca hacemos las cosas sin ellas, dejamos de saber hacerlas. Handfly te ayuda a practicar a propósito, con tareas de tu vida real, para que esas habilidades sigan ahí cuando las necesites.",
+    "canTitle": "Qué puede hacer",
+    "can": [
+      "Ayudarte a crear el hábito de intentarlo tú primero antes de preguntarle a una IA.",
+      "Hacer que recuerdes mejor lo que aprendes y el nombre de la gente que conoces, con técnicas muy estudiadas.",
+      "Darte práctica real de orientarte, escribir y hacer cuentas, en situaciones de tu día.",
+      "Mostrarte con datos honestos cuánto resuelves por tu cuenta y cuánto delegas."
+    ],
+    "cannotTitle": "Qué no puede hacer",
+    "cannot": [
+      "No te hace más inteligente. Ningún ejercicio lo ha demostrado, y desconfía de quien lo prometa.",
+      "No mejora la memoria «en general»: mejora lo que practicas y cosas muy parecidas.",
+      "No sustituye la práctica en la vida real. Lo que cuenta es lo que haces fuera de la app.",
+      "No es un tratamiento. Si te preocupa tu memoria o tu atención, habla con un profesional de la salud."
+    ],
+    "privacyTitle": "Privacidad",
+    "privacy": "Todo lo que escribes (preguntas, nombres, notas, rutas, textos) se guarda solo en este dispositivo. No hay cuentas, ni servidores que reciban tus datos, ni anuncios, ni estadísticas de uso. Tú decides si descargas un respaldo y dónde lo guardas.",
+    "ethicsTitle": "Un diseño que no te quiere enganchado",
+    "ethics": "No hay contenido infinito. La sesión dura de 5 a 10 minutos y, al terminar, la app se despide y te invita a salir a practicar. Hay un solo recordatorio al día, opcional, y ningún mensaje para hacerte sentir culpable. La racha te da un día de descanso por semana.",
+    "openTitle": "Código abierto",
+    "open": "Handfly es gratuito y de código abierto, con licencia MIT. Cualquier módulo nuevo tiene que explicar por qué lo practicado sirve en la vida real y citar la evidencia que lo respalda.",
+    "evidenceLink": "Ver la evidencia"
+  }
+}

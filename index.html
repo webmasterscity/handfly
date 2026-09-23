@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es" data-theme="system">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Handfly: apaga el piloto automático. Práctica real para no perder las habilidades que delegas a la IA, al GPS y a la calculadora." />
+    <meta name="theme-color" content="#E9EEF2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0E1822" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>Handfly</title>
+    <script>
+      // Aplica el tema guardado antes de pintar para evitar el destello de tema equivocado.
+      try {
+        var s = JSON.parse(localStorage.getItem('handfly:settings') || '{}')
+        if (s.theme === 'light' || s.theme === 'dark') document.documentElement.dataset.theme = s.theme
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

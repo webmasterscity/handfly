@@ -1,0 +1,101 @@
+{
+  "title": "Cálculo cotidiano",
+  "lead": "Cuentas de la vida diaria, sin calculadora. Lo importante es que lo hagas también en la caja y en la mesa.",
+  "practiceCta": "Resolver 5 problemas",
+  "estimateCta": "Estimar y comprobar",
+  "realWorldNote": "La misión del día a veces será de cálculo en la vida real: esas son las que suben tu rango.",
+  "estimatesTitle": "Tus estimaciones",
+  "estimatesEmpty": "Antes de buscar un precio o un dato, estima. Aquí verás qué tan cerca estuviste.",
+  "categories": {
+    "groceries": "Compra del súper",
+    "tip": "Propina",
+    "split": "Dividir la cuenta",
+    "discount": "Descuento",
+    "budget": "Presupuesto",
+    "travel": "Tiempo de trayecto",
+    "recipe": "Receta"
+  },
+  "problems": {
+    "groceries": "En la caja llevas: {{list}}. ¿Cuánto es el total?",
+    "tip": "La cuenta es de {{bill}}. ¿Cuánto es una propina del {{pct}} %?",
+    "split": "La cuenta es de {{total}} entre {{people}} personas, a partes iguales. ¿Cuánto paga cada una?",
+    "discount": "Algo cuesta {{price}} y tiene un {{pct}} % de descuento. ¿Cuánto pagas?",
+    "budget": "Tu presupuesto del mes es {{budget}}. Llevas gastado {{a}} en comida, {{b}} en transporte y {{c}} en ocio. ¿Cuánto te queda?",
+    "travel": "Tienes que recorrer {{km}} km a {{speed}} km/h. ¿Cuántos minutos tardas?",
+    "recipe": "Una receta para {{base}} personas lleva {{grams}} g de {{ingredient}}. ¿Cuántos gramos necesitas para {{target}}?"
+  },
+  "tips": {
+    "groceries": "Redondea cada precio a la unidad, suma, y al final ajusta los céntimos.",
+    "tip": "El 10 % es mover la coma un lugar. El 20 % es el doble de eso. El 15 % es el 10 % más su mitad.",
+    "split": "Divide primero la parte entera y después reparte lo que sobra.",
+    "discount": "Calcula lo que pagas, no lo que te ahorras: un 25 % menos es pagar tres cuartos.",
+    "budget": "Suma primero los gastos y resta una sola vez.",
+    "travel": "Km dividido entre km/h da horas; multiplica por 60. A 60 km/h, un km es un minuto.",
+    "recipe": "Calcula cuánto va por persona y multiplica por las personas nuevas."
+  },
+  "units": {
+    "minutes_one": "{{count}} minuto",
+    "minutes_other": "{{count}} minutos",
+    "grams_one": "{{count}} g",
+    "grams_other": "{{count}} g"
+  },
+  "progressAria": "Problema {{n}} de {{total}}",
+  "yourAnswer": "Tu respuesta",
+  "check": "Comprobar",
+  "right": "¡Exacto!",
+  "notQuite": "Casi.",
+  "answerWas": "La respuesta es {{answer}}.",
+  "next": "Siguiente",
+  "finish": "Terminar",
+  "doneTitle": "Tanda terminada",
+  "doneLead": "Acertaste {{correct}} de {{total}}.",
+  "doneInvite": "La próxima vez que pagues algo, haz la cuenta antes de que te digan el total.",
+  "back": "Volver a Cálculo",
+  "simTitle_one": "Cálculo: {{count}} problema",
+  "simTitle_other": "Cálculo: {{count}} problemas",
+  "estimateTitle": "Estimar y comprobar",
+  "estimateLead": "Primero di cuánto crees; después busca el dato real. Estimar bien es un músculo.",
+  "estimateQuestion": "¿Qué vas a estimar?",
+  "estimateQuestionHint": "Algo de tu vida que puedas comprobar hoy.",
+  "ideasLabel": "Ideas",
+  "ideas": {
+    "idea1": "¿Cuánto cuesta un kilo de café en tu tienda?",
+    "idea2": "¿Cuánto gastaste en comida esta semana?",
+    "idea3": "¿Cuántos minutos tardas en llegar al trabajo?",
+    "idea4": "¿Cuánto pagaste de luz el mes pasado?",
+    "idea5": "¿Cuántos pasos das en un día normal?"
+  },
+  "yourEstimate": "Tu estimación",
+  "lockEstimate": "Fijar mi estimación",
+  "lockedAt": "Tu estimación: {{value}}",
+  "nowCheck": "Ahora busca el dato real: el ticket, la factura, el mapa, la tienda.",
+  "actualValue": "El valor real",
+  "compareEstimate": "Comparar",
+  "estimateResultTitle": "Resultado",
+  "estimateResultLead": "Te desviaste un {{pct}} %.",
+  "estimateGreat": "Muy cerca. Tu sentido de las cantidades está afinado.",
+  "estimateOk": "Razonable. Con práctica, ese margen se estrecha.",
+  "estimateFar": "Lejos, y está bien: ahora ese dato ya lo tienes de referencia.",
+  "estimateAnother": "Estimar otra cosa",
+  "words": {
+    "items": [
+      "pan",
+      "leche",
+      "huevos",
+      "café",
+      "arroz",
+      "manzanas",
+      "queso",
+      "tomates",
+      "jabón",
+      "pasta"
+    ],
+    "ingredients": [
+      "harina",
+      "azúcar",
+      "arroz",
+      "queso",
+      "mantequilla"
+    ]
+  }
+}
