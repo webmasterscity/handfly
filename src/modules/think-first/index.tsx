@@ -12,8 +12,8 @@ export const thinkFirst: ModuleDefinition = {
     { path: 'close/:id', lazy: () => import('./screens/ThinkClose').then((m) => ({ Component: m.ThinkClose })) },
   ],
   missions: [
-    { id: 'tf-before-chat', moduleId: 'think-first', textKey: 'thinkFirst.beforeChat', minutes: 5 },
+    { id: 'tf-before-chat', moduleId: 'think-first', textKey: 'thinkFirst.beforeChat', minutes: 5, to: '/m/think-first/new', completesOn: 'think.saved', starter: true },
     { id: 'tf-say-it', moduleId: 'think-first', textKey: 'thinkFirst.sayIt', minutes: 3 },
-    { id: 'tf-solve-alone', moduleId: 'think-first', textKey: 'thinkFirst.solveAlone', minutes: 20 },
+    { id: 'tf-solve-alone', moduleId: 'think-first', textKey: 'thinkFirst.solveAlone', minutes: 20, to: '/m/think-first/new', completesOn: 'think.saved' },
   ],
 }

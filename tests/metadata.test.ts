@@ -60,12 +60,33 @@ describe('i18n', () => {
     }
   })
 
-  it('cada misión tiene su texto', () => {
+  it('cada misión explica qué hacer: título, objetivo, pasos, ejemplo, cuándo está cumplida y por qué', () => {
     for (const m of [...ALL_MISSIONS, ...SURPRISE_MISSIONS]) {
-      for (const lang of LANGUAGES) {
-        const text = m.textKey.split('.').reduce<unknown>((o, k) => (o as Record<string, unknown>)?.[k], resources[lang].core.missions)
-        expect(typeof text, `${lang}:${m.textKey}`).toBe('string')
-      }
+      const stepCounts = LANGUAGES.map((lang) => {
+        const text = m.textKey.split('.').reduce<unknown>((o, k) => (o as Record<string, unknown>)?.[k], resources[lang].core.missions) as
+          | Record<string, unknown>
+          | undefined
+        const where = `${lang}:${m.textKey}`
+        for (const field of ['title', 'goal', 'example', 'done', 'why']) {
+          expect(typeof text?.[field], `${where}.${field}`).toBe('string')
+          expect(String(text?.[field] ?? '').trim().length, `${where}.${field}`).toBeGreaterThan(0)
+        }
+        const steps = (text?.steps ?? []) as unknown[]
+        expect(Array.isArray(steps), `${where}.steps`).toBe(true)
+        expect(steps.length, `${where}.steps`).toBeGreaterThanOrEqual(2)
+        expect(steps.length, `${where}.steps`).toBeLessThanOrEqual(4)
+        // Si se hace en la app, los pasos tienen que decir que se toca «Empezar».
+        if (m.to) expect(steps.some((s) => /Empezar|Start/.test(String(s))), `${where}: menciona «Empezar»`).toBe(true)
+        return steps.length
+      })
+      expect(new Set(stepCounts).size, `${m.textKey}: mismos pasos en todos los idiomas`).toBe(1)
     }
+  })
+
+  it('las misiones que se cumplen solas llevan a su pantalla, y hay una de arranque', () => {
+    for (const m of ALL_MISSIONS) if (m.completesOn) expect(m.to, m.id).toBeTruthy()
+    const starters = ALL_MISSIONS.filter((m) => m.starter)
+    expect(starters).toHaveLength(1)
+    expect(starters[0].to).toBeTruthy()
   })
 })

@@ -15,7 +15,7 @@
   "routeTitleHint": "For example: \"Home → new doctor's office\".",
   "from": "From",
   "to": "To",
-  "landmarksHelp": "Write down 3 to 6 landmarks in the order you'll see them: a park, a gas station, where you turn. They are your beacons.",
+  "landmarksHelp": "Write down 3 to 6 landmarks in the order you'll see them: a park, a gas station, where you turn. They keep you from getting lost.",
   "landmarksLegend": "Landmarks, in order",
   "landmarkN": "Landmark {{n}}",
   "moveUp": "Move landmark {{n}} up",

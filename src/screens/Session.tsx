@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router'
 import { db } from '../core/db/schema'
 import type { MemoryCard } from '../core/db/types'
 import { feedback } from '../core/feedback/feedback'
-import { completeSession, ensureTodayMission, findTemplate, recordSessionReview, startSession } from '../core/session/session'
+import { completeSession, ensureTodayMission, findTemplate, missionTitle, recordSessionReview, startSession } from '../core/session/session'
 import { useSettings } from '../core/settings/settings'
 import { dueCards } from '../core/srs/scheduler'
 import { dayKey } from '../core/time'
@@ -73,7 +73,7 @@ export function Session() {
             </li>
             <li className="rounded-2xl border border-line bg-panel p-4">
               <p className="font-bold">{t('session.stepMission')}</p>
-              <p className="text-sm text-ink-dim">{template ? t(`missions.${template.textKey}`) : '…'}</p>
+              <p className="text-sm text-ink-dim">{template ? missionTitle(template) : '…'}</p>
             </li>
           </ol>
           <Button block className="mt-auto" onClick={() => setPhase(cards.length ? 'reviews' : 'mission')}>
@@ -96,9 +96,10 @@ export function Session() {
       {phase === 'mission' && (
         <div className="flex flex-1 flex-col gap-6">
           <h1 className="text-[1.75rem]">{t('session.missionTitle')}</h1>
-          <p className="text-ink-dim">{t('session.missionLead')}</p>
-          {mission && <MissionCard mission={mission} />}
-          <Button block className="mt-auto" onClick={land}>
+          <p className="prose-text text-ink-dim">{template?.to ? t('session.missionLeadApp') : t('session.missionLeadLife')}</p>
+          {/* Si la misión se hace en la app, «Empezar» cierra la sesión antes de ir allá. */}
+          {mission && <MissionCard mission={mission} onStart={completeSession} />}
+          <Button block variant={mission?.status === 'done' || !template?.to ? 'primary' : 'secondary'} className="mt-auto" onClick={land}>
             <PlaneLanding className="h-5 w-5" aria-hidden />
             {t('session.land')}
           </Button>
@@ -111,7 +112,8 @@ export function Session() {
           {result.reviewed > 0 && <p className="text-lg">{t('session.landedReviews', { recalled: result.recalled, total: result.reviewed })}</p>}
           <div className="rounded-2xl border border-line bg-panel p-5">
             <p className="mb-1 text-sm text-ink-dim">{t('session.applyLabel')}</p>
-            <p className="text-lg font-bold">{template && mission?.status !== 'done' ? t(`missions.${template.textKey}`) : t('session.applyGeneric')}</p>
+            <p className="text-lg font-bold">{template && mission?.status !== 'done' ? missionTitle(template) : t('session.applyGeneric')}</p>
+            {template && mission?.status !== 'done' && <p className="text-ink-dim">{t('session.applyHint')}</p>}
           </div>
           <p className="text-ink-dim">{t('session.goodbye')}</p>
           <Button block className="mt-auto" onClick={() => navigate('/')}>

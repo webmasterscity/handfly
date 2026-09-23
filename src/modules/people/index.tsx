@@ -13,7 +13,7 @@ export const people: ModuleDefinition = {
   ],
   missions: [
     { id: 'pp-greet', moduleId: 'people', textKey: 'people.greet', minutes: 5 },
-    { id: 'pp-register', moduleId: 'people', textKey: 'people.register', minutes: 10 },
+    { id: 'pp-register', moduleId: 'people', textKey: 'people.register', minutes: 10, to: '/m/people/new', completesOn: 'person.saved' },
     { id: 'pp-meeting', moduleId: 'people', textKey: 'people.meeting', minutes: 5 },
   ],
 }

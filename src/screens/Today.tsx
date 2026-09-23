@@ -1,12 +1,15 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { Lightbulb, PlaneTakeoff } from 'lucide-react'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 import { db } from '../core/db/schema'
+import { ensureTodayMission } from '../core/session/session'
 import { updateSettings, useSettings } from '../core/settings/settings'
 import { countDue } from '../core/srs/scheduler'
 import { loadSnapshot } from '../core/stats/stats'
 import { dayKey, weekKey } from '../core/time'
+import { ALL_MISSIONS, ENABLED_MODULE_IDS } from '../modules/registry'
 import { Altimeter } from '../ui/instruments/Altimeter'
 import { AttitudeIndicator } from '../ui/instruments/AttitudeIndicator'
 import { MissionCard } from '../ui/MissionCard'
@@ -23,6 +26,10 @@ export function Today() {
     async () => (await db.missions.where('assignedOn').equals(dayKey()).toArray()).find((m) => m.status !== 'skipped'),
     [],
   )
+  // La misión existe desde que se abre la app: no hay que empezar la sesión para verla.
+  useEffect(() => {
+    void ensureTodayMission(ALL_MISSIONS, ENABLED_MODULE_IDS)
+  }, [])
   const openThinks = snap?.think.open ?? 0
   const hasWeeklyCheck = snap?.weeklyChecks.some((c) => c.week === weekKey())
   const weekday = new Date().getDay() // 0 domingo
@@ -55,14 +62,28 @@ export function Today() {
       {!settings.onboarded && (
         <section className="animate-pop mb-6 rounded-2xl border border-accent bg-panel p-5">
           <h1 className="mb-2 text-2xl">{t('onboarding.title')}</h1>
-          <p className="mb-3">{t('onboarding.p1')}</p>
-          <ul className="mb-4 flex list-disc flex-col gap-1 pl-5 text-ink-dim">
-            <li>{t('onboarding.b1')}</li>
-            <li>{t('onboarding.b2')}</li>
-            <li>{t('onboarding.b3')}</li>
-          </ul>
+          <p className="prose-text mb-4">{t('onboarding.p1')}</p>
+          <p className="mb-2 font-display font-bold">{t('onboarding.howTitle')}</p>
+          <ol className="mb-4 flex flex-col gap-3">
+            {(['b1', 'b2', 'b3'] as const).map((k, i) => (
+              <li key={k} className="flex items-start gap-3">
+                <span aria-hidden className="grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 border-accent font-display text-sm font-bold text-accent">
+                  {i + 1}
+                </span>
+                <span className="prose-text">{t(`onboarding.${k}`)}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="prose-text mb-4 text-sm text-ink-dim">{t('onboarding.privacy')}</p>
           <div className="flex flex-wrap gap-3">
-            <Button onClick={() => updateSettings({ onboarded: true })}>{t('onboarding.cta')}</Button>
+            <Button
+              onClick={() => {
+                updateSettings({ onboarded: true })
+                document.getElementById('mission-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }}
+            >
+              {t('onboarding.cta')}
+            </Button>
             <ButtonLink to="/about" variant="ghost">
               {t('onboarding.more')}
             </ButtonLink>
@@ -87,28 +108,29 @@ export function Today() {
         <p className="mt-3 text-center text-sm text-ink-dim">{horizonCaption}</p>
       </section>
 
-      <Section title={t('today.sessionTitle')}>
-        {sessionDone ? (
-          <div className="rounded-2xl border border-green bg-panel p-4">
-            <p className="font-bold">{t('today.sessionDone')}</p>
-            <p className="text-ink-dim">{t('today.sessionDoneHint')}</p>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-3">
-            <p className="text-ink-dim">
-              {due ? t('today.sessionPlan', { count: due > settings.sessionSize ? settings.sessionSize : due, minutes: reviewMin }) : t('today.sessionPlanNoCards')}
-            </p>
-            <ButtonLink to="/session" block>
-              <PlaneTakeoff className="h-5 w-5" aria-hidden />
-              {session ? t('today.resume') : t('today.start')}
-            </ButtonLink>
-          </div>
-        )}
-      </Section>
-
       {mission && (
-        <Section title={t('today.missionTitle')}>
+        <Section id="mission-section" title={t('today.missionTitle')}>
           <MissionCard mission={mission} />
+        </Section>
+      )}
+
+      {/* La sesión existe para los repasos: sin tarjetas pendientes no se muestra. */}
+      {(sessionDone || Boolean(due)) && (
+        <Section title={t('today.sessionTitle')}>
+          {sessionDone ? (
+            <div className="rounded-2xl border border-green bg-panel p-4">
+              <p className="font-bold">{t('today.sessionDone')}</p>
+              <p className="text-ink-dim">{t('today.sessionDoneHint')}</p>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3">
+              <p className="prose-text text-ink-dim">{t('today.sessionPlan', { count: due! > settings.sessionSize ? settings.sessionSize : due!, minutes: reviewMin })}</p>
+              <ButtonLink to="/session" block>
+                <PlaneTakeoff className="h-5 w-5" aria-hidden />
+                {session ? t('today.resume') : t('today.start')}
+              </ButtonLink>
+            </div>
+          )}
         </Section>
       )}
 

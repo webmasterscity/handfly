@@ -43,14 +43,31 @@ export interface ModuleMeta {
   accent: string
 }
 
+/**
+ * Acciones dentro de la app que cumplen una misión por sí solas: el módulo las anuncia
+ * con reportActivity() al guardar y la misión del día se marca cumplida sin que la
+ * persona tenga que volver a confirmarla.
+ */
+export type MissionEvent = 'think.saved' | 'person.saved' | 'draft.finished' | 'route.flown'
+
 export interface MissionTemplate {
   id: string
   moduleId: ModuleId
-  /** Clave i18n (dentro de 'missions') del texto de la misión. */
+  /**
+   * Clave i18n (dentro de 'missions') de la instrucción de la misión, un objeto con
+   * title, goal, steps[], example, done y why. Todas las misiones siguen el mismo molde
+   * para que siempre quede claro qué hacer, cómo y cuándo está cumplida.
+   */
   textKey: string
   /** Minutos que se registran como vuelo real al completarla, si el usuario no indica otros. */
   minutes: number
   surprise?: boolean
+  /** Pantalla de la app donde se hace la misión (botón «Empezar»). Sin ella, se hace fuera. */
+  to?: string
+  /** Acción de la app que la da por cumplida automáticamente. */
+  completesOn?: MissionEvent
+  /** La primera misión de alguien nuevo: corta, dentro de la app y sin salir de casa. */
+  starter?: boolean
 }
 
 /** Cómo se pregunta un tipo de tarjeta propio (registrado en src/modules/cardRenderers.tsx). */

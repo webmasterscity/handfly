@@ -13,7 +13,7 @@ export const navigation: ModuleDefinition = {
     { path: 'r/:id/recall', lazy: () => import('./screens/RouteRecall').then((m) => ({ Component: m.RouteRecall })) },
   ],
   missions: [
-    { id: 'nv-plan', moduleId: 'navigation', textKey: 'navigation.plan', minutes: 30 },
+    { id: 'nv-plan', moduleId: 'navigation', textKey: 'navigation.plan', minutes: 30, to: '/m/navigation/new', completesOn: 'route.flown' },
     { id: 'nv-return', moduleId: 'navigation', textKey: 'navigation.return', minutes: 20 },
     { id: 'nv-landmarks', moduleId: 'navigation', textKey: 'navigation.landmarks', minutes: 15 },
     { id: 'nv-home', moduleId: 'navigation', textKey: 'navigation.pointHome', minutes: 3 },

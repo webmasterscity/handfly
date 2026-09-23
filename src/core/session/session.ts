@@ -5,7 +5,7 @@ import { feedback, toast } from '../feedback/feedback'
 import { logFlight } from '../flight-log/flights'
 import { SURPRISE_MISSIONS } from '../missions/templates'
 import { pickMission } from '../missions/planner'
-import type { MissionTemplate } from '../modules/types'
+import type { MissionEvent, MissionTemplate } from '../modules/types'
 import { loadSnapshot } from '../stats/stats'
 import { addDays, dayKey, minutesBetween, newId } from '../time'
 import i18n from '../../i18n'
@@ -54,11 +54,21 @@ export async function afterActivity() {
   }
 }
 
-/** Devuelve la misión de hoy, creándola si no existe. */
-export async function ensureTodayMission(
-  templates: MissionTemplate[],
-  enabledModules: ModuleId[],
-): Promise<Mission | undefined> {
+let ensuring: Promise<Mission | undefined> | undefined
+
+/**
+ * Devuelve la misión de hoy, creándola si no existe. Llamadas simultáneas (Hoy y la
+ * sesión, o el doble efecto del modo estricto) comparten la misma promesa para no
+ * crear dos misiones el mismo día.
+ */
+export function ensureTodayMission(templates: MissionTemplate[], enabledModules: ModuleId[]): Promise<Mission | undefined> {
+  ensuring ??= loadOrCreateMission(templates, enabledModules).finally(() => {
+    ensuring = undefined
+  })
+  return ensuring
+}
+
+async function loadOrCreateMission(templates: MissionTemplate[], enabledModules: ModuleId[]) {
   const today = dayKey()
   const existing = await db.missions.where('assignedOn').equals(today).toArray()
   const active = existing.find((m) => m.status !== 'skipped')
@@ -85,7 +95,11 @@ async function createMission(
   const since = dayKey(addDays(new Date(), -14))
   const recentFlights = await db.flights.where('date').aboveOrEqual(since).toArray()
   const recentMissions = await db.missions.where('assignedOn').aboveOrEqual(since).sortBy('assignedOn')
-  const template = pickMission({
+  // La primera misión de alguien nuevo es siempre la de arranque: corta y dentro de la
+  // app, para que la primera experiencia sea entender el ciclo, no salir a buscar algo.
+  const first = (await db.missions.count()) === 0
+  const starter = first ? templates.find((t) => t.starter && enabledModules.includes(t.moduleId)) : undefined
+  const template = starter ?? pickMission({
     templates,
     surprises: allowSurprise ? SURPRISE_MISSIONS : [],
     recentFlights,
@@ -110,16 +124,35 @@ export function findTemplate(templates: MissionTemplate[], id: string) {
   return [...templates, ...SURPRISE_MISSIONS].find((t) => t.id === id)
 }
 
+export function missionTitle(template: MissionTemplate | undefined) {
+  return template ? i18n.t(`missions.${template.textKey}.title`) : i18n.t('missions.fallbackTitle')
+}
+
 export async function completeMission(mission: Mission, template: MissionTemplate | undefined, minutes: number, note: string) {
   await db.missions.update(mission.id, { status: 'done', doneAt: new Date().toISOString(), note })
   await logFlight({
     kind: 'real',
     moduleId: mission.moduleId,
-    title: template ? i18n.t(`missions.${template.textKey}`) : i18n.t('missions.fallbackTitle'),
+    title: missionTitle(template),
     minutes,
     source: 'declared',
     refId: mission.id,
   })
   feedback.land()
   await afterActivity()
+}
+
+/**
+ * Lo llaman los módulos al guardar una acción. Si la misión de hoy se cumple con esa
+ * acción, queda cumplida sin pedir confirmación. No registra otro vuelo: la acción ya
+ * registró el suyo y contarlo dos veces inflaría las horas.
+ */
+export async function reportActivity(event: MissionEvent, templates: MissionTemplate[]) {
+  const today = await db.missions.where('assignedOn').equals(dayKey()).toArray()
+  const mission = today.find((m) => m.status === 'offered' || m.status === 'accepted')
+  const template = mission ? findTemplate(templates, mission.templateId) : undefined
+  if (!mission || template?.completesOn !== event) return
+  await db.missions.update(mission.id, { status: 'done', doneAt: new Date().toISOString(), auto: true })
+  feedback.land()
+  toast(i18n.t('missions.autoDone', { title: missionTitle(template) }), 'success')
 }

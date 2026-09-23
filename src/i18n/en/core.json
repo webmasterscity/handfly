@@ -111,68 +111,386 @@
     "stepMission": "One mission for your day",
     "takeoff": "Take off",
     "missionTitle": "Today's mission",
-    "missionLead": "It happens outside the app. Accept it now and mark it when you are done.",
-    "land": "Land",
+    "land": "End the session",
     "landedTitle": "Landed",
     "landedReviews": "You recalled {{recalled}} of {{total}}.",
     "applyLabel": "Now, in your day:",
     "applyGeneric": "Next time you reach for the AI, the map or the calculator, try it yourself first.",
     "goodbye": "That's all for today. The practice that counts happens out there. See you tomorrow.",
-    "close": "Close"
+    "close": "Close",
+    "missionLeadApp": "This mission happens right here. Tap “Start” and follow the steps: it marks itself when you finish.",
+    "missionLeadLife": "This mission happens out in your day. Read it now; when you've done it, come back and tap “I did it!”.",
+    "applyHint": "When you've done it, come back to Handfly and mark it on the Today screen."
   },
   "missions": {
     "label": "Mission",
     "surpriseLabel": "Surprise mission",
-    "doneLabel": "Done. It's in your flight log.",
     "fallbackTitle": "Real-world mission",
-    "minutes": "How many minutes did it take?",
-    "note": "A note (optional)",
+    "minutesChip": "≈ {{count}} min",
+    "whereApp": "Right here in the app",
+    "whereLife": "Out in your day",
+    "howTo": "How to do it",
+    "stepN": "Step {{n}}:",
+    "exampleLabel": "Example",
+    "doneWhen": "It's done:",
+    "whyLabel": "Why does it help?",
+    "evidenceLink": "See the studies behind it",
+    "start": "Start",
+    "autoHint": "It marks itself as done when you finish in the app.",
+    "didIt": "I did it!",
+    "allSteps": "All steps checked!",
+    "swap": "Can't today: give me another",
+    "reportTitle": "Well done! Save it to your log.",
+    "minutes": "How many minutes did you spend?",
+    "note": "How did it go? (optional)",
     "noteHint": "What happened, what was hard, what you'd do differently.",
-    "logIt": "Log it",
-    "accept": "Accept: I'll do it today",
-    "didIt": "I did it",
-    "alreadyDone": "Already did it",
-    "swap": "Swap mission",
+    "logIt": "Save",
+    "autoDone": "Mission accomplished! “{{title}}”",
+    "doneLabel": "Mission accomplished!",
+    "doneMinutes_one": "You added {{count}} minute of real flight.",
+    "doneMinutes_other": "You added {{count}} minutes of real flight.",
+    "doneLogged": "It's in your flight log.",
+    "towardRank": "On the way to {{rank}}: {{pct}}%",
+    "doneBye": "That's all for today. Another mission is waiting tomorrow.",
     "thinkFirst": {
-      "beforeChat": "Before your next AI question, write your own answer in Think first.",
-      "sayIt": "Before looking something up today, say out loud what you think the answer is. Then check.",
-      "solveAlone": "Solve one work or study problem today without AI. Compare with it only at the end."
+      "beforeChat": {
+        "title": "You first, the AI second",
+        "goal": "Answer a question with your own head before you look it up with an AI or Google.",
+        "steps": [
+          "Think of something you really want to know: about work, home, or plain curiosity.",
+          "Tap “Start” and write the question the way you'd ask the AI.",
+          "Write your best answer, even if you're not sure, and mark how sure you are. Then tap “Save my attempt”."
+        ],
+        "example": "Question: “How often should you water a cactus?” Your attempt: “About once a month, because it can handle drought.” Sure: 2 out of 5.",
+        "done": "when you save your attempt. It marks itself.",
+        "why": "Trying to answer before you see the answer, even if you get it wrong, makes you remember it much better later."
+      },
+      "sayIt": {
+        "title": "Guess before you search",
+        "goal": "Next time you're about to look up a fact on your phone, say your answer first.",
+        "steps": [
+          "Today, when a question pops up (a date, a fact, how to do something), don't look it up yet.",
+          "Say out loud, or jot on paper, what you think the answer is.",
+          "Now look it up and see how close you were."
+        ],
+        "example": "“What year did people land on the Moon?” You say: “1972.” You check: it was 1969. Close!",
+        "done": "when you've done all three once: guess, look up and compare.",
+        "why": "Risking an answer before seeing it makes the fact stick better, even when you're wrong."
+      },
+      "solveAlone": {
+        "title": "One problem, no help",
+        "goal": "Solve a real work or study problem on your own, and use the AI only to compare at the end.",
+        "steps": [
+          "Pick a problem from today that you'd normally hand to the AI: a tricky email, an exercise, a work question.",
+          "Work on it alone for at least 15 minutes, on paper or in your head.",
+          "Tap “Start”, write the problem and your solution, and save it.",
+          "If you like, ask the AI at the end and compare."
+        ],
+        "example": "Problem: “How do we share out the team's holidays without overlaps?” Your solution: a table of months where everyone picks in turns.",
+        "done": "when you save your solution in Think first. It marks itself.",
+        "why": "The effort of solving something yourself is exactly what keeps the skill alive; if someone else always does it, it rusts."
+      }
     },
     "recall": {
-      "explain": "Explain something you learned this week to someone, without notes.",
-      "agenda": "Before checking your calendar, recall what you have today. Then check.",
-      "shopping": "Shop from memory. Check the list only at the end."
+      "explain": {
+        "title": "Tell someone about it",
+        "goal": "Explain from memory something you learned this week.",
+        "steps": [
+          "Pick something you learned or read recently: a news story, a recipe, something from work.",
+          "Tell someone about it (in person, on a call or in a voice note) without looking at notes or your phone.",
+          "Afterwards, check where you got it from and notice what you forgot or got wrong."
+        ],
+        "example": "You tell a friend what you read on Monday about new traffic fines, then notice you forgot the amount.",
+        "done": "when you've finished explaining and checked what you missed.",
+        "why": "Pulling what you learned out of memory fixes it far better than reading it again."
+      },
+      "agenda": {
+        "title": "Your day from memory",
+        "goal": "Recall what you have on today before you look at your calendar.",
+        "steps": [
+          "Before opening your planner or calendar, stop for a moment.",
+          "Say or write everything you have today: appointments, to-dos and times.",
+          "Open the calendar and compare. What did you miss?"
+        ],
+        "example": "“Meeting at 10, pick up the kids at 3, pay the power bill.” The calendar says you also had the dentist at 5.",
+        "done": "when you've compared your list with the calendar.",
+        "why": "Every time you try to recall something before looking, your memory gets practice. Looking first doesn't."
+      },
+      "shopping": {
+        "title": "Shop from memory",
+        "goal": "Do the shopping remembering your list, without taking it out.",
+        "steps": [
+          "Write your list as usual and read it through once, calmly.",
+          "Put it in your pocket and shop without taking it out.",
+          "Before paying, check the list for anything missing."
+        ],
+        "example": "A list of 8 things: you remember 7. Before paying you see you forgot the coffee and go get it.",
+        "done": "when you've shopped without looking at the list and checked it only at the end.",
+        "why": "Trying to recall the list is real practice: each attempt makes it stick better."
+      }
     },
     "people": {
-      "greet": "Greet someone you met recently by name today.",
-      "register": "When you meet someone today, repeat their name in the conversation and log it afterwards.",
-      "meeting": "Before a meeting, go over the names of who will be there in your head."
+      "greet": {
+        "title": "Call them by name",
+        "goal": "Greet someone you met recently by their name.",
+        "steps": [
+          "Think of someone you met recently: a neighbor, someone from work or church.",
+          "Before you see them, recall their name. If you saved them in People's names, go over it there.",
+          "Greet them using their name."
+        ],
+        "example": "“Morning, Andrew! How did the move go?”",
+        "done": "when you've greeted someone using their name.",
+        "why": "Saying a name out loud is real practice. And people are glad to be remembered."
+      },
+      "register": {
+        "title": "A new name",
+        "goal": "Learn the name of someone you meet today.",
+        "steps": [
+          "When you're introduced to someone, repeat their name in the conversation: “Nice to meet you, Laura.”",
+          "Notice something that sets them apart and something you talked about.",
+          "Afterwards, tap “Start” and save them. The app guides you to create a picture that helps you remember the name."
+        ],
+        "example": "Laura, red glasses, works at a bakery. Picture: a giant laurel wreath wearing red glasses, coming out of the oven.",
+        "done": "when you save the person in the app. It marks itself.",
+        "why": "Linking a name to an exaggerated picture is a technique for remembering names that has been studied for decades."
+      },
+      "meeting": {
+        "title": "Go over who's coming",
+        "goal": "Before a get-together with several people, go over their names.",
+        "steps": [
+          "Before a meeting, class or meal with several people, find one minute.",
+          "Without looking at anything, say the name of everyone who'll be there.",
+          "If one escapes you, find it out and use it during the get-together."
+        ],
+        "example": "Parents' meeting: “Caroline, George, Ms. Ines…” You can't recall Tom's dad; you find out and greet him by name.",
+        "done": "when you've gone over the names and used at least one.",
+        "why": "Recalling names just before you need them is well-timed practice, which is when it helps most."
+      }
     },
     "navigation": {
-      "plan": "Plan one of today's trips on the map and do it without GPS.",
-      "return": "Go home a different way, without looking at the map.",
-      "landmarks": "On a familiar trip, notice 5 landmarks and write them down when you arrive.",
-      "pointHome": "When leaving a new place, point toward home. Check afterwards."
+      "plan": {
+        "title": "A trip without GPS",
+        "goal": "Make one of today's trips guided only by what you planned before leaving.",
+        "steps": [
+          "Pick a real trip for today, ideally one you don't know well.",
+          "Tap “Start”, look at the map and write down 3 to 6 places you'll pass: a park, a gas station, where you turn.",
+          "Make the trip without GPS. If you get lost, ask someone or glance at the map for a second.",
+          "When you arrive, open the route in the app and say how it went."
+        ],
+        "example": "Home → new clinic: the church, right at the pharmacy, on to the bridge, blue building.",
+        "done": "when you report how it went without having followed the GPS. It marks itself.",
+        "why": "Finding your own way works the part of the brain that builds your mental map. Following GPS barely uses it."
+      },
+      "return": {
+        "title": "Another way home",
+        "goal": "Go home by a different way, without looking at the map.",
+        "steps": [
+          "Today, on your way home, change part of your usual route. Do it in daylight and in an area you know.",
+          "Go by what you know: which way home is, the big streets, places you recognize.",
+          "Look at the map only if you're really lost."
+        ],
+        "example": "Instead of taking the avenue, you take the street by the park and come out two blocks further on.",
+        "done": "when you got home by another way without following the map.",
+        "why": "Finding a new route by yourself widens your mental map; always repeating the same one doesn't."
+      },
+      "landmarks": {
+        "title": "Five signs on the way",
+        "goal": "Notice what you see on a trip you always make.",
+        "steps": [
+          "On a trip you make often, look for 5 things that can serve as signs: a big tree, a billboard, a mural.",
+          "When you arrive, write them down in order on paper or in your notes.",
+          "Next time you pass by, check whether the order was right."
+        ],
+        "example": "Corner bakery, long traffic light, yellow church, bridge, gas station.",
+        "done": "when you've written down the 5 signs in order.",
+        "why": "People with a good sense of direction pay attention to landmarks. It's a habit you learn by practicing it."
+      },
+      "pointHome": {
+        "title": "Which way is home?",
+        "goal": "Guess which way home is from a new place.",
+        "steps": [
+          "When you leave a place you don't often go to, stop for a moment.",
+          "Without looking at your phone, point toward where you think home is.",
+          "Now open the map and check. How close were you?"
+        ],
+        "example": "You leave a mall and point left. The map says it was almost straight ahead: you were a bit off.",
+        "done": "when you've pointed and checked it on the map.",
+        "why": "Guessing and checking is the most direct way to sharpen your sense of direction."
+      }
     },
     "writing": {
-      "message": "Write your next important message without AI or autocomplete.",
-      "email": "Draft a real email in Your own writing before sending it.",
-      "summary": "Summarize in writing, without looking, something you read today."
+      "message": {
+        "title": "In your own words",
+        "goal": "Write an important message without AI and without keyboard suggestions.",
+        "steps": [
+          "Pick a message from today that matters to you: congratulations, an apology, a reply to your boss.",
+          "Write it yourself from start to finish, without asking the AI and without tapping the words your keyboard suggests.",
+          "Read it once, fix whatever you like, and send it."
+        ],
+        "example": "A birthday message for your aunt that isn't just “Happy birthday!”, but something only you would say to her.",
+        "done": "when you've sent a message written entirely by you.",
+        "why": "Writing is thinking: putting your ideas in order in your own words is the skill you lose if someone else always writes."
+      },
+      "email": {
+        "title": "Your draft first",
+        "goal": "Write a real email yourself first, before asking for help.",
+        "steps": [
+          "Think of an email you need to send today or tomorrow.",
+          "Tap “Start” and then “New draft”. Write the whole email (pasting text is off here).",
+          "Tap “Finish draft”. If you like, compare it afterwards with what an AI would suggest."
+        ],
+        "example": "An email asking your landlord to fix the shower: greeting, what's wrong, since when, and what you're asking for.",
+        "done": "when you finish the draft in the app. It marks itself.",
+        "why": "If you write first, the AI becomes a second opinion instead of the one doing your thinking."
+      },
+      "summary": {
+        "title": "Sum it up without looking",
+        "goal": "Write in your own words the main points of something you read or watched today.",
+        "steps": [
+          "Pick something you read or watched today: an article, a chapter, a video, a class.",
+          "Close it. Tap “Start”, then “New draft”, and write the main points in 5 to 10 lines without looking back.",
+          "Tap “Finish draft” and then check the original: what did you miss?"
+        ],
+        "example": "An article about sleep: “Sleeping under 7 hours hurts memory. Phone light delays sleep. Going to bed at the same time helps.”",
+        "done": "when you finish the draft in the app. It marks itself.",
+        "why": "Summarizing from memory makes you recall and organize the ideas: two of the best-proven ways to learn."
+      }
     },
     "calculation": {
-      "groceries": "Today, work out the grocery total before paying.",
-      "tip": "Work out the tip or your share of the bill without a calculator.",
-      "budget": "Estimate how much you spent this week and compare with your bank.",
-      "arrival": "Before leaving, work out what time you'll arrive.",
-      "estimate": "Before looking up a price or a fact, say what you think it is."
+      "groceries": {
+        "title": "The total before the till",
+        "goal": "Know what you'll pay for your shopping before you're told.",
+        "steps": [
+          "While you shop, keep a running total in your head. Round it: $2.95 is $3.",
+          "Before paying, say your total.",
+          "Compare it with what the till shows."
+        ],
+        "example": "Bread $3 + milk $4.50 + eggs $5 + coffee $9 = about $21.50. The till says $21.20.",
+        "done": "when you've said your total and compared it with the till.",
+        "why": "Doing sums with real money keeps the skill right where you need it."
+      },
+      "tip": {
+        "title": "Your share, no calculator",
+        "goal": "Work out the tip or everyone's share in your head.",
+        "steps": [
+          "When the bill arrives for a meal or an outing, leave the calculator alone.",
+          "Work out the tip in your head (10% is moving the decimal point one place) or what each person pays.",
+          "If you like, check it on your phone afterwards."
+        ],
+        "example": "An $84 bill split 4 ways: $80 ÷ 4 = $20 and $4 ÷ 4 = $1. Each person pays $21.",
+        "done": "when you've done the sum in your head before checking it.",
+        "why": "Breaking a sum into easy pieces is a skill that fades if the calculator always does it."
+      },
+      "budget": {
+        "title": "How much did I spend this week?",
+        "goal": "Work out your spending for the week and see how close you were.",
+        "steps": [
+          "Without checking your bank, go over the week day by day: what you bought and roughly what it cost.",
+          "Add it up and write your total.",
+          "Open your bank app or receipts and compare."
+        ],
+        "example": "Groceries $120, gas $60, lunches $45… Your total: $260. The bank says $290.",
+        "done": "when you've written your total and compared it with the real figure.",
+        "why": "Working it out before looking gives you a feel for amounts, and you also learn where your money goes."
+      },
+      "arrival": {
+        "title": "What time will I get there?",
+        "goal": "Work out your arrival time in your head before you leave.",
+        "steps": [
+          "Before heading somewhere, work out how long it takes and what time you'll arrive.",
+          "Say the time out loud: “I'll get there at 4:25.”",
+          "When you arrive, look at the clock and compare."
+        ],
+        "example": "It's 3:50. The trip is 25 minutes, plus 10 waiting for the bus: 3:50 + 35 minutes = 4:25.",
+        "done": "when you've said your arrival time and compared it when you got there.",
+        "why": "Adding hours and minutes in your head is an everyday sum the phone habit takes away."
+      },
+      "estimate": {
+        "title": "How much do you think it is?",
+        "goal": "Guess a price or a figure before looking it up.",
+        "steps": [
+          "Today, before looking up a price or any number, stop.",
+          "Say your guess, as specific as you can.",
+          "Look up the real figure and see how far off you were."
+        ],
+        "example": "“How much is a mid-size fridge?” You say $600. The store says $750: a little low.",
+        "done": "when you've guessed and checked at least once.",
+        "why": "Guessing and checking sharpens your feel for amounts: every miss brings you closer next time."
+      }
     },
     "surprise": {
-      "phone": "Memorize a close person's phone number and dial it without contacts.",
-      "askWay": "Ask someone for directions instead of using the map.",
-      "teach": "Teach someone how to do something you know, without looking anything up.",
-      "birthday": "Recall three close people's birthdays without checking the calendar.",
-      "handwrite": "Handwrite a short note or letter to someone.",
-      "clock": "Work out how many minutes until your next meal, checking the clock only once."
+      "phone": {
+        "title": "A number by heart",
+        "goal": "Learn the phone number of someone close to you.",
+        "steps": [
+          "Pick someone important whose number you don't know: your partner, a child, your mom.",
+          "Learn it in chunks of 3 or 4 digits, repeating it out loud.",
+          "Later on, dial it without opening your contacts."
+        ],
+        "example": "555 · 201 · 1234: you repeat it three times in the morning and dial it from memory in the afternoon.",
+        "done": "when you've dialed it without looking at your contacts.",
+        "why": "Recalling it hours later is what makes it stick. And it helps the day you don't have your phone."
+      },
+      "askWay": {
+        "title": "Ask the way",
+        "goal": "Get somewhere by asking a person instead of using the map.",
+        "steps": [
+          "Next time you don't know how to get somewhere nearby, put your phone away.",
+          "Ask someone: a shopkeeper, a security guard, a neighbor.",
+          "Repeat the directions out loud and follow them."
+        ],
+        "example": "“Two blocks straight, left at the pharmacy, and it's the white building.” You: “Two straight, pharmacy, left, white.”",
+        "done": "when you've arrived following someone's directions.",
+        "why": "Following spoken directions makes you build the map in your head, exactly what GPS does for you."
+      },
+      "teach": {
+        "title": "Teach someone",
+        "goal": "Teach someone something you know how to do, without looking anything up.",
+        "steps": [
+          "Think of something you do well: a recipe, a phone trick, changing a tire.",
+          "Explain it to someone step by step, without watching videos or reading instructions.",
+          "Ask them to do it or repeat it back, to see whether you explained it well."
+        ],
+        "example": "You teach your nephew to make pancakes: flour, eggs, milk, mix, pour, flip.",
+        "done": "when the other person could do it or repeat it.",
+        "why": "Explaining something from memory makes you recall and organize it; that's why they say teaching is learning twice."
+      },
+      "birthday": {
+        "title": "Three birthdays",
+        "goal": "Recall three birthdays without checking the calendar.",
+        "steps": [
+          "Think of three people close to you.",
+          "Say or write each one's birthday.",
+          "Check them on the calendar and correct any you got wrong."
+        ],
+        "example": "Mom: March 12. Charles: August 5. Lucy: November 30? The calendar says November 3.",
+        "done": "when you've said the three dates and checked them.",
+        "why": "Trying to recall and then correcting is the most effective way to make a fact stay."
+      },
+      "handwrite": {
+        "title": "A handwritten note",
+        "goal": "Handwrite a short note for someone.",
+        "steps": [
+          "Grab paper and a pencil or pen.",
+          "Write a short note to someone: thanks, encouragement or affection. At least three sentences.",
+          "Hand it over or leave it where they'll find it."
+        ],
+        "example": "“Thanks for taking me to the doctor on Tuesday. I don't say it much, but you made my day. I owe you a coffee.”",
+        "done": "when the note has reached its person.",
+        "why": "Writing by hand, with no spell-check or suggestions, makes you think through each sentence before you write it."
+      },
+      "clock": {
+        "title": "How long to go?",
+        "goal": "Work out in your head how many minutes until your next meal.",
+        "steps": [
+          "Look at the time just once.",
+          "Work out in your head how many minutes until your next meal.",
+          "Set a timer for that many minutes and see if it goes off right at mealtime."
+        ],
+        "example": "It's 10:35 and lunch is at 1:00. To 11 is 25 minutes, plus 2 hours: 145 minutes.",
+        "done": "when you've done the sum and checked it with the timer.",
+        "why": "Counting in hours and minutes is an everyday sum we nearly always leave to the phone."
+      }
     }
   },
   "achievements": {
@@ -251,11 +569,13 @@
   "onboarding": {
     "title": "Switch off the autopilot",
     "p1": "Pilots practice hand-flying so they don't lose the skill. Handfly does the same for what we now hand over to AI, GPS and calculators.",
-    "b1": "About 5 to 10 minutes a day, plus one mission for your real life.",
-    "b2": "Your \"real flights\" are what count: what you solve on your own, outside the app.",
-    "b3": "Everything stays on your phone. No accounts, ads or tracking.",
-    "cta": "Get started",
-    "more": "How it works"
+    "howTitle": "Here's how it works, every day:",
+    "b1": "You get a mission: something specific you do yourself, without AI, GPS or a calculator. It comes with steps and an example, and takes a few minutes.",
+    "b2": "You do it. Some happen right here in the app and mark themselves; others happen out in your day, and when you're done you tap “I did it!”.",
+    "b3": "You add real flight hours and move up in rank. If you save cards to review, the app asks them just before you'd forget.",
+    "privacy": "Everything stays on your phone. No accounts, ads or tracking.",
+    "cta": "Show my first mission",
+    "more": "More about Handfly"
   },
   "today": {
     "streakShort_one": "{{count}}-day streak",
@@ -280,8 +600,8 @@
     "start": "Start the session",
     "missionTitle": "Today's mission",
     "pendingTitle": "Pending",
-    "openThinks_one": "{{count}} Think first question to close",
-    "openThinks_other": "{{count}} Think first questions to close",
+    "openThinks_one": "{{count}} question is waiting: look it up and compare with your attempt",
+    "openThinks_other": "{{count}} questions are waiting: look them up and compare with your attempts",
     "weeklyPrompt": "Do the weekly check (2 minutes)"
   },
   "practice": {

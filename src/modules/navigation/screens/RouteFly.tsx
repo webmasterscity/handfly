@@ -6,7 +6,8 @@ import { db } from '../../../core/db/schema'
 import type { RouteMission } from '../../../core/db/types'
 import { feedback } from '../../../core/feedback/feedback'
 import { logFlight } from '../../../core/flight-log/flights'
-import { afterActivity } from '../../../core/session/session'
+import { afterActivity, reportActivity } from '../../../core/session/session'
+import { ALL_MISSIONS } from '../../../modules/registry'
 import { Button } from '../../../ui/primitives/Button'
 import { TextField, Toggle } from '../../../ui/primitives/Field'
 import { Page } from '../../../ui/primitives/Page'
@@ -31,6 +32,8 @@ export function RouteFly() {
     // Un vistazo al GPS aún cuenta como vuelo manual; seguirlo de principio a fin no.
     if (usedGps !== 'yes') {
       await logFlight({ kind: 'real', moduleId: 'navigation', title: route.title, minutes: mins, source: 'declared', refId: route.id })
+      // Tampoco cumple la misión: la misión es justo hacerlo sin GPS.
+      await reportActivity('route.flown', ALL_MISSIONS)
     }
     feedback.good()
     await afterActivity()

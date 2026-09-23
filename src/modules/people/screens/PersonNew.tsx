@@ -5,7 +5,8 @@ import { db } from '../../../core/db/schema'
 import type { Person } from '../../../core/db/types'
 import { feedback, toast } from '../../../core/feedback/feedback'
 import { logFlight } from '../../../core/flight-log/flights'
-import { afterActivity } from '../../../core/session/session'
+import { afterActivity, reportActivity } from '../../../core/session/session'
+import { ALL_MISSIONS } from '../../../modules/registry'
 import { buildCard } from '../../../core/srs/scheduler'
 import { dayKey, minutesBetween, newId } from '../../../core/time'
 import { Button } from '../../../ui/primitives/Button'
@@ -74,6 +75,7 @@ export function PersonNew() {
     })
     feedback.good()
     toast(t('saved', { name: person.name }), 'success')
+    await reportActivity('person.saved', ALL_MISSIONS)
     await afterActivity()
     navigate('/m/people')
   }

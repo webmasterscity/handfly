@@ -92,6 +92,10 @@ export interface Mission {
   status: 'offered' | 'accepted' | 'done' | 'skipped'
   doneAt?: string
   note?: string
+  /** Pasos de la misión que la persona ya marcó (índices), para no perderlos al salir. */
+  stepsDone?: number[]
+  /** Se cumplió sola al hacer la acción en la app (no al declararla). */
+  auto?: boolean
 }
 
 export interface DailySession {

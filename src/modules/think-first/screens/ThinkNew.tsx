@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router'
 import { db } from '../../../core/db/schema'
 import { feedback } from '../../../core/feedback/feedback'
 import { logFlight } from '../../../core/flight-log/flights'
-import { afterActivity } from '../../../core/session/session'
+import { afterActivity, reportActivity } from '../../../core/session/session'
+import { ALL_MISSIONS } from '../../../modules/registry'
 import { minutesBetween, newId } from '../../../core/time'
 import { Button, ButtonLink } from '../../../ui/primitives/Button'
 import { TextArea } from '../../../ui/primitives/Field'
@@ -44,6 +45,7 @@ export function ThinkNew() {
       refId: id,
     })
     feedback.good()
+    await reportActivity('think.saved', ALL_MISSIONS)
     await afterActivity()
     setSavedId(id)
   }
@@ -71,6 +73,7 @@ export function ThinkNew() {
           hint={t('questionHint')}
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
+          placeholder={t('questionPlaceholder')}
           rows={3}
           required
         />
@@ -79,6 +82,7 @@ export function ThinkNew() {
           hint={t('attemptHint')}
           value={attempt}
           onChange={(e) => setAttempt(e.target.value)}
+          placeholder={t('attemptPlaceholder')}
           rows={6}
           required
         />
@@ -89,9 +93,12 @@ export function ThinkNew() {
           lowLabel={t('confidenceLow')}
           highLabel={t('confidenceHigh')}
         />
-        <Button type="submit" block disabled={!canSave}>
-          {t('saveAttempt')}
-        </Button>
+        <div className="flex flex-col gap-2">
+          <Button type="submit" block disabled={!canSave}>
+            {t('saveAttempt')}
+          </Button>
+          {!canSave && <p className="text-center text-sm text-ink-dim">{t('saveNeeds')}</p>}
+        </div>
       </form>
     </Page>
   )

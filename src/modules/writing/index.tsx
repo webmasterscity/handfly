@@ -13,7 +13,7 @@ export const writing: ModuleDefinition = {
   ],
   missions: [
     { id: 'wr-message', moduleId: 'writing', textKey: 'writing.message', minutes: 10 },
-    { id: 'wr-email', moduleId: 'writing', textKey: 'writing.email', minutes: 15 },
-    { id: 'wr-summary', moduleId: 'writing', textKey: 'writing.summary', minutes: 10 },
+    { id: 'wr-email', moduleId: 'writing', textKey: 'writing.email', minutes: 15, to: '/m/writing', completesOn: 'draft.finished' },
+    { id: 'wr-summary', moduleId: 'writing', textKey: 'writing.summary', minutes: 10, to: '/m/writing', completesOn: 'draft.finished' },
   ],
 }

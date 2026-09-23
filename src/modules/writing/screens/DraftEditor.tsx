@@ -7,7 +7,8 @@ import { db } from '../../../core/db/schema'
 import type { Draft } from '../../../core/db/types'
 import { feedback } from '../../../core/feedback/feedback'
 import { logFlight } from '../../../core/flight-log/flights'
-import { afterActivity } from '../../../core/session/session'
+import { afterActivity, reportActivity } from '../../../core/session/session'
+import { ALL_MISSIONS } from '../../../modules/registry'
 import { useSettings } from '../../../core/settings/settings'
 import { Button, ButtonLink } from '../../../ui/primitives/Button'
 import { TextField } from '../../../ui/primitives/Field'
@@ -101,6 +102,7 @@ function Editor({ initial }: { initial: Draft }) {
         refId: draft.id,
       })
       feedback.land()
+      await reportActivity('draft.finished', ALL_MISSIONS)
       await afterActivity()
     }
     navigate(`/m/writing/d/${draft.id}/compare`)
