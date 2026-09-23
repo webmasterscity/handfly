@@ -1,17 +1,15 @@
 import { Calculator } from 'lucide-react'
 import type { ModuleDefinition } from '../../core/modules/types'
 import { meta } from './meta'
-import { CalcHome } from './screens/CalcHome'
-import { CalcPractice } from './screens/CalcPractice'
-import { CalcEstimate } from './screens/CalcEstimate'
 
 export const calculation: ModuleDefinition = {
   meta,
   icon: Calculator,
+  // Las pantallas se cargan al abrir el módulo: la primera carga de la app no las descarga.
   routes: [
-    { index: true, element: <CalcHome /> },
-    { path: 'practice', element: <CalcPractice /> },
-    { path: 'estimate', element: <CalcEstimate /> },
+    { index: true, lazy: () => import('./screens/CalcHome').then((m) => ({ Component: m.CalcHome })) },
+    { path: 'practice', lazy: () => import('./screens/CalcPractice').then((m) => ({ Component: m.CalcPractice })) },
+    { path: 'estimate', lazy: () => import('./screens/CalcEstimate').then((m) => ({ Component: m.CalcEstimate })) },
   ],
   missions: [
     { id: 'cc-groceries', moduleId: 'calculation', textKey: 'calculation.groceries', minutes: 10 },

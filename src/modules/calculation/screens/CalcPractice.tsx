@@ -30,7 +30,7 @@ export function CalcPractice() {
   const [correct, setCorrect] = useState(0)
   const [done, setDone] = useState(false)
   const startedAt = useRef(new Date())
-  const problemStart = useRef(Date.now())
+  const problemStart = useRef(0)
   const inputRef = useRef<HTMLInputElement>(null)
   const p = problems[index]
 

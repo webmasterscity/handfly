@@ -19,20 +19,25 @@ const TIMER_OPTIONS = [0, 5, 10, 15]
 export function DraftEditor() {
   const { t } = useTranslation('writing')
   const { id = '' } = useParams()
+  // undefined = cargando; null = no existe.
+  const stored = useLiveQuery(async () => (await db.drafts.get(id)) ?? null, [id])
+  if (stored === undefined) return null
+  if (stored === null) return <Page title={t('notFound')} back="/m/writing" />
+  return <Editor key={stored.id} initial={stored} />
+}
+
+function Editor({ initial }: { initial: Draft }) {
+  const { t } = useTranslation('writing')
   const navigate = useNavigate()
   const { allowPaste } = useSettings()
-  const stored = useLiveQuery(() => db.drafts.get(id), [id])
-  const [draft, setDraft] = useState<Draft>()
+  const [draft, setDraft] = useState<Draft>(initial)
   const [pasteNotice, setPasteNotice] = useState(false)
   const [timerMin, setTimerMin] = useState(0)
   const [timerStart, setTimerStart] = useState<number>()
-  const [now, setNow] = useState(Date.now())
+  const [now, setNow] = useState(() => Date.now())
   const lastTyped = useRef(0)
   const dirty = useRef(false)
-
-  useEffect(() => {
-    if (stored && !draft) setDraft(stored)
-  }, [stored, draft])
+  const draftRef = useRef(draft)
 
   // Reloj de un segundo: cuenta tiempo de escritura activa (con tecleo en los últimos 30 s)
   // y alimenta el temporizador opcional.
@@ -40,20 +45,18 @@ export function DraftEditor() {
     const iv = setInterval(() => {
       setNow(Date.now())
       if (Date.now() - lastTyped.current < 30_000) {
-        setDraft((d) => (d ? { ...d, secondsWriting: d.secondsWriting + 1 } : d))
+        setDraft((d) => ({ ...d, secondsWriting: d.secondsWriting + 1 }))
       }
     }, 1000)
     return () => clearInterval(iv)
   }, [])
 
   // Autoguardado cada 3 s si hubo cambios, y siempre al salir del editor.
-  const draftRef = useRef(draft)
-  draftRef.current = draft
   useEffect(() => {
-    const flush = () => {
-      const d = draftRef.current
-      if (d) void db.drafts.put({ ...d, updatedAt: new Date().toISOString() })
-    }
+    draftRef.current = draft
+  }, [draft])
+  useEffect(() => {
+    const flush = () => void db.drafts.put({ ...draftRef.current, updatedAt: new Date().toISOString() })
     const iv = setInterval(() => {
       if (dirty.current) {
         dirty.current = false
@@ -66,9 +69,6 @@ export function DraftEditor() {
     }
   }, [])
 
-  if (stored === undefined && !draft) return null
-  if (!draft) return <Page title={t('notFound')} back="/m/writing" />
-
   const update = (patch: Partial<Draft>) => {
     dirty.current = true
     setDraft({ ...draft, ...patch })
@@ -78,17 +78,18 @@ export function DraftEditor() {
     if (allowPaste) return
     e.preventDefault()
     setPasteNotice(true)
-    update({ pasteAttempts: draft!.pasteAttempts + 1 })
+    update({ pasteAttempts: draft.pasteAttempts + 1 })
   }
 
   const remaining = timerStart ? Math.max(0, timerMin * 60 - Math.floor((now - timerStart) / 1000)) : undefined
   const timeUp = remaining === 0
 
   async function finish() {
-    if (!draft) return
     const finished = { ...draft, finishedAt: draft.finishedAt ?? new Date().toISOString(), updatedAt: new Date().toISOString() }
-    // El guardado al desmontar usa draftRef: se actualiza para no pisar finishedAt.
+    // El guardado al desmontar usa draftRef. Se actualizan referencia y estado: si solo se
+    // tocara la referencia, el reloj de un segundo re-renderiza y la pisa sin finishedAt.
     draftRef.current = finished
+    setDraft(finished)
     await db.drafts.put(finished)
     if (!draft.finishedAt) {
       await logFlight({

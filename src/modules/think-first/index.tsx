@@ -1,17 +1,15 @@
 import { Lightbulb } from 'lucide-react'
 import type { ModuleDefinition } from '../../core/modules/types'
 import { meta } from './meta'
-import { ThinkClose } from './screens/ThinkClose'
-import { ThinkHome } from './screens/ThinkHome'
-import { ThinkNew } from './screens/ThinkNew'
 
 export const thinkFirst: ModuleDefinition = {
   meta,
   icon: Lightbulb,
+  // Las pantallas se cargan al abrir el módulo: la primera carga de la app no las descarga.
   routes: [
-    { index: true, element: <ThinkHome /> },
-    { path: 'new', element: <ThinkNew /> },
-    { path: 'close/:id', element: <ThinkClose /> },
+    { index: true, lazy: () => import('./screens/ThinkHome').then((m) => ({ Component: m.ThinkHome })) },
+    { path: 'new', lazy: () => import('./screens/ThinkNew').then((m) => ({ Component: m.ThinkNew })) },
+    { path: 'close/:id', lazy: () => import('./screens/ThinkClose').then((m) => ({ Component: m.ThinkClose })) },
   ],
   missions: [
     { id: 'tf-before-chat', moduleId: 'think-first', textKey: 'thinkFirst.beforeChat', minutes: 5 },

@@ -13,7 +13,7 @@ describe('recordatorio .ics', () => {
     expect(ics).toContain('RRULE:FREQ=DAILY')
     expect(ics).toContain('DTSTART:20260923T083000')
     expect(ics).toContain('SUMMARY:Handfly\\, 5 minutos')
-    expect(ics).toContain('DESCRIPTION:Repasos\; y misión')
+    expect(ics).toContain('DESCRIPTION:Repasos\\; y misión')
     expect(ics.split('\r\n')[0]).toBe('BEGIN:VCALENDAR')
   })
 

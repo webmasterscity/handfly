@@ -13,7 +13,7 @@ const variants: Record<Variant, string> = {
   danger: 'border border-red text-red',
 }
 
-export function buttonClass(variant: Variant = 'primary', block = false) {
+function buttonClass(variant: Variant = 'primary', block = false) {
   return `${base} ${variants[variant]} ${block ? 'w-full' : ''}`
 }
 

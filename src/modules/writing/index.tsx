@@ -1,17 +1,15 @@
 import { PenLine } from 'lucide-react'
 import type { ModuleDefinition } from '../../core/modules/types'
 import { meta } from './meta'
-import { DraftCompare } from './screens/DraftCompare'
-import { DraftEditor } from './screens/DraftEditor'
-import { WritingHome } from './screens/WritingHome'
 
 export const writing: ModuleDefinition = {
   meta,
   icon: PenLine,
+  // Las pantallas se cargan al abrir el módulo: la primera carga de la app no las descarga.
   routes: [
-    { index: true, element: <WritingHome /> },
-    { path: 'd/:id', element: <DraftEditor /> },
-    { path: 'd/:id/compare', element: <DraftCompare /> },
+    { index: true, lazy: () => import('./screens/WritingHome').then((m) => ({ Component: m.WritingHome })) },
+    { path: 'd/:id', lazy: () => import('./screens/DraftEditor').then((m) => ({ Component: m.DraftEditor })) },
+    { path: 'd/:id/compare', lazy: () => import('./screens/DraftCompare').then((m) => ({ Component: m.DraftCompare })) },
   ],
   missions: [
     { id: 'wr-message', moduleId: 'writing', textKey: 'writing.message', minutes: 10 },

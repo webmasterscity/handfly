@@ -17,7 +17,6 @@ export const SketchPad = forwardRef<SketchPadHandle, { label: string }>(function
   const [strokes, setStrokes] = useState<Point[][]>([])
   const strokesRef = useRef(strokes)
   const drawing = useRef<Point[] | null>(null)
-  strokesRef.current = strokes
 
   const redraw = () => {
     const canvas = canvasRef.current
@@ -56,7 +55,10 @@ export const SketchPad = forwardRef<SketchPadHandle, { label: string }>(function
     return () => ro.disconnect()
   }, [])
 
-  useEffect(redraw, [strokes])
+  useEffect(() => {
+    strokesRef.current = strokes
+    redraw()
+  }, [strokes])
 
   useImperativeHandle(ref, () => ({
     toDataUrl: () => (strokes.length ? canvasRef.current?.toDataURL('image/png') : undefined),

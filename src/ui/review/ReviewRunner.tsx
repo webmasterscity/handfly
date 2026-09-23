@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next'
 import type { MemoryCard } from '../../core/db/types'
 import { feedback } from '../../core/feedback/feedback'
 import { isRecalled, previewIntervals, reviewCard, type Rating } from '../../core/srs/scheduler'
-import { cardRenderers, DefaultCard } from '../../modules/cardRenderers'
+import { cardRenderers } from '../../modules/cardRenderers'
+import { DefaultCard } from '../../modules/DefaultCard'
 import { Button } from '../primitives/Button'
 
 /** Tiempo mínimo de intento antes de poder destapar: siempre se recuerda antes de mirar. */
@@ -34,7 +35,6 @@ export function ReviewRunner({
   const card = cards[index]
 
   useEffect(() => {
-    setReady(false)
     const id = setTimeout(() => setReady(true), THINK_MS)
     headingRef.current?.focus()
     return () => clearTimeout(id)
@@ -63,6 +63,7 @@ export function ReviewRunner({
       setIndex(index + 1)
       setRevealed(false)
       setAttempt('')
+      setReady(false)
     }
   }
 

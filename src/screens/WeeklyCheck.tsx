@@ -1,8 +1,9 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { db } from '../core/db/schema'
+import type { WeeklyCheck as WeeklyCheckRow } from '../core/db/types'
 import { feedback, toast } from '../core/feedback/feedback'
 import { afterActivity } from '../core/session/session'
 import { weekKey } from '../core/time'
@@ -14,21 +15,19 @@ const toLines = (s: string) => s.split('\n').map((l) => l.trim()).filter(Boolean
 
 /** Chequeo semanal: una línea por situación real. Sin juicio: es un registro, no un examen. */
 export function WeeklyCheck() {
+  const week = weekKey()
+  // null = no hay chequeo esta semana; undefined = todavía cargando.
+  const existing = useLiveQuery(async () => (await db.weeklyChecks.get(week)) ?? null, [week])
+  if (existing === undefined) return null
+  return <WeeklyCheckForm key={week} week={week} existing={existing} />
+}
+
+function WeeklyCheckForm({ week, existing }: { week: string; existing: WeeklyCheckRow | null }) {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const week = weekKey()
-  const existing = useLiveQuery(() => db.weeklyChecks.get(week), [week])
-  const [crutches, setCrutches] = useState('')
-  const [solo, setSolo] = useState('')
-  const [note, setNote] = useState('')
-
-  useEffect(() => {
-    if (existing) {
-      setCrutches(existing.crutches.join('\n'))
-      setSolo(existing.solo.join('\n'))
-      setNote(existing.note)
-    }
-  }, [existing])
+  const [crutches, setCrutches] = useState(existing?.crutches.join('\n') ?? '')
+  const [solo, setSolo] = useState(existing?.solo.join('\n') ?? '')
+  const [note, setNote] = useState(existing?.note ?? '')
 
   async function save() {
     await db.weeklyChecks.put({ week, crutches: toLines(crutches), solo: toLines(solo), note: note.trim(), createdAt: new Date().toISOString() })

@@ -1,8 +1,5 @@
-import type { ComponentType } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { CardKind } from '../core/db/types'
 import type { CardRendererProps } from '../core/modules/types'
-import { PersonCard } from './people/PersonCard'
 
 export function DefaultCard({ card, revealed }: CardRendererProps) {
   const { t } = useTranslation()
@@ -17,9 +14,4 @@ export function DefaultCard({ card, revealed }: CardRendererProps) {
       )}
     </div>
   )
-}
-
-// Cada módulo puede registrar aquí cómo se pregunta su tipo de tarjeta.
-export const cardRenderers: Partial<Record<CardKind, ComponentType<CardRendererProps>>> = {
-  person: PersonCard,
 }

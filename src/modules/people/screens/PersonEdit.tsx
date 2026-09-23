@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { useEffect, useState, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router'
 import { db } from '../../../core/db/schema'
@@ -13,23 +13,23 @@ import { personCardText } from '../personCard'
 export function PersonEdit() {
   const { t } = useTranslation('people')
   const { id = '' } = useParams()
+  // undefined = cargando; null = no existe (o se acaba de borrar).
+  const person = useLiveQuery(async () => (await db.people.get(id)) ?? null, [id])
+  if (person === undefined) return null
+  if (person === null) return <Page title={t('notFound')} back="/m/people" />
+  return <PersonForm key={person.id} person={person} />
+}
+
+function PersonForm({ person }: { person: Person }) {
+  const { t } = useTranslation('people')
   const navigate = useNavigate()
-  const person = useLiveQuery(() => db.people.get(id), [id])
-  const [p, setP] = useState<Person>()
+  const [p, setP] = useState<Person>(person)
   const [confirmDelete, setConfirmDelete] = useState(false)
-
-  useEffect(() => {
-    if (person) setP(person)
-  }, [person])
-
-  if (person === undefined && !p) return null
-  if (!p) return <Page title={t('notFound')} back="/m/people" />
 
   const set = (k: keyof Person) => (e: { target: { value: string } }) => setP({ ...p, [k]: e.target.value })
 
   async function save(e: FormEvent) {
     e.preventDefault()
-    if (!p) return
     const text = personCardText(p)
     await db.transaction('rw', db.people, db.cards, async () => {
       await db.people.put(p)
@@ -40,7 +40,6 @@ export function PersonEdit() {
   }
 
   async function remove() {
-    if (!p) return
     await db.transaction('rw', db.people, db.cards, db.reviews, async () => {
       if (p.cardId) {
         await db.reviews.where('cardId').equals(p.cardId).delete()

@@ -6,7 +6,7 @@ function pad(n: number) {
 }
 
 function escapeText(s: string) {
-  return s.replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(/,/g, '\\,').replace(/\n/g, '\\n')
+  return s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n')
 }
 
 export function buildReminderIcs(opts: {

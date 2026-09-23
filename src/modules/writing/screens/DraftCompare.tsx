@@ -1,8 +1,9 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router'
 import { db } from '../../../core/db/schema'
+import type { Draft } from '../../../core/db/types'
 import { toast } from '../../../core/feedback/feedback'
 import { Button, ButtonLink } from '../../../ui/primitives/Button'
 import { TextArea } from '../../../ui/primitives/Field'
@@ -12,20 +13,18 @@ import { Page } from '../../../ui/primitives/Page'
 export function DraftCompare() {
   const { t } = useTranslation('writing')
   const { id = '' } = useParams()
-  const navigate = useNavigate()
-  const draft = useLiveQuery(() => db.drafts.get(id), [id])
-  const [aiVersion, setAiVersion] = useState('')
-  const [keep, setKeep] = useState('')
-
-  useEffect(() => {
-    if (draft) {
-      setAiVersion(draft.aiVersion ?? '')
-      setKeep(draft.keepFromMine ?? '')
-    }
-  }, [draft])
-
+  const draft = useLiveQuery(async () => (await db.drafts.get(id)) ?? null, [id])
   if (draft === undefined) return null
-  if (!draft) return <Page title={t('notFound')} back="/m/writing" />
+  if (draft === null) return <Page title={t('notFound')} back="/m/writing" />
+  return <CompareForm key={draft.id} draft={draft} />
+}
+
+function CompareForm({ draft }: { draft: Draft }) {
+  const { t } = useTranslation('writing')
+  const navigate = useNavigate()
+  const id = draft.id
+  const [aiVersion, setAiVersion] = useState(draft.aiVersion ?? '')
+  const [keep, setKeep] = useState(draft.keepFromMine ?? '')
 
   async function save() {
     await db.drafts.update(id, { aiVersion: aiVersion.trim() || undefined, keepFromMine: keep.trim() || undefined })

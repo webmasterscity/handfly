@@ -1,7 +1,8 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { useEffect, useState, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router'
+import type { MemoryCard } from '../../../core/db/types'
 import { db } from '../../../core/db/schema'
 import { toast } from '../../../core/feedback/feedback'
 import { addCard } from '../../../core/srs/scheduler'
@@ -10,22 +11,20 @@ import { TextArea, Toggle } from '../../../ui/primitives/Field'
 import { Page } from '../../../ui/primitives/Page'
 
 export function CardEdit() {
-  const { t } = useTranslation('recall')
   const { id } = useParams()
-  const navigate = useNavigate()
-  const card = useLiveQuery(() => (id ? db.cards.get(id) : undefined), [id])
-  const [front, setFront] = useState('')
-  const [back, setBack] = useState('')
-  const [suspended, setSuspended] = useState(false)
-  const [confirmDelete, setConfirmDelete] = useState(false)
+  // En "nueva" no hay nada que cargar; al editar, undefined = cargando y null = no existe.
+  const card = useLiveQuery(async () => (id ? ((await db.cards.get(id)) ?? null) : null), [id])
+  if (id && card === undefined) return null
+  return <CardForm key={id ?? 'new'} card={card ?? null} />
+}
 
-  useEffect(() => {
-    if (card) {
-      setFront(card.front)
-      setBack(card.back)
-      setSuspended(card.suspended)
-    }
-  }, [card])
+function CardForm({ card }: { card: MemoryCard | null }) {
+  const { t } = useTranslation('recall')
+  const navigate = useNavigate()
+  const [front, setFront] = useState(card?.front ?? '')
+  const [back, setBack] = useState(card?.back ?? '')
+  const [suspended, setSuspended] = useState(card?.suspended ?? false)
+  const [confirmDelete, setConfirmDelete] = useState(false)
 
   const isPerson = card?.kind === 'person'
 

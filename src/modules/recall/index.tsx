@@ -1,18 +1,16 @@
 import { Layers } from 'lucide-react'
 import type { ModuleDefinition } from '../../core/modules/types'
 import { meta } from './meta'
-import { CardEdit } from './screens/CardEdit'
-import { RecallHome } from './screens/RecallHome'
-import { ReviewNow } from './screens/ReviewNow'
 
 export const recall: ModuleDefinition = {
   meta,
   icon: Layers,
+  // Las pantallas se cargan al abrir el módulo: la primera carga de la app no las descarga.
   routes: [
-    { index: true, element: <RecallHome /> },
-    { path: 'new', element: <CardEdit /> },
-    { path: 'card/:id', element: <CardEdit /> },
-    { path: 'review', element: <ReviewNow /> },
+    { index: true, lazy: () => import('./screens/RecallHome').then((m) => ({ Component: m.RecallHome })) },
+    { path: 'new', lazy: () => import('./screens/CardEdit').then((m) => ({ Component: m.CardEdit })) },
+    { path: 'card/:id', lazy: () => import('./screens/CardEdit').then((m) => ({ Component: m.CardEdit })) },
+    { path: 'review', lazy: () => import('./screens/ReviewNow').then((m) => ({ Component: m.ReviewNow })) },
   ],
   missions: [
     { id: 'rc-explain', moduleId: 'recall', textKey: 'recall.explain', minutes: 10 },
