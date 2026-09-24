@@ -62,7 +62,7 @@ En aviación se comprobó que los pilotos que vuelan casi siempre con piloto aut
 
 **Por qué ese nivel.** Intentar responder antes de ver la respuesta mejora el aprendizaje posterior, incluso cuando el intento falla (efecto del pre-examen, sólido en laboratorio). Que la IA usada como muleta reduce el aprendizaje lo muestra un ensayo grande en matemáticas escolares. Lo específico de "pensar antes de la IA" sobre la memoria viene de un estudio pequeño aún sin revisión por pares: por eso el conjunto es moderado, no alto.
 
-**Por qué sirve fuera de la app.** La práctica es la tarea real: una pregunta que de verdad ibas a hacerle a una IA. Intentar responderla primero es exactamente el hábito que se quiere conservar fuera de la app.
+**Por qué sirve fuera de la app.** La práctica es la tarea real: una pregunta que de verdad ibas a buscar en una IA, en un buscador o preguntándole a alguien. Intentar responderla primero es exactamente el hábito que se quiere conservar fuera de la app.
 
 **Referencias**
 

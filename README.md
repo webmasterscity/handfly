@@ -29,7 +29,7 @@ Los metaanálisis sobre entrenamiento cognitivo (Sala y Gobet, 2019–2023) mues
 
 | Módulo | Qué practicas | Evidencia |
 |---|---|---|
-| **Pensar primero** | Escribir tu respuesta y tu confianza antes de preguntarle a una IA; después comparar | moderada |
+| **Pensar primero** | Decir tu respuesta y qué tan seguro estás antes de buscarla (en la IA, en Google o preguntando); después comprobar si acertaste | moderada |
 | **Recuerdo activo** | Repasar lo aprendido recordando antes de mirar, con repetición espaciada (FSRS) | alta |
 | **Nombres de personas** | Técnica de imagen + rasgo + escena, y repaso espaciado del nombre. Sin fotos | moderada |
 | **Navegación sin GPS** | Planear con el mapa, recorrer sin GPS y reconstruir la ruta (lista o croquis) | moderada |

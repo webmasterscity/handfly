@@ -62,7 +62,7 @@ Aviation found that pilots who fly almost always on autopilot keep basic stick-a
 
 **Why this level.** Trying to answer before seeing the answer improves later learning, even when the attempt fails (the pretesting effect, robust in the lab). That AI used as a crutch reduces learning is shown by a large trial in high-school math. The specific claim that "thinking before AI" protects memory comes from a small study not yet peer reviewed, so overall the evidence is moderate, not high.
 
-**Why it helps outside the app.** The practice is the real task: a question you were actually going to ask an AI. Trying to answer it first is exactly the habit you want to keep outside the app.
+**Why it helps outside the app.** The practice is the real task: a question you were actually going to look up with an AI, a search engine or by asking someone. Trying to answer it first is exactly the habit you want to keep outside the app.
 
 **References**
 

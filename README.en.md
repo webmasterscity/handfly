@@ -28,7 +28,7 @@ Meta-analyses of cognitive training (Sala & Gobet, 2019–2023) show that practi
 
 | Module | What you practice | Evidence |
 |---|---|---|
-| **Think first** | Write your answer and confidence before asking an AI, then compare | moderate |
+| **Think first** | Give your answer and how sure you are before looking it up (an AI, Google or asking someone), then check whether you got it | moderate |
 | **Active recall** | Review what you learned by recalling before looking, with spaced repetition (FSRS) | high |
 | **People's names** | Image + feature + scene technique and spaced recall of the name. No photos | moderate |
 | **No-GPS navigation** | Plan with a map, travel without GPS and rebuild the route (list or sketch) | moderate |

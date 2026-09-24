@@ -6,8 +6,8 @@ export const meta: ModuleMeta = {
   replaces: 'ia',
   accent: 'var(--accent)',
   transfer: {
-    es: 'La práctica es la tarea real: una pregunta que de verdad ibas a hacerle a una IA. Intentar responderla primero es exactamente el hábito que se quiere conservar fuera de la app.',
-    en: 'The practice is the real task: a question you were actually going to ask an AI. Trying to answer it first is exactly the habit you want to keep outside the app.',
+    es: 'La práctica es la tarea real: una pregunta que de verdad ibas a buscar en una IA, en un buscador o preguntándole a alguien. Intentar responderla primero es exactamente el hábito que se quiere conservar fuera de la app.',
+    en: 'The practice is the real task: a question you were actually going to look up with an AI, a search engine or by asking someone. Trying to answer it first is exactly the habit you want to keep outside the app.',
   },
   evidence: {
     level: 'moderada',

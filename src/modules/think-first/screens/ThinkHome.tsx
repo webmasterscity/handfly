@@ -33,7 +33,7 @@ export function ThinkHome() {
               <li key={e.id}>
                 <Link to={`/m/think-first/close/${e.id}`} className="flex flex-col gap-1 px-4 py-3 hover:bg-panel-2">
                   <span className="font-bold">{e.question}</span>
-                  <span className="text-sm text-ink-dim">{t('openRowHint', { confidence: e.confidence })}</span>
+                  <span className="text-sm text-ink-dim">{t('openRowHint')}</span>
                 </Link>
               </li>
             ))}
@@ -52,12 +52,9 @@ export function ThinkHome() {
                   <p className="truncate font-bold">{e.question}</p>
                   {e.learned && <p className="line-clamp-2 text-sm text-ink-dim">{e.learned}</p>}
                 </div>
-                <div className="shrink-0 text-right" aria-label={t('closenessAria', { confidence: e.confidence, closeness: e.closeness })}>
-                  <span className="readout block text-lg">
-                    {e.confidence}→{e.closeness}
-                  </span>
-                  <span className="text-xs text-ink-dim">{t('confCloseShort')}</span>
-                </div>
+                <span className={`shrink-0 rounded-full px-3 py-1 text-sm font-bold ${(e.closeness ?? 0) >= 4 ? 'bg-green text-on-accent' : 'bg-panel-2'}`}>
+                  {t(`closedLabel.${(e.closeness ?? 0) >= 4 ? 'yes' : (e.closeness ?? 0) >= 3 ? 'partly' : 'no'}`)}
+                </span>
               </li>
             ))}
           </Rows>

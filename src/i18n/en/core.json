@@ -28,7 +28,7 @@
     "calculation": "Everyday math"
   },
   "moduleBlurbs": {
-    "think-first": "Before asking an AI, write your own answer. Then compare.",
+    "think-first": "Before looking up an answer, give yours. Then check whether you got it.",
     "recall": "What you learn comes back as a question, right before you would forget it.",
     "people": "Remember the names of people you meet, with no photos and a proven technique.",
     "navigation": "Plan the route on a map, travel it without GPS and rebuild it from memory.",
@@ -207,14 +207,14 @@
     },
     "thinkFirst": {
       "beforeChat": {
-        "title": "You first, the AI second",
-        "goal": "Answer a question with your own head before you look it up. Two minutes.",
+        "title": "You first, then look it up",
+        "goal": "Before looking something up, give your answer. Two minutes.",
         "steps": [
           "Think of something you really want to know: about work, home, or plain curiosity.",
-          "Tap “Start” and write the question the way you'd ask the AI.",
-          "Write your best answer, even if you're not sure, and say how sure you are. Save."
+          "Tap “Start”, write the question and what you think, and tap how sure you are.",
+          "Check it wherever you like (an AI, Google or asking someone) and say whether you got it."
         ],
-        "example": "“How often should you water a cactus?” Your attempt: “Once a month, it handles drought.” Sure: 2 out of 5.",
+        "example": "“How often should you water a cactus?” You think: “once a month”. Sure: “I think so”. You look it up: every 2–3 weeks in summer. “Sort of”.",
         "done": "when you save your attempt. It marks itself.",
         "why": "Trying to answer before you see the answer, even if you're wrong, makes you remember it much better later."
       },

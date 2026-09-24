@@ -28,7 +28,7 @@
     "calculation": "Cálculo cotidiano"
   },
   "moduleBlurbs": {
-    "think-first": "Antes de preguntarle a una IA, escribe tu propia respuesta. Luego compara.",
+    "think-first": "Antes de buscar una respuesta, di la tuya. Luego compruebas si acertaste.",
     "recall": "Lo que aprendes vuelve a preguntarse, justo antes de que se te olvide.",
     "people": "Recuerda el nombre de la gente que conoces, sin fotos y con una técnica probada.",
     "navigation": "Planea la ruta con el mapa, recórrela sin GPS y reconstrúyela de memoria.",
@@ -207,16 +207,16 @@
     },
     "thinkFirst": {
       "beforeChat": {
-        "title": "Tú primero, la IA después",
-        "goal": "Responde con tu cabeza una pregunta antes de buscarla. Dos minutos.",
+        "title": "Tú primero, después buscas",
+        "goal": "Antes de buscar algo, di tu respuesta. Dos minutos.",
         "steps": [
           "Piensa en algo que de verdad quieras saber: de tu trabajo, de tu casa o por pura curiosidad.",
-          "Toca «Empezar» y escribe la pregunta como se la harías a la IA.",
-          "Escribe tu mejor respuesta, aunque no estés seguro, y di qué tan seguro estás. Guarda."
+          "Toca «Empezar», escribe la pregunta y lo que tú crees, y toca qué tan seguro estás.",
+          "Compruébalo donde quieras (la IA, Google o preguntando) y di si acertaste."
         ],
-        "example": "«¿Cada cuánto se riega un cactus?». Tu intento: «Una vez al mes, aguanta la sequía». Seguridad: 2 de 5.",
+        "example": "«¿Cada cuánto se riega un cactus?». Tú crees: «una vez al mes». Seguridad: «Creo que sí». Lo buscas: cada 2 o 3 semanas en verano. «Más o menos».",
         "done": "cuando guardas tu intento. Se marca sola.",
-        "why": "Intentar responder antes de ver la respuesta, aunque falles, hace que después la recuerdes mucho mejor."
+        "why": "Intentar responder antes de ver la respuesta, aunque te equivoques, hace que después la recuerdes mucho mejor."
       },
       "sayIt": {
         "title": "Adivina antes de buscar",
