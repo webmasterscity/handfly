@@ -12,7 +12,7 @@
   "step4Title": "Visualízala",
   "stepAria": "Paso {{n}} de {{total}}",
   "name": "Nombre",
-  "whereMet": "Dónde la conociste",
+  "whereMet": "Dónde se conocieron",
   "whereMetHint": "Por ejemplo: «cumpleaños de Ana», «reunión de padres».",
   "metOn": "Cuándo",
   "trait": "Un rasgo que la distinga",
@@ -43,10 +43,30 @@
   "deleted": "Persona borrada.",
   "notFound": "Esta persona no existe",
   "card": {
-    "where": "La conociste en",
+    "where": "Dónde se conocieron",
     "trait": "Rasgo",
     "talked": "Hablaron de",
     "question": "¿Cómo se llama?",
     "yourImage": "Tu imagen:"
+  },
+  "quiz": {
+    "cta": "¿Cómo se llama? Ponte a prueba",
+    "title": "¿Cómo se llama?",
+    "exit": "Salir de la prueba",
+    "progress": "Persona {{n}} de {{total}}",
+    "check": "Comprobar",
+    "right": "¡Exacto!",
+    "wrong": "Tú dijiste «{{attempt}}». La próxima lo tienes.",
+    "next": "Siguiente",
+    "finish": "Terminar",
+    "over": "Prueba terminada",
+    "perfect": "¡Todos los nombres!",
+    "good": "¡Buena memoria!",
+    "keepGoing": "Así se aprenden: intentándolo",
+    "realWorld": "La prueba de verdad es afuera: la próxima vez que veas a una de estas personas, salúdala por su nombre.",
+    "back": "Volver a Nombres",
+    "emptyTitle": "Aún no hay nadie",
+    "simTitle_one": "¿Cómo se llama?: {{count}} persona",
+    "simTitle_other": "¿Cómo se llama?: {{count}} personas"
   }
 }

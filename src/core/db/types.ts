@@ -1,4 +1,5 @@
 import type { Card as FsrsCard } from 'ts-fsrs'
+import type { MissionBet, MissionResult } from '../missions/scoring'
 
 export type ModuleId = 'think-first' | 'recall' | 'people' | 'navigation' | 'writing' | 'calculation'
 
@@ -96,6 +97,10 @@ export interface Mission {
   stepsDone?: number[]
   /** Se cumplió sola al hacer la acción en la app (no al declararla). */
   auto?: boolean
+  /** «Apuesta y comprueba»: la predicción anotada antes de salir… */
+  bet?: MissionBet
+  /** …y lo comprobado al volver, con su puntuación (0-100). */
+  result?: MissionResult
 }
 
 export interface DailySession {

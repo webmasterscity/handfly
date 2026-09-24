@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from 'react'
+import type { ModuleId } from '../db/types'
 
 export interface Settings {
   /** 'auto' sigue el idioma del teléfono (español si no es uno soportado). */
@@ -11,6 +12,18 @@ export interface Settings {
   reminderTime: string // 'HH:MM'
   sessionSize: number // tarjetas máximas por sesión diaria
   onboarded: boolean
+  /** Habilidades que la persona quiere recuperar (la bienvenida). Vacío = todas. */
+  focus: ModuleId[]
+  /** Dónde queda casa, para el juego de la brújula. Solo vive en este dispositivo. */
+  home?: { lat: number; lng: number }
+  /** Caja rápida: nivel actual (1-3), mejor ronda y rondas jugadas hoy (hay tope diario). */
+  calcLevel: 1 | 2 | 3
+  calcBest?: { correct: number; seconds: number }
+  calcRounds?: { date: string; count: number }
+  /** Mejor puntuación en «¿Dónde está casa?». */
+  compassBest?: number
+  /** Ya se anotaron (sin celebrar) los rangos que existían antes de las celebraciones. */
+  progressRecorded?: boolean
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -23,6 +36,8 @@ export const DEFAULT_SETTINGS: Settings = {
   reminderTime: '08:00',
   sessionSize: 15,
   onboarded: false,
+  focus: [],
+  calcLevel: 1,
 }
 
 const KEY = 'handfly:settings'

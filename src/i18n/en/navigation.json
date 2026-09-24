@@ -40,7 +40,10 @@
   "recallTitle": "Rebuild the route",
   "recallLead": "Without looking at the plan. Write the landmarks in order, draw a sketch, or both.",
   "recallModes": "Ways to rebuild",
-  "mode": { "list": "Describe", "sketch": "Sketch" },
+  "mode": {
+    "list": "Describe",
+    "sketch": "Sketch"
+  },
   "recallLegend": "Landmarks you remember, in order",
   "sketchHelp": "Draw the route with your finger: start, turns and landmarks. It doesn't need to be pretty.",
   "sketchLabel": "Canvas to sketch the route",
@@ -57,5 +60,61 @@
   "sketchAlt": "Your sketch of the route",
   "backToRoutes": "Back to routes",
   "recallSimTitle": "Reconstruction: {{title}}",
-  "notFound": "This route doesn't exist"
+  "notFound": "This route doesn't exist",
+  "compass": {
+    "title": "Where's home?",
+    "exit": "Leave the game",
+    "setupTitle": "First, save where home is",
+    "setupLead": "Do it while you're at home. Later, when you're somewhere else, you'll play at pointing toward it without looking at the map.",
+    "privacy": "Your location is saved only on this phone. It never leaves it.",
+    "saveHome": "I'm at home: save this place",
+    "locating": "Finding your location…",
+    "errorLocation": "I couldn't tell where you are. Check that location is on and that Handfly has permission.",
+    "readyTitle": "Play when you're away from home",
+    "readyLead": "Somewhere you don't often go, tap “Play”. You'll point your phone toward home without looking at the map.",
+    "play": "Play",
+    "moveHome": "I moved: save my home again",
+    "tooClose": "You're very close to home. Play when you're somewhere else, more than a few blocks away.",
+    "pointLead": "Hold the phone flat, turn, and point the top of it toward home.",
+    "waiting": "Waiting for the compass…",
+    "you": "You",
+    "home": "Home",
+    "hereItIs": "Here it is",
+    "cardinalTitle": "Your phone has no compass",
+    "cardinalLead": "Let's play anyway: which direction is home from here?",
+    "dir": {
+      "0": "N",
+      "1": "NE",
+      "2": "E",
+      "3": "SE",
+      "4": "S",
+      "5": "SW",
+      "6": "W",
+      "7": "NW"
+    },
+    "card": {
+      "N": "N",
+      "E": "E",
+      "S": "S",
+      "W": "W"
+    },
+    "tier": {
+      "bullseye": "Bullseye!",
+      "close": "So close!",
+      "fair": "Good try",
+      "learning": "You got turned around, and that's how you learn"
+    },
+    "off": "You were {{degrees}}° off",
+    "distance": "Home is {{km}} km away",
+    "precision": "Accuracy",
+    "legendYou": "Where you pointed",
+    "legendHome": "Where home is",
+    "afterTip": "On your way, notice where the sun is or a big street heading home: those are your clues for next time.",
+    "toToday": "Back to Today",
+    "flightTitle": "Pointed home without a map",
+    "dialAria": "Compass showing the direction you pointed and the real direction of home",
+    "recordTitle": "New sense-of-direction record!",
+    "recordSubtitle": "Only {{degrees}}° off",
+    "recordDetail": "Your previous best accuracy was {{best}}."
+  }
 }

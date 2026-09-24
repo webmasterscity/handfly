@@ -9,11 +9,12 @@ export const people: ModuleDefinition = {
   routes: [
     { index: true, lazy: () => import('./screens/PeopleHome').then((m) => ({ Component: m.PeopleHome })) },
     { path: 'new', lazy: () => import('./screens/PersonNew').then((m) => ({ Component: m.PersonNew })) },
+    { path: 'quiz', lazy: () => import('./screens/PeopleQuiz').then((m) => ({ Component: m.PeopleQuiz })) },
     { path: 'p/:id', lazy: () => import('./screens/PersonEdit').then((m) => ({ Component: m.PersonEdit })) },
   ],
   missions: [
     { id: 'pp-greet', moduleId: 'people', textKey: 'people.greet', minutes: 5 },
-    { id: 'pp-register', moduleId: 'people', textKey: 'people.register', minutes: 10, to: '/m/people/new', completesOn: 'person.saved' },
-    { id: 'pp-meeting', moduleId: 'people', textKey: 'people.meeting', minutes: 5 },
+    { id: 'pp-register', moduleId: 'people', textKey: 'people.register', minutes: 10, to: '/m/people/new', outside: true, completesOn: 'person.saved' },
+    { id: 'pp-meeting', moduleId: 'people', textKey: 'people.meeting', minutes: 5, check: { kind: 'list' } },
   ],
 }

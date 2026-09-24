@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { NavLink, Outlet, useLocation } from 'react-router'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 import { dismissToast, useToasts } from '../core/feedback/feedback'
+import { CelebrationOverlay } from '../ui/Celebration'
 import { Button } from '../ui/primitives/Button'
 
 const NAV = [
@@ -14,10 +15,13 @@ const NAV = [
   { to: '/settings', key: 'settings', icon: SettingsIcon },
 ]
 
+const FOCUS_PATHS = ['/session', '/welcome', '/m/calculation/practice', '/m/navigation/compass', '/m/people/quiz']
+
 export function Shell() {
   const { t } = useTranslation()
   const location = useLocation()
-  const focusMode = location.pathname === '/session'
+  // Pantallas de concentración (bienvenida, sesión, juegos): sin barra de pestañas.
+  const focusMode = FOCUS_PATHS.includes(location.pathname)
   const mainRef = useRef<HTMLElement>(null)
 
   // Al cambiar de pantalla: arriba del todo y el foco al contenido (lectores de pantalla).
@@ -90,6 +94,7 @@ export function Shell() {
       )}
 
       <Toasts />
+      <CelebrationOverlay />
       <UpdatePrompt />
     </div>
   )

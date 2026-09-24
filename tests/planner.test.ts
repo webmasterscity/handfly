@@ -33,8 +33,10 @@ describe('planificador de misiones', () => {
 describe('rangos', () => {
   it('sube solo con horas Y vuelos reales', () => {
     expect(rankFor(0, 0).rank.id).toBe('student')
-    expect(rankFor(120, 3).rank.id).toBe('student')
-    expect(rankFor(120, 5).rank.id).toBe('private')
+    expect(rankFor(0, 0).progress).toBe(0)
+    expect(rankFor(5, 1).rank.id).toBe('rookie')
+    expect(rankFor(120, 5).rank.id).toBe('rookie')
+    expect(rankFor(120, 6).rank.id).toBe('private')
     expect(rankFor(6000, 365).rank.id).toBe('instructor')
     expect(rankFor(6000, 365).progress).toBe(1)
   })

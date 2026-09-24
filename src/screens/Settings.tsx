@@ -7,6 +7,7 @@ import { toast } from '../core/feedback/feedback'
 import { buildReminderIcs, downloadIcs } from '../core/reminders/ics'
 import { getSettings, replaceSettings, updateSettings, useSettings, type Settings as S } from '../core/settings/settings'
 import { dayKey } from '../core/time'
+import { MODULES } from '../modules/registry'
 import { Button } from '../ui/primitives/Button'
 import { TextField, Toggle } from '../ui/primitives/Field'
 import { Page, Section } from '../ui/primitives/Page'
@@ -48,7 +49,9 @@ export function Settings() {
   const set = (patch: Partial<S>) => updateSettings(patch)
 
   async function exportBackup() {
-    downloadJson(await createBackup(getSettings()), `handfly-backup-${dayKey()}.json`)
+    // La ubicación de casa (juego de la brújula) no sale del teléfono, tampoco en la copia.
+    const { home: _home, ...shareable } = getSettings()
+    downloadJson(await createBackup(shareable), `handfly-backup-${dayKey()}.json`)
     toast(t('settings.exported'), 'success')
   }
 
@@ -66,7 +69,12 @@ export function Settings() {
   async function doImport(mode: 'replace' | 'merge') {
     if (!pending) return
     await restoreBackup(pending, mode)
-    if (mode === 'replace') replaceSettings(pending.settings)
+    if (mode === 'replace') {
+      // Restaurar ajustes no borra la casa guardada en este teléfono (la copia no la lleva).
+      const home = getSettings().home
+      replaceSettings(pending.settings)
+      if (home) updateSettings({ home })
+    }
     setPending(undefined)
     toast(t('settings.imported'), 'success')
   }
@@ -108,6 +116,26 @@ export function Settings() {
 
       <Section title={t('settings.practice')}>
         <div className="divide-y divide-line rounded-2xl border border-line bg-panel px-4">
+          <fieldset className="py-3">
+            <legend className="mb-1 font-bold">{t('settings.focus')}</legend>
+            <p className="mb-3 text-sm text-ink-dim">{t('settings.focusHint')}</p>
+            <div className="flex flex-wrap gap-2">
+              {MODULES.map(({ meta }) => {
+                const on = s.focus.includes(meta.id)
+                return (
+                  <button
+                    key={meta.id}
+                    type="button"
+                    aria-pressed={on}
+                    onClick={() => set({ focus: on ? s.focus.filter((x) => x !== meta.id) : [...s.focus, meta.id] })}
+                    className={`min-h-11 rounded-full border-2 px-4 text-sm font-bold ${on ? 'border-accent bg-accent text-on-accent' : 'border-line text-ink-dim'}`}
+                  >
+                    {t(`welcome.skills.${meta.id}`)}
+                  </button>
+                )
+              })}
+            </div>
+          </fieldset>
           <Segmented
             legend={t('settings.sessionSize')}
             value={s.sessionSize}

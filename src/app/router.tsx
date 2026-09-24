@@ -11,6 +11,7 @@ export const routes: RouteObject[] = [
     element: <Shell />,
     children: [
       { index: true, element: <Today /> },
+      { path: 'welcome', lazy: () => import('../screens/Welcome').then((m) => ({ Component: m.Welcome })) },
       { path: 'session', lazy: () => import('../screens/Session').then((m) => ({ Component: m.Session })) },
       { path: 'practice', lazy: () => import('../screens/Practice').then((m) => ({ Component: m.Practice })) },
       { path: 'log', lazy: () => import('../screens/LogFlight').then((m) => ({ Component: m.LogFlight })) },

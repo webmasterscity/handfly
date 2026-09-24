@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { Plus } from 'lucide-react'
+import { CircleHelp as HelpCircle, Plus } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 import { db } from '../../../core/db/schema'
@@ -19,10 +19,18 @@ export function PeopleHome() {
       <div className="mb-6">
         <EvidenceBadge level={meta.evidence.level} moduleId={meta.id} />
       </div>
-      <ButtonLink to="/m/people/new" block>
-        <Plus className="h-5 w-5" aria-hidden />
-        {t('add')}
-      </ButtonLink>
+      <div className="flex flex-col gap-3">
+        <ButtonLink to="/m/people/new" block>
+          <Plus className="h-5 w-5" aria-hidden />
+          {t('add')}
+        </ButtonLink>
+        {Boolean(people?.length) && (
+          <ButtonLink to="/m/people/quiz" variant="secondary" block>
+            <HelpCircle className="h-5 w-5" aria-hidden />
+            {t('quiz.cta')}
+          </ButtonLink>
+        )}
+      </div>
       <p className="mt-3 text-sm text-ink-dim">{t('privacy')}</p>
 
       <Section title={t('listTitle', { count: people?.length ?? 0 })}>

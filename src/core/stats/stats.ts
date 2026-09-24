@@ -24,6 +24,8 @@ export interface WeekBucket {
 
 export interface Snapshot {
   streak: StreakInfo
+  /** Lunes a domingo de esta semana: qué días hubo práctica (para la tira de la semana). */
+  weekDays: { date: string; active: boolean; today: boolean; future: boolean }[]
   realMinutes: number
   simMinutes: number
   realFlights: number
@@ -163,8 +165,14 @@ export function computeSnapshot(d: {
   const problems = d.calcs.filter((c) => c.mode === 'problem')
   const estimates = d.calcs.filter((c) => c.mode === 'estimate')
 
+  const weekDays = Array.from({ length: 7 }, (_, i) => {
+    const date = dayKey(addDays(thisMonday, i))
+    return { date, active: activeDays.has(date), today: date === today, future: date > today }
+  })
+
   return {
     streak,
+    weekDays,
     realMinutes,
     simMinutes,
     realFlights: real.length,

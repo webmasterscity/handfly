@@ -1,5 +1,5 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { Plus } from 'lucide-react'
+import { Compass, Plus } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 import { db } from '../../../core/db/schema'
@@ -26,10 +26,16 @@ export function NavHome() {
       <div className="mb-6">
         <EvidenceBadge level={meta.evidence.level} moduleId={meta.id} />
       </div>
-      <ButtonLink to="/m/navigation/new" block>
-        <Plus className="h-5 w-5" aria-hidden />
-        {t('plan')}
-      </ButtonLink>
+      <div className="flex flex-col gap-3">
+        <ButtonLink to="/m/navigation/new" block>
+          <Plus className="h-5 w-5" aria-hidden />
+          {t('plan')}
+        </ButtonLink>
+        <ButtonLink to="/m/navigation/compass" variant="secondary" block>
+          <Compass className="h-5 w-5" aria-hidden />
+          {t('compass.title')}
+        </ButtonLink>
+      </div>
 
       <Section title={t('pendingTitle')}>
         {!pending.length ? (

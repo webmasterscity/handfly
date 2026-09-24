@@ -1,6 +1,7 @@
 import { useLiveQuery } from 'dexie-react-hooks'
 import { useTranslation } from 'react-i18next'
 import { db } from '../../../core/db/schema'
+import { useSettings } from '../../../core/settings/settings'
 import { ButtonLink } from '../../../ui/primitives/Button'
 import { EvidenceBadge } from '../../../ui/primitives/EvidenceBadge'
 import { Empty, Page, Rows, Section } from '../../../ui/primitives/Page'
@@ -8,6 +9,7 @@ import { meta } from '../meta'
 
 export function CalcHome() {
   const { t } = useTranslation('calculation')
+  const settings = useSettings()
   const attempts = useLiveQuery(() => db.calcAttempts.orderBy('createdAt').reverse().limit(30).toArray(), [])
   const estimates = attempts?.filter((a) => a.mode === 'estimate') ?? []
 
@@ -20,6 +22,10 @@ export function CalcHome() {
         <ButtonLink to="/m/calculation/practice" block>
           {t('practiceCta')}
         </ButtonLink>
+        <p className="text-center text-sm text-ink-dim">
+          {t('game.level', { level: settings.calcLevel ?? 1 })}
+          {settings.calcBest && ` · ${t('bestRound', { correct: settings.calcBest.correct, seconds: settings.calcBest.seconds })}`}
+        </p>
         <ButtonLink to="/m/calculation/estimate" variant="secondary" block>
           {t('estimateCta')}
         </ButtonLink>

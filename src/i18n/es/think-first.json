@@ -45,5 +45,20 @@
     "under": "Sabías más de lo que creías. Confía un poco más en tu primer intento.",
     "over": "Estabas más seguro de lo que acertaste. Es justo lo que conviene notar."
   },
-  "notFound": "Esta pregunta ya no está abierta"
+  "notFound": "Esta pregunta ya no está abierta",
+  "result": {
+    "title": "¿Qué tan cerca estuviste?",
+    "precision": "Precisión",
+    "tier": {
+      "bullseye": "¡Lo tenías!",
+      "close": "¡Muy cerca!",
+      "fair": "A medio camino",
+      "learning": "Lejos, y ahora ya lo sabes"
+    },
+    "calibrationTitle": "Tu seguridad frente a tu acierto",
+    "sure": "Tu seguridad",
+    "close": "Tu acierto",
+    "cardMade": "Hicimos una tarjeta con lo que aprendiste: te la preguntaremos justo antes de que se te olvide.",
+    "done": "Listo"
+  }
 }

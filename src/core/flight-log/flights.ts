@@ -30,16 +30,20 @@ export interface Rank {
   flights: number
 }
 
-// El rango sube solo con práctica real fuera de la app. Umbrales pensados para que el
-// primer ascenso llegue en la primera semana y los siguientes pidan constancia, no atracones.
+// El rango sube solo con práctica real fuera de la app. El primer ascenso llega con la
+// primera misión cumplida (una victoria temprana engancha más que cualquier explicación);
+// los siguientes piden constancia, no atracones.
 export const RANKS: Rank[] = [
   { id: 'student', hours: 0, flights: 0 },
-  { id: 'private', hours: 1, flights: 5 },
+  { id: 'rookie', hours: 0, flights: 1 },
+  { id: 'private', hours: 1, flights: 6 },
   { id: 'commercial', hours: 5, flights: 20 },
   { id: 'firstOfficer', hours: 15, flights: 60 },
   { id: 'captain', hours: 40, flights: 150 },
   { id: 'instructor', hours: 100, flights: 365 },
 ]
+
+export const rankIndex = (id: string) => RANKS.findIndex((r) => r.id === id)
 
 export interface RankProgress {
   rank: Rank
@@ -57,7 +61,8 @@ export function rankFor(realMinutes: number, realFlights: number): RankProgress 
   const rank = RANKS[index]
   const next = RANKS[index + 1]
   if (!next) return { rank, progress: 1 }
-  const ph = (hours - rank.hours) / (next.hours - rank.hours)
-  const pf = (realFlights - rank.flights) / (next.flights - rank.flights)
+  // Un requisito que no cambia entre rangos (p. ej. 0 horas para Piloto novato) ya está cumplido.
+  const ph = next.hours > rank.hours ? (hours - rank.hours) / (next.hours - rank.hours) : 1
+  const pf = next.flights > rank.flights ? (realFlights - rank.flights) / (next.flights - rank.flights) : 1
   return { rank, next, progress: Math.max(0, Math.min(1, Math.min(ph, pf))) }
 }

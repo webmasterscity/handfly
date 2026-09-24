@@ -1,21 +1,36 @@
 import { useLiveQuery } from 'dexie-react-hooks'
-import { Award, Lock } from 'lucide-react'
+import { Award, Lock, Trophy } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router'
 import { ACHIEVEMENTS } from '../core/achievements/achievements'
 import { db } from '../core/db/schema'
+import { rankIndex } from '../core/flight-log/flights'
+import { findTemplate, missionTitle } from '../core/session/session'
+import { useSettings } from '../core/settings/settings'
+import { ALL_MISSIONS } from '../modules/registry'
+import { Wings } from '../ui/instruments/Wings'
 import { loadSnapshot } from '../core/stats/stats'
 import { Bars } from '../ui/charts/Bars'
-import { Arc } from '../ui/instruments/Arc'
 import { Page, Rows, Section } from '../ui/primitives/Page'
 
 export function Progress() {
   const { t, i18n } = useTranslation()
   const snap = useLiveQuery(() => loadSnapshot(), [])
   const unlocked = useLiveQuery(() => db.achievements.toArray(), [])
+  const settings = useSettings()
+  // Mejor puntuación por misión jugada («apuesta y comprueba»).
+  const bests = useLiveQuery(async () => {
+    const best = new Map<string, number>()
+    for (const m of await db.missions.filter((m) => m.result !== undefined).toArray()) {
+      best.set(m.templateId, Math.max(best.get(m.templateId) ?? 0, m.result!.score))
+    }
+    return [...best.entries()].sort((a, b) => b[1] - a[1])
+  }, [])
   if (!snap || !unlocked) return null
 
   const nf = new Intl.NumberFormat(i18n.language, { maximumFractionDigits: 1 })
+  // Por debajo de una hora, minutos: «0 h» tras la primera misión desanima.
+  const flightTime = (min: number) => (min < 60 ? `${Math.round(min)} min` : `${nf.format(min / 60)} h`)
   const pct = (x?: number) => (x === undefined ? '—' : `${Math.round(x * 100)} %`)
   const dayFmt = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'numeric' })
   const unlockedIds = new Set(unlocked.map((a) => a.id))
@@ -41,30 +56,52 @@ export function Progress() {
 
   return (
     <Page title={t('progress.title')} lead={t('progress.lead')}>
+      <section className="mb-4 flex flex-col items-center rounded-3xl border border-line bg-panel px-4 pt-5 pb-4 text-center" aria-labelledby="rank-title">
+        <Wings rankIndex={rankIndex(snap.rank.rank.id)} size={180} />
+        <h2 id="rank-title" className="mt-2 text-2xl">
+          {t(`ranks.${snap.rank.rank.id}`)}
+        </h2>
+        {snap.rank.next ? (
+          <>
+            <div
+              className="mt-3 h-2.5 w-full max-w-xs overflow-hidden rounded-full bg-panel-2"
+              role="progressbar"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round(snap.rank.progress * 100)}
+              aria-label={t('progress.rankProgressAria', { pct: Math.round(snap.rank.progress * 100) })}
+            >
+              <div className="h-full rounded-full bg-amber" style={{ width: `${Math.max(3, Math.round(snap.rank.progress * 100))}%` }} />
+            </div>
+            <p className="mt-2 text-sm text-ink-dim">
+              {t('progress.toNext', {
+                rank: t(`ranks.${snap.rank.next.id}`),
+                needs: [
+                  snap.rank.next.flights > snap.realFlights && t('progress.needFlights', { count: snap.rank.next.flights - snap.realFlights }),
+                  snap.rank.next.hours * 60 > snap.realMinutes && t('progress.needMinutes', { count: Math.ceil(snap.rank.next.hours * 60 - snap.realMinutes) }),
+                ]
+                  .filter(Boolean)
+                  .join(t('progress.and')),
+              })}
+            </p>
+          </>
+        ) : (
+          <p className="mt-2 text-sm text-ink-dim">{t('celebrate.topRank')}</p>
+        )}
+      </section>
+
       <dl className="grid grid-cols-2 gap-3">
         <div className="rounded-2xl border border-line bg-panel p-4">
           <dt className="text-sm text-ink-dim">{t('progress.realHours')}</dt>
-          <dd className="readout text-3xl">{nf.format(snap.realMinutes / 60)} h</dd>
+          <dd className="readout text-3xl">{flightTime(snap.realMinutes)}</dd>
           <dd className="text-sm text-ink-dim">{t('progress.realFlights', { count: snap.realFlights })}</dd>
         </div>
         <div className="rounded-2xl border border-line bg-panel p-4">
           <dt className="text-sm text-ink-dim">{t('progress.simHours')}</dt>
-          <dd className="readout text-3xl text-ink-dim">{nf.format(snap.simMinutes / 60)} h</dd>
+          <dd className="readout text-3xl text-ink-dim">{flightTime(snap.simMinutes)}</dd>
           <dd className="text-sm text-ink-dim">{t('progress.simHint')}</dd>
         </div>
-        <div className="flex items-center gap-3 rounded-2xl border border-line bg-panel p-4">
-          <Arc value={snap.rank.progress} label={t('progress.rankProgressAria', { pct: Math.round(snap.rank.progress * 100) })} />
-          <div>
-            <dt className="text-sm text-ink-dim">{t('progress.rank')}</dt>
-            <dd className="font-display font-bold">{t(`ranks.${snap.rank.rank.id}`)}</dd>
-            {snap.rank.next && (
-              <dd className="text-xs text-ink-dim">
-                {t('progress.nextRank', { rank: t(`ranks.${snap.rank.next.id}`), hours: snap.rank.next.hours, flights: snap.rank.next.flights })}
-              </dd>
-            )}
-          </div>
-        </div>
-        <div className="rounded-2xl border border-line bg-panel p-4">
+        <div className="col-span-2 rounded-2xl border border-line bg-panel p-4">
           <dt className="text-sm text-ink-dim">{t('progress.streak')}</dt>
           <dd className="readout text-3xl">{snap.streak.current}</dd>
           <dd className="text-sm text-ink-dim">
@@ -108,6 +145,22 @@ export function Progress() {
         )}
       </Section>
 
+      <Section title={t('progress.recordsTitle')}>
+        {!bests?.length && !settings.calcBest && settings.compassBest === undefined ? (
+          <p className="text-ink-dim">{t('progress.recordsEmpty')}</p>
+        ) : (
+          <Rows>
+            {settings.calcBest && (
+              <RecordRow label={t('progress.recordCalc')} value={t('progress.recordCalcValue', { correct: settings.calcBest.correct, seconds: settings.calcBest.seconds })} />
+            )}
+            {settings.compassBest !== undefined && <RecordRow label={t('progress.recordCompass')} value={String(settings.compassBest)} />}
+            {bests?.map(([templateId, score]) => (
+              <RecordRow key={templateId} label={missionTitle(findTemplate(ALL_MISSIONS, templateId))} value={String(score)} />
+            ))}
+          </Rows>
+        )}
+      </Section>
+
       <Section title={t('progress.modulesTitle')}>
         <Rows>
           {metrics.map((m) => (
@@ -141,5 +194,17 @@ export function Progress() {
         {hiddenLocked > 0 && <p className="mt-3 text-sm text-ink-dim">{t('achievements.hiddenLeft', { count: hiddenLocked })}</p>}
       </Section>
     </Page>
+  )
+}
+
+function RecordRow({ label, value }: { label: string; value: string }) {
+  return (
+    <li className="flex items-center justify-between gap-3 px-4 py-3">
+      <span className="flex min-w-0 items-center gap-2">
+        <Trophy className="h-4 w-4 shrink-0 text-amber" aria-hidden />
+        <span className="truncate font-bold">{label}</span>
+      </span>
+      <span className="readout shrink-0 text-lg">{value}</span>
+    </li>
   )
 }

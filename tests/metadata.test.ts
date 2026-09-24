@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { FOUNDATIONS } from '../src/core/evidence/foundations'
 import { LANGUAGES, type Localized } from '../src/core/modules/types'
+import { needsBet } from '../src/core/missions/scoring'
 import { SURPRISE_MISSIONS } from '../src/core/missions/templates'
 import { resources } from '../src/i18n'
 import { ALL_MISSIONS, MODULES } from '../src/modules/registry'
@@ -77,6 +78,11 @@ describe('i18n', () => {
         expect(steps.length, `${where}.steps`).toBeLessThanOrEqual(4)
         // Si se hace en la app, los pasos tienen que decir que se toca «Empezar».
         if (m.to) expect(steps.some((s) => /Empezar|Start/.test(String(s))), `${where}: menciona «Empezar»`).toBe(true)
+        // Las que se juegan dicen qué se apuesta y qué se comprueba.
+        if (m.check && m.check.kind !== 'bearing') expect(typeof text?.check, `${where}.check`).toBe('string')
+        if (needsBet(m.check) || (m.check?.kind === 'count' && m.check.total === undefined) || m.check?.kind === 'minutesUntil') {
+          expect(typeof text?.bet, `${where}.bet`).toBe('string')
+        }
         return steps.length
       })
       expect(new Set(stepCounts).size, `${m.textKey}: mismos pasos en todos los idiomas`).toBe(1)

@@ -12,10 +12,10 @@ export const calculation: ModuleDefinition = {
     { path: 'estimate', lazy: () => import('./screens/CalcEstimate').then((m) => ({ Component: m.CalcEstimate })) },
   ],
   missions: [
-    { id: 'cc-groceries', moduleId: 'calculation', textKey: 'calculation.groceries', minutes: 10 },
-    { id: 'cc-tip', moduleId: 'calculation', textKey: 'calculation.tip', minutes: 3 },
-    { id: 'cc-budget', moduleId: 'calculation', textKey: 'calculation.budget', minutes: 10 },
-    { id: 'cc-arrival', moduleId: 'calculation', textKey: 'calculation.arrival', minutes: 3 },
-    { id: 'cc-estimate', moduleId: 'calculation', textKey: 'calculation.estimate', minutes: 5 },
+    { id: 'cc-groceries', moduleId: 'calculation', textKey: 'calculation.groceries', minutes: 10, check: { kind: 'number', unit: 'money', maxError: 0.25 } },
+    { id: 'cc-tip', moduleId: 'calculation', textKey: 'calculation.tip', minutes: 3, check: { kind: 'number', unit: 'money', maxError: 0.25 } },
+    { id: 'cc-budget', moduleId: 'calculation', textKey: 'calculation.budget', minutes: 10, check: { kind: 'number', unit: 'money', maxError: 0.5 } },
+    { id: 'cc-arrival', moduleId: 'calculation', textKey: 'calculation.arrival', minutes: 3, check: { kind: 'time' } },
+    { id: 'cc-estimate', moduleId: 'calculation', textKey: 'calculation.estimate', minutes: 5, check: { kind: 'number', unit: 'plain', maxError: 1 } },
   ],
 }

@@ -37,6 +37,7 @@
   },
   "ranks": {
     "student": "Alumno piloto",
+    "rookie": "Piloto novato",
     "private": "Piloto privado",
     "commercial": "Piloto comercial",
     "firstOfficer": "Primer oficial",
@@ -91,7 +92,10 @@
       "months_one": "en {{count}} mes",
       "months_other": "en {{count}} meses"
     },
-    "answer": "Respuesta"
+    "answer": "Respuesta",
+    "combo": "{{count}} seguidas recordadas",
+    "matched": "¡La tenías! «{{attempt}}»",
+    "notMatched": "No coincide del todo. Tú dijiste:"
   },
   "session": {
     "simFlightTitle_one": "Sesión diaria: {{count}} repaso",
@@ -113,14 +117,15 @@
     "missionTitle": "Tu misión de hoy",
     "land": "Terminar la sesión",
     "landedTitle": "Aterrizaje completado",
-    "landedReviews": "Recordaste {{recalled}} de {{total}}.",
     "applyLabel": "Ahora, en tu día:",
     "applyGeneric": "La próxima vez que vayas a abrir la IA, el mapa o la calculadora, inténtalo tú primero.",
     "goodbye": "Eso es todo por hoy. La práctica que cuenta es la de afuera. Nos vemos mañana.",
     "close": "Cerrar",
     "missionLeadApp": "Esta misión se hace aquí mismo. Toca «Empezar» y sigue los pasos: se marca sola al terminar.",
     "missionLeadLife": "Esta misión se hace en tu día, fuera de la app. Léela ahora; cuando la hagas, vuelve y toca «¡La cumplí!».",
-    "applyHint": "Cuando la hagas, vuelve a Handfly y tócala en la pantalla Hoy para marcarla."
+    "applyHint": "Cuando la hagas, vuelve a Handfly y tócala en la pantalla Hoy para marcarla.",
+    "landedReviewsShort": "tarjetas recordadas antes de mirar",
+    "missionLeadDone": "Tu misión de hoy ya está cumplida. ¡Buen vuelo! Solo queda aterrizar."
   },
   "missions": {
     "label": "Misión",
@@ -129,113 +134,166 @@
     "minutesChip": "≈ {{count}} min",
     "whereApp": "Aquí en la app",
     "whereLife": "En tu día",
-    "howTo": "Cómo se hace",
+    "scored": "Con puntuación",
+    "from": "Despegas de",
+    "to": "Aterrizas en",
+    "routeAria": "De {{from}} a {{to}}",
+    "howTo": "Cómo se juega",
     "stepN": "Paso {{n}}:",
-    "exampleLabel": "Ejemplo",
-    "doneWhen": "Está cumplida:",
+    "exampleLabel": "Ver un ejemplo",
+    "doneWhen": "Está cumplida",
     "whyLabel": "¿Por qué sirve?",
     "evidenceLink": "Ver los estudios que lo respaldan",
     "start": "Empezar",
-    "autoHint": "Se marca como cumplida sola cuando termines en la app.",
+    "autoHint": "Se marca sola cuando termines en la app.",
+    "placeBet": "Anotar mi apuesta",
+    "betHint": "Anótala en el momento del paso 2. Después compruebas cuánto acertaste.",
+    "checkNow": "Comprobar",
     "didIt": "¡La cumplí!",
-    "allSteps": "¡Todos los pasos listos!",
     "swap": "Hoy no puedo: dame otra",
-    "reportTitle": "¡Bien hecho! Guárdala en tu registro.",
-    "minutes": "¿Cuántos minutos le dedicaste?",
-    "note": "¿Cómo te fue? (opcional)",
-    "noteHint": "Qué pasó, qué te costó, qué harías distinto.",
-    "logIt": "Guardar",
     "autoDone": "¡Misión cumplida! «{{title}}»",
-    "doneLabel": "¡Misión cumplida!",
-    "doneMinutes_one": "Sumaste {{count}} minuto de vuelo real.",
-    "doneMinutes_other": "Sumaste {{count}} minutos de vuelo real.",
+    "stamp": "Cumplida",
+    "precision": "Precisión",
+    "tier": {
+      "bullseye": "¡Clavado!",
+      "close": "¡Muy cerca!",
+      "fair": "Buen intento",
+      "learning": "Así se aprende: la próxima, más cerca"
+    },
+    "newRecord": "¡Récord!",
+    "bestSoFar": "Tu mejor marca aquí: {{best}}",
+    "doneMinutes_one": "+{{count}} minuto de vuelo real",
+    "doneMinutes_other": "+{{count}} minutos de vuelo real",
     "doneLogged": "Quedó en tu registro de vuelo.",
     "towardRank": "Camino a {{rank}}: {{pct}} %",
     "doneBye": "Eso es todo por hoy. Mañana te espera otra misión.",
+    "play": {
+      "betNumber": "Tu apuesta",
+      "betTime": "¿A qué hora?",
+      "betList": "De memoria, uno por uno",
+      "betText": "Tu respuesta",
+      "betNote": "Tu apuesta queda guardada. Nadie la ve más que tú.",
+      "saveBet": "Guardar mi apuesta",
+      "checkNumber": "El dato real",
+      "checkTime": "La hora real",
+      "checkList": "Toca los que fallaste",
+      "listHint": "Los verdes son aciertos. Toca uno para marcarlo como fallo.",
+      "missed": "¿Cuántos se te escaparon?",
+      "countTotal": "¿Cuántos había?",
+      "countGot": "¿Cuántos acertaste?",
+      "checkCloseness": "¿Qué tan cerca estuviste?",
+      "closenessLow": "Nada que ver",
+      "closenessHigh": "Exacto",
+      "checkPeeks": "¿Cuántas veces miraste?",
+      "untilTarget": "¿A qué hora es?",
+      "untilMine": "Tus minutos, de cabeza",
+      "seeScore": "Ver mi puntuación",
+      "yourBet": "Tu apuesta",
+      "addItem": "Añadir",
+      "removeItem": "Quitar «{{item}}»",
+      "items_one": "{{count}} cosa",
+      "items_other": "{{count}} cosas",
+      "minutes_one": "{{count}} minuto",
+      "minutes_other": "{{count}} minutos",
+      "lineNumber": "Apostaste {{bet}} · Real {{actual}}",
+      "lineTime": "Apostaste {{bet}} · Real {{actual}}",
+      "lineCount": "{{got}} de {{total}}",
+      "lineCloseness": "Cercanía {{closeness}} de 5",
+      "linePeeks_one": "Miraste {{count}} vez",
+      "linePeeks_other": "Miraste {{count}} veces",
+      "lineNoPeeks": "Sin mirar ni una vez",
+      "lineUntil": "Tu cuenta: {{mine}} min · Real: {{actual}} min",
+      "lineBearing": "Te desviaste {{degrees}}° · Tu casa está a {{km}} km"
+    },
     "thinkFirst": {
       "beforeChat": {
         "title": "Tú primero, la IA después",
-        "goal": "Responder con tu propia cabeza una pregunta, antes de buscarla en una IA o en Google.",
+        "goal": "Responde con tu cabeza una pregunta antes de buscarla. Dos minutos.",
         "steps": [
           "Piensa en algo que de verdad quieras saber: de tu trabajo, de tu casa o por pura curiosidad.",
-          "Toca «Empezar» y escribe la pregunta tal como se la harías a la IA.",
-          "Escribe tu mejor respuesta, aunque no estés seguro, y marca qué tan seguro estás. Luego toca «Guardar mi intento»."
+          "Toca «Empezar» y escribe la pregunta como se la harías a la IA.",
+          "Escribe tu mejor respuesta, aunque no estés seguro, y di qué tan seguro estás. Guarda."
         ],
-        "example": "Pregunta: «¿Cada cuánto se riega un cactus?». Tu intento: «Creo que una vez al mes, porque aguanta la sequía». Seguridad: 2 de 5.",
+        "example": "«¿Cada cuánto se riega un cactus?». Tu intento: «Una vez al mes, aguanta la sequía». Seguridad: 2 de 5.",
         "done": "cuando guardas tu intento. Se marca sola.",
-        "why": "Intentar responder antes de ver la respuesta, aunque te equivoques, hace que después la recuerdes mucho mejor."
+        "why": "Intentar responder antes de ver la respuesta, aunque falles, hace que después la recuerdes mucho mejor."
       },
       "sayIt": {
         "title": "Adivina antes de buscar",
-        "goal": "La próxima vez que vayas a buscar un dato en el teléfono, di primero tu respuesta.",
+        "goal": "Hoy, antes de buscar un dato en el teléfono, apuesta tu respuesta.",
         "steps": [
-          "Hoy, cuando te surja una duda (una fecha, un dato, cómo se hace algo), no la busques todavía.",
-          "Di en voz alta, o escribe en un papel, lo que crees que es la respuesta.",
-          "Ahora sí, búscala y mira qué tan cerca estuviste."
+          "Cuando te surja una duda (una fecha, un dato, cómo se hace algo), no la busques todavía.",
+          "Anota aquí tu respuesta: esa es tu apuesta.",
+          "Búscala y di qué tan cerca estuviste."
         ],
-        "example": "«¿En qué año llegó el hombre a la Luna?». Dices: «1972». Buscas: fue en 1969. ¡Casi!",
-        "done": "cuando hiciste una vez las tres cosas: adivinar, buscar y comparar.",
-        "why": "Arriesgar una respuesta antes de verla deja el dato mejor guardado en la memoria, aunque falles."
+        "example": "«¿En qué año llegó el hombre a la Luna?». Apuestas 1972. Era 1969. ¡Casi!",
+        "done": "cuando comparas tu apuesta con la respuesta real.",
+        "why": "Arriesgar una respuesta antes de verla deja el dato mejor guardado en la memoria, aunque falles.",
+        "bet": "Tu respuesta, antes de buscar",
+        "check": "¿Qué tan cerca estuviste?"
       },
       "solveAlone": {
         "title": "Un problema sin ayuda",
-        "goal": "Resolver por tu cuenta un problema real de trabajo o de estudio, y usar la IA solo para comparar al final.",
+        "goal": "Resuelve tú un problema real y deja la IA solo para comparar al final.",
         "steps": [
-          "Elige un problema de hoy que normalmente le pasarías a la IA: un correo difícil, un ejercicio, una duda del trabajo.",
-          "Trabájalo tú solo al menos 15 minutos, en papel o en tu cabeza.",
-          "Toca «Empezar», escribe el problema y tu solución, y guárdala.",
-          "Si quieres, al final pregúntale a la IA y compara."
+          "Elige un problema de hoy que le pasarías a la IA: un correo difícil, un ejercicio, una duda del trabajo.",
+          "Trabájalo solo al menos 15 minutos, en papel o en tu cabeza.",
+          "Toca «Empezar», escribe el problema y tu solución, y guárdala. Luego, si quieres, compara con la IA."
         ],
-        "example": "Problema: «¿Cómo repartir las vacaciones del equipo sin que se crucen?». Tu solución: una tabla con los meses donde cada quien elige por turnos.",
-        "done": "cuando guardas tu solución en Pensar primero. Se marca sola.",
-        "why": "El esfuerzo de resolver algo tú mismo es justo lo que mantiene viva la habilidad; si siempre la resuelve otro, se oxida."
+        "example": "«¿Cómo repartir las vacaciones del equipo sin que se crucen?». Tu solución: una tabla por meses y cada quien elige por turnos.",
+        "done": "cuando guardas tu solución. Se marca sola.",
+        "why": "El esfuerzo de resolver algo tú mismo es justo lo que mantiene viva la habilidad."
       }
     },
     "recall": {
       "explain": {
         "title": "Cuéntaselo a alguien",
-        "goal": "Explicar de memoria algo que aprendiste esta semana.",
+        "goal": "Explica de memoria algo que aprendiste esta semana.",
         "steps": [
-          "Elige algo que aprendiste o leíste estos días: una noticia, una receta, algo del trabajo.",
-          "Cuéntaselo a alguien (en persona, por llamada o en un audio) sin mirar notas ni el teléfono.",
-          "Después revisa de dónde lo sacaste y fíjate qué se te olvidó o qué dijiste mal."
+          "Elige algo que aprendiste estos días: una noticia, una receta, algo del trabajo.",
+          "Cuéntaselo a alguien (en persona, por llamada o en un audio) sin mirar notas.",
+          "Revisa la fuente y di qué tanto de lo que contaste era correcto."
         ],
-        "example": "Le cuentas a un amigo lo que leíste el lunes sobre las nuevas multas de tránsito, y luego ves que olvidaste el valor de la multa.",
-        "done": "cuando terminaste de explicarlo y revisaste qué se te escapó.",
-        "why": "Sacar de la memoria lo aprendido lo fija mucho más que volver a leerlo."
+        "example": "Le cuentas a un amigo lo de las nuevas multas de tránsito. Al revisar, ves que olvidaste el valor de la multa.",
+        "done": "cuando lo explicaste y revisaste qué se te escapó.",
+        "why": "Sacar de la memoria lo aprendido lo fija mucho más que volver a leerlo.",
+        "check": "¿Qué tanto de lo que contaste era correcto?"
       },
       "agenda": {
         "title": "Tu día de memoria",
-        "goal": "Recordar lo que tienes hoy antes de mirar la agenda.",
+        "goal": "¿Qué tienes hoy? Dilo antes de abrir la agenda.",
         "steps": [
-          "Antes de abrir tu agenda o tu calendario, detente un momento.",
-          "Di o escribe todo lo que tienes hoy: citas, pendientes y horas.",
-          "Abre la agenda y compara. ¿Qué se te escapó?"
+          "Antes de abrir tu agenda, anota aquí todo lo que recuerdas que tienes hoy.",
+          "Abre la agenda y compara: marca lo que acertaste y cuenta lo que se te escapó."
         ],
-        "example": "«Reunión a las 10, recoger a los niños a las 3, pagar la luz». La agenda dice que también tenías dentista a las 5.",
-        "done": "cuando comparaste tu lista con la agenda.",
-        "why": "Cada vez que intentas recordar algo antes de mirarlo, tu memoria practica. Mirar primero no la ejercita."
+        "example": "Anotas: reunión a las 10, recoger a los niños, pagar la luz. La agenda dice que también tenías dentista.",
+        "done": "cuando comparas tu lista con la agenda.",
+        "why": "Cada vez que intentas recordar antes de mirar, tu memoria practica. Mirar primero no la ejercita.",
+        "bet": "Lo que tienes hoy, de memoria (uno por uno)",
+        "check": "Toca lo que no estaba en la agenda"
       },
       "shopping": {
         "title": "Compras de memoria",
-        "goal": "Hacer la compra recordando la lista, sin sacarla.",
+        "goal": "Haz la compra sin sacar la lista del bolsillo.",
         "steps": [
           "Escribe tu lista como siempre y léela una vez con calma.",
-          "Guárdala en el bolsillo y haz la compra sin sacarla.",
-          "Antes de pagar, mira la lista y revisa si falta algo."
+          "Guárdala y haz la compra sin sacarla.",
+          "Antes de pagar, revisa la lista y cuenta cuántas cosas recordaste."
         ],
-        "example": "Lista de 8 cosas: recuerdas 7. Antes de pagar ves que olvidaste el café y vas por él.",
-        "done": "cuando compraste sin mirar la lista y la revisaste solo al final.",
-        "why": "Tratar de recordar la lista es un repaso de verdad: cada intento la graba mejor."
+        "example": "Lista de 8 cosas: recuerdas 7 y en la caja ves que faltaba el café.",
+        "done": "cuando compraste sin mirar y revisaste la lista al final.",
+        "why": "Tratar de recordar la lista es un repaso de verdad: cada intento la graba mejor.",
+        "bet": "¿Cuántas cosas tenía la lista?",
+        "check": "¿Cuántas recordaste sin mirar?"
       }
     },
     "people": {
       "greet": {
         "title": "Llámalo por su nombre",
-        "goal": "Saludar por su nombre a alguien que conociste hace poco.",
+        "goal": "Saluda por su nombre a alguien que conociste hace poco.",
         "steps": [
           "Piensa en alguien que conociste hace poco: un vecino, alguien del trabajo o de la iglesia.",
-          "Antes de verlo, recuerda su nombre. Si lo registraste en Nombres de personas, repásalo allí.",
+          "Antes de verlo, recuerda su nombre. Si lo registraste en la app, repásalo allí.",
           "Salúdalo usando su nombre."
         ],
         "example": "«¡Buenos días, Andrés! ¿Cómo le fue con la mudanza?»",
@@ -244,188 +302,202 @@
       },
       "register": {
         "title": "Un nombre nuevo",
-        "goal": "Aprenderte el nombre de alguien que conozcas hoy.",
+        "goal": "Aprende el nombre de alguien que conozcas hoy.",
         "steps": [
-          "Cuando te presenten a alguien, repite su nombre en la conversación: «Mucho gusto, Laura».",
+          "Cuando te presenten a alguien, repite su nombre: «Mucho gusto, Laura».",
           "Fíjate en algo que la distinga y en algo de lo que hablaron.",
-          "Después toca «Empezar» y regístrala. La app te guía para crear una imagen que te ayude a recordar el nombre."
+          "Luego toca «Empezar» y regístrala: la app te ayuda a crear una imagen para no olvidar el nombre."
         ],
-        "example": "Laura, gafas rojas, trabaja en una panadería. Imagen: una corona de laurel gigante con gafas rojas, saliendo del horno.",
-        "done": "cuando guardas a la persona en la app. Se marca sola.",
+        "example": "Laura, gafas rojas, trabaja en una panadería. Imagen: una corona de laurel con gafas rojas saliendo del horno.",
+        "done": "cuando la guardas en la app. Se marca sola.",
         "why": "Unir el nombre a una imagen exagerada es una técnica para recordar nombres estudiada desde hace décadas."
       },
       "meeting": {
         "title": "Repasa quién va",
-        "goal": "Antes de un encuentro con varias personas, repasar sus nombres.",
+        "goal": "Antes de una reunión o comida, di los nombres de todos.",
         "steps": [
-          "Antes de una reunión, clase o comida con varias personas, busca un minuto.",
-          "Sin mirar nada, di el nombre de cada persona que va a estar.",
-          "Si alguno se te escapa, averígualo y úsalo durante el encuentro."
+          "Antes del encuentro, anota aquí, de memoria, los nombres de quienes estarán.",
+          "En el encuentro, comprueba: marca los que acertaste y cuenta los que se te escaparon.",
+          "Usa al menos un nombre en la conversación."
         ],
-        "example": "Reunión de padres: «Carolina, Jorge, la profesora Inés…». No recuerdas al papá de Tomás; lo averiguas y lo saludas por su nombre.",
-        "done": "cuando repasaste los nombres y usaste al menos uno.",
-        "why": "Recordar los nombres justo antes de necesitarlos es un repaso a tiempo, que es cuando más sirve."
+        "example": "Anotas: Carolina, Jorge, la profesora Inés. Llega también el papá de Tomás, y no recordabas su nombre.",
+        "done": "cuando compruebas tu lista en el encuentro.",
+        "why": "Recordar los nombres justo antes de necesitarlos es un repaso a tiempo, que es cuando más sirve.",
+        "bet": "¿Quiénes van a estar? (uno por uno)",
+        "check": "Toca los que no estaban"
       }
     },
     "navigation": {
       "plan": {
         "title": "Un trayecto sin GPS",
-        "goal": "Hacer un trayecto de hoy guiándote solo por lo que planeaste antes de salir.",
+        "goal": "Planea con el mapa, guárdalo y llega sin mirarlo.",
         "steps": [
           "Elige un trayecto real de hoy, mejor si no lo conoces bien.",
-          "Toca «Empezar», mira el mapa y anota de 3 a 6 lugares que verás en el camino: un parque, una gasolinera, dónde giras.",
-          "Haz el trayecto sin GPS. Si te pierdes, pregunta o mira el mapa un segundo.",
-          "Al llegar, abre la ruta en la app y cuenta cómo te fue."
+          "Toca «Empezar», mira el mapa y anota de 3 a 6 lugares del camino: un parque, una gasolinera, dónde giras.",
+          "Haz el trayecto sin GPS y, al llegar, cuéntale a la app cómo te fue."
         ],
-        "example": "Casa → consultorio nuevo: la iglesia, giro a la derecha en la farmacia, sigo hasta el puente, edificio azul.",
+        "example": "Casa → consultorio nuevo: la iglesia, a la derecha en la farmacia, hasta el puente, edificio azul.",
         "done": "cuando cuentas cómo te fue sin haber seguido el GPS. Se marca sola.",
         "why": "Ubicarte por tu cuenta ejercita la parte del cerebro que arma tu mapa mental. Seguir el GPS casi no la usa."
       },
       "return": {
         "title": "Otro camino a casa",
-        "goal": "Volver a casa por un camino distinto, sin mirar el mapa.",
+        "goal": "Vuelve a casa por otra ruta, sin mapa.",
         "steps": [
-          "Hoy, al volver a casa, cambia una parte del camino de siempre. Hazlo de día y por una zona que conozcas.",
+          "Al volver hoy, cambia una parte del camino de siempre. De día y por una zona que conozcas.",
           "Guíate por lo que sabes: hacia dónde queda tu casa, las calles grandes, los lugares que reconoces.",
-          "Mira el mapa solo si de verdad te pierdes."
+          "Al llegar, di cuántas veces miraste el mapa. Cero es la puntuación perfecta."
         ],
         "example": "En vez de bajar por la avenida, tomas la calle del parque y sales dos cuadras más allá.",
-        "done": "cuando llegaste a casa por otro camino sin seguir el mapa.",
-        "why": "Descubrir una ruta nueva por tu cuenta amplía tu mapa mental; repetir siempre la misma no lo hace."
+        "done": "cuando llegaste por otro camino.",
+        "why": "Descubrir una ruta nueva por tu cuenta amplía tu mapa mental; repetir siempre la misma no lo hace.",
+        "check": "¿Cuántas veces miraste el mapa?"
       },
       "landmarks": {
         "title": "Cinco señales en el camino",
-        "goal": "Fijarte en lo que ves en un trayecto que haces siempre.",
+        "goal": "Fíjate en cinco cosas de un trayecto de siempre y recuérdalas en orden.",
         "steps": [
           "En un trayecto que haces a menudo, busca 5 cosas que te sirvan de señal: un árbol grande, un letrero, un mural.",
-          "Al llegar, escríbelas en orden en un papel o en tus notas.",
-          "La próxima vez que pases, comprueba si el orden era correcto."
+          "Al llegar, anótalas aquí en orden, sin mirar atrás.",
+          "La próxima vez que pases, comprueba cuáles acertaste."
         ],
         "example": "Panadería de la esquina, semáforo largo, iglesia amarilla, puente, gasolinera.",
-        "done": "cuando anotaste las 5 señales en orden.",
-        "why": "Quien se orienta bien se fija en puntos de referencia. Es una costumbre que se aprende practicándola."
+        "done": "cuando compruebas tu lista en el camino.",
+        "why": "Quien se orienta bien se fija en puntos de referencia. Es una costumbre que se aprende practicándola.",
+        "bet": "Tus señales, en orden",
+        "check": "Toca las que no eran así"
       },
       "pointHome": {
-        "title": "¿Hacia dónde queda tu casa?",
-        "goal": "Adivinar hacia dónde queda tu casa desde un lugar nuevo.",
+        "title": "¿Dónde está tu casa?",
+        "goal": "Desde un lugar nuevo, apunta con el teléfono hacia tu casa. La brújula te dice cuánto acertaste.",
         "steps": [
-          "Cuando salgas de un lugar al que no vas a menudo, detente un momento.",
-          "Sin mirar el teléfono, señala con la mano hacia dónde crees que está tu casa.",
-          "Ahora abre el mapa y comprueba. ¿Qué tan cerca estuviste?"
+          "La primera vez, estando en casa, toca «Empezar» y guarda dónde queda.",
+          "Cuando estés en un lugar al que no vas a menudo, toca «Empezar».",
+          "Sin mirar el mapa, apunta el teléfono hacia tu casa y toca «Aquí está»."
         ],
-        "example": "Sales de un centro comercial y señalas a la izquierda. El mapa dice que era casi de frente: te desviaste un poco.",
-        "done": "cuando señalaste y lo comprobaste en el mapa.",
-        "why": "Adivinar y comprobar es la forma más directa de afinar tu sentido de orientación."
+        "example": "Sales de un centro comercial, apuntas hacia la izquierda y la brújula dice que te desviaste 25°. ¡Nada mal!",
+        "done": "cuando apuntas y ves tu resultado. Se marca sola.",
+        "why": "Señalar hacia un lugar que no ves es justo como los estudios miden el sentido de orientación. Adivinar y comprobar lo afina."
       }
     },
     "writing": {
       "message": {
         "title": "Con tus palabras",
-        "goal": "Escribir un mensaje importante sin IA y sin las sugerencias del teclado.",
+        "goal": "Escribe un mensaje importante sin IA y sin las sugerencias del teclado.",
         "steps": [
           "Elige un mensaje de hoy que te importe: una felicitación, una disculpa, una respuesta al jefe.",
-          "Escríbelo tú de principio a fin, sin pedírselo a la IA y sin tocar las palabras que sugiere el teclado.",
-          "Léelo una vez, corrige lo que quieras y envíalo."
+          "Escríbelo tú de principio a fin, sin tocar las palabras que sugiere el teclado.",
+          "Léelo una vez, corrige y envíalo."
         ],
         "example": "Un mensaje de cumpleaños para tu tía que no sea «¡Feliz cumple!», sino algo que solo tú le dirías.",
         "done": "cuando enviaste un mensaje escrito enteramente por ti.",
-        "why": "Escribir es pensar: poner tus ideas en orden con tus palabras es la habilidad que se pierde si siempre escribe otro."
+        "why": "Escribir es pensar: poner tus ideas en orden con tus palabras es lo que se pierde si siempre escribe otro."
       },
       "email": {
         "title": "Tu borrador primero",
-        "goal": "Escribir tú primero un correo real, antes de pedir ayuda.",
+        "goal": "Escribe tú un correo real antes de pedir ayuda.",
         "steps": [
           "Piensa en un correo que tengas que mandar hoy o mañana.",
-          "Toca «Empezar» y luego «Nuevo borrador». Escribe el correo completo (aquí no se puede pegar texto).",
-          "Toca «Terminar borrador». Si quieres, después compáralo con lo que te propondría una IA."
+          "Toca «Empezar» y luego «Nuevo borrador». Escríbelo completo (aquí no se puede pegar).",
+          "Toca «Terminar borrador». Si quieres, después compáralo con lo que propondría una IA."
         ],
-        "example": "Un correo al dueño del apartamento para pedir que arregle la ducha: saludo, qué pasa, desde cuándo y qué le pides.",
-        "done": "cuando terminas el borrador en la app. Se marca sola.",
+        "example": "Un correo al dueño del apartamento para que arregle la ducha: saludo, qué pasa, desde cuándo y qué le pides.",
+        "done": "cuando terminas el borrador. Se marca sola.",
         "why": "Si escribes tú primero, la IA pasa a ser una segunda opinión y no quien piensa por ti."
       },
       "summary": {
         "title": "Resúmelo sin mirar",
-        "goal": "Escribir con tus palabras lo principal de algo que leíste o viste hoy.",
+        "goal": "Escribe lo principal de algo que leíste o viste hoy, sin volver a mirarlo.",
         "steps": [
           "Elige algo que leíste o viste hoy: un artículo, un capítulo, un video, una clase.",
-          "Ciérralo. Toca «Empezar», luego «Nuevo borrador», y escribe en 5 a 10 líneas lo principal, sin volver a mirarlo.",
-          "Toca «Terminar borrador» y después revisa el original: ¿qué se te escapó?"
+          "Ciérralo. Toca «Empezar», luego «Nuevo borrador», y escribe lo principal en 5 a 10 líneas.",
+          "Toca «Terminar borrador» y revisa el original: ¿qué se te escapó?"
         ],
-        "example": "Un artículo sobre el sueño: «Dormir menos de 7 horas afecta la memoria. La luz del teléfono retrasa el sueño. Ayuda acostarse siempre a la misma hora».",
-        "done": "cuando terminas el borrador en la app. Se marca sola.",
-        "why": "Resumir de memoria te obliga a recordar y a ordenar las ideas: dos de las formas más probadas de aprender."
+        "example": "Sobre el sueño: «Dormir menos de 7 horas afecta la memoria. La luz del teléfono retrasa el sueño. Ayuda acostarse a la misma hora».",
+        "done": "cuando terminas el borrador. Se marca sola.",
+        "why": "Resumir de memoria te obliga a recordar y a ordenar: dos de las formas más probadas de aprender."
       }
     },
     "calculation": {
       "groceries": {
         "title": "La cuenta antes que la caja",
-        "goal": "Saber cuánto vas a pagar en la compra antes de que te lo digan.",
+        "goal": "Apuesta el total de tu compra antes de que la caja te lo diga.",
         "steps": [
-          "Mientras compras, ve sumando de cabeza lo que llevas. Redondea: 2.950 son 3.000.",
-          "Antes de pagar, di tu total.",
-          "Compáralo con lo que marca la caja."
+          "Mientras compras, ve sumando de cabeza. Redondea: 2.950 son 3.000.",
+          "Antes de pagar, anota aquí tu total.",
+          "Cuando la caja diga el total real, anótalo y mira tu precisión."
         ],
-        "example": "Pan 3.000 + leche 4.500 + huevos 12.000 + café 18.000 = unos 37.500. La caja marca 37.200.",
-        "done": "cuando dijiste tu total y lo comparaste con el de la caja.",
-        "why": "Hacer cuentas con dinero de verdad mantiene la habilidad justo donde la necesitas."
+        "example": "Pan 3.000 + leche 4.500 + huevos 12.000 + café 18.000: apuestas 37.500. La caja marca 37.200. ¡99 de precisión!",
+        "done": "cuando comparas tu total con el de la caja.",
+        "why": "Hacer cuentas con dinero de verdad mantiene la habilidad justo donde la necesitas.",
+        "bet": "Tu total, hecho de cabeza",
+        "check": "El total real de la caja"
       },
       "tip": {
         "title": "Tu parte, sin calculadora",
-        "goal": "Calcular de cabeza la propina o cuánto le toca a cada uno.",
+        "goal": "Calcula de cabeza la propina o lo que le toca a cada uno.",
         "steps": [
-          "Cuando llegue la cuenta de una comida o una salida, no saques la calculadora.",
-          "Calcula de cabeza la propina (el 10 % es correr la coma un lugar) o cuánto paga cada uno.",
-          "Si quieres, compruébalo después con el teléfono."
+          "Cuando llegue una cuenta para repartir, no saques la calculadora.",
+          "Haz la cuenta de cabeza y anótala aquí. Truco: el 10 % es correr la coma un lugar.",
+          "Compruébala con la calculadora y anota el resultado exacto."
         ],
-        "example": "Cuenta de 84.000 entre 4: 80.000 ÷ 4 = 20.000 y 4.000 ÷ 4 = 1.000. A cada uno le tocan 21.000.",
-        "done": "cuando hiciste la cuenta de cabeza antes de comprobarla.",
-        "why": "Partir la cuenta en trozos fáciles es una habilidad que se pierde si siempre la hace la calculadora."
+        "example": "84.000 entre 4: 80.000 ÷ 4 = 20.000 y 4.000 ÷ 4 = 1.000. Apuestas 21.000. ¡Exacto!",
+        "done": "cuando compruebas tu cuenta con la calculadora.",
+        "why": "Partir una cuenta en trozos fáciles es una habilidad que se pierde si siempre la hace la calculadora.",
+        "bet": "Tu cuenta, hecha de cabeza",
+        "check": "El resultado exacto (con calculadora)"
       },
       "budget": {
         "title": "¿Cuánto gasté esta semana?",
-        "goal": "Calcular tus gastos de la semana y ver qué tan cerca estuviste.",
+        "goal": "Calcula tus gastos de la semana y compáralos con el banco.",
         "steps": [
           "Sin mirar el banco, repasa la semana día por día: qué compraste y cuánto costó, más o menos.",
-          "Suma y escribe tu total.",
-          "Abre tu banco o tus recibos y compara."
+          "Suma y anota aquí tu total.",
+          "Abre tu banco o tus recibos y anota el total real."
         ],
-        "example": "Mercado 120.000, gasolina 60.000, almuerzos 45.000… Tu total: 260.000. El banco dice 290.000.",
-        "done": "cuando escribiste tu total y lo comparaste con el dato real.",
-        "why": "Calcular antes de mirar te da sentido de las cantidades, y de paso sabes a dónde se va tu dinero."
+        "example": "Mercado 120.000, gasolina 60.000, almuerzos 45.000… Apuestas 260.000. El banco dice 290.000.",
+        "done": "cuando comparas tu total con el dato real.",
+        "why": "Calcular antes de mirar te da sentido de las cantidades, y de paso sabes a dónde se va tu dinero.",
+        "bet": "Lo que crees que gastaste",
+        "check": "Lo que dice el banco"
       },
       "arrival": {
         "title": "¿A qué hora llego?",
-        "goal": "Calcular de cabeza tu hora de llegada antes de salir.",
+        "goal": "Antes de salir, apuesta tu hora de llegada.",
         "steps": [
-          "Antes de salir hacia algún lugar, calcula cuánto tardas y a qué hora llegarás.",
-          "Di la hora en voz alta: «llego a las 4:25».",
-          "Al llegar, mira el reloj y compara."
+          "Antes de salir, calcula de cabeza cuánto tardas y anota aquí a qué hora llegarás.",
+          "Haz el trayecto.",
+          "Al llegar, toca «Comprobar»: la hora de ahora ya viene puesta."
         ],
-        "example": "Son las 3:50. El trayecto es de 25 minutos, más 10 esperando el bus: 3:50 + 35 minutos = 4:25.",
-        "done": "cuando dijiste tu hora de llegada y la comparaste al llegar.",
-        "why": "Sumar horas y minutos de cabeza es una cuenta diaria que la costumbre de mirar el teléfono nos quita."
+        "example": "Son las 3:50. 25 minutos de trayecto más 10 esperando el bus: apuestas 4:25. Llegas 4:28. ¡85 de precisión!",
+        "done": "cuando comparas tu hora con la de llegada.",
+        "why": "Sumar horas y minutos de cabeza es una cuenta diaria que la costumbre de mirar el teléfono nos quita.",
+        "bet": "¿A qué hora llegarás?",
+        "check": "¿A qué hora llegaste?"
       },
       "estimate": {
         "title": "¿Cuánto crees que es?",
-        "goal": "Adivinar un precio o una cifra antes de buscarla.",
+        "goal": "Adivina un precio o una cifra antes de buscarla.",
         "steps": [
           "Hoy, antes de buscar un precio o un dato con números, detente.",
-          "Di tu cálculo, lo más concreto posible.",
-          "Busca el dato real y mira por cuánto te equivocaste."
+          "Anota aquí tu cálculo, lo más concreto posible.",
+          "Busca el dato real y anótalo para ver tu precisión."
         ],
-        "example": "«¿Cuánto cuesta una nevera mediana?». Dices 1.500.000. La tienda dice 1.800.000: te quedaste corto por poco.",
-        "done": "cuando adivinaste y comprobaste al menos una vez.",
-        "why": "Adivinar y comprobar afina tu sentido de las cantidades: cada error te deja más cerca la próxima vez."
+        "example": "«¿Cuánto cuesta una nevera mediana?». Apuestas 1.500.000. La tienda dice 1.800.000: 83 de precisión.",
+        "done": "cuando comparas tu cálculo con el dato real.",
+        "why": "Adivinar y comprobar afina tu sentido de las cantidades: cada error te deja más cerca la próxima vez.",
+        "bet": "Tu cálculo",
+        "check": "El dato real"
       }
     },
     "surprise": {
       "phone": {
         "title": "Un número de memoria",
-        "goal": "Aprenderte el teléfono de alguien cercano.",
+        "goal": "Apréndete el teléfono de alguien cercano y márcalo sin la agenda.",
         "steps": [
           "Elige a alguien importante cuyo número no sepas: tu pareja, un hijo, tu mamá.",
           "Apréndetelo por trozos de 3 o 4 cifras, repitiéndolo en voz alta.",
-          "Más tarde, márcalo sin abrir los contactos."
+          "Horas después, márcalo sin abrir los contactos."
         ],
         "example": "300 · 555 · 1234: lo repites tres veces por la mañana y por la tarde lo marcas de memoria.",
         "done": "cuando lo marcaste sin mirar los contactos.",
@@ -433,46 +505,49 @@
       },
       "askWay": {
         "title": "Pregunta el camino",
-        "goal": "Llegar a un sitio preguntándole a una persona en vez de usar el mapa.",
+        "goal": "Llega a un sitio preguntando a una persona en vez de usar el mapa.",
         "steps": [
           "La próxima vez que no sepas llegar a un lugar cercano, guarda el teléfono.",
-          "Pregúntale a alguien: un vendedor, un vigilante, un vecino.",
-          "Repite las indicaciones en voz alta y síguelas."
+          "Pregúntale a alguien: un vendedor, un vigilante, un vecino. Repite las indicaciones en voz alta.",
+          "Al llegar, di cuántas veces sacaste el teléfono. Cero es perfecto."
         ],
-        "example": "«Dos cuadras derecho, en la farmacia a la izquierda, y es el edificio blanco». Tú: «Dos derecho, farmacia, izquierda, blanco».",
+        "example": "«Dos cuadras derecho, en la farmacia a la izquierda, edificio blanco». Tú: «Dos derecho, farmacia, izquierda, blanco».",
         "done": "cuando llegaste siguiendo las indicaciones de alguien.",
-        "why": "Seguir indicaciones de palabra te obliga a armar el mapa en tu cabeza, justo lo que el GPS hace por ti."
+        "why": "Seguir indicaciones de palabra te obliga a armar el mapa en tu cabeza, justo lo que el GPS hace por ti.",
+        "check": "¿Cuántas veces sacaste el teléfono?"
       },
       "teach": {
         "title": "Enséñale a alguien",
-        "goal": "Enseñarle a alguien algo que sabes hacer, sin buscar nada.",
+        "goal": "Enseña algo que sabes hacer, sin buscar nada.",
         "steps": [
           "Piensa en algo que sabes hacer bien: una receta, un truco del teléfono, cambiar una llanta.",
-          "Explícaselo paso a paso a alguien, sin mirar videos ni instrucciones.",
-          "Pídele que lo haga o que te lo repita, para ver si te explicaste bien."
+          "Explícalo paso a paso a alguien, sin videos ni instrucciones.",
+          "Pídele que lo haga o que te lo repita, y di qué tan bien le salió."
         ],
         "example": "Le enseñas a tu sobrino a hacer arepas: masa, agua, sal, amasar, formar y asar.",
-        "done": "cuando la otra persona pudo hacerlo o repetirlo.",
-        "why": "Explicar algo de memoria te obliga a recordarlo y ordenarlo; por eso se dice que quien enseña aprende dos veces."
+        "done": "cuando la otra persona lo intentó.",
+        "why": "Explicar de memoria te obliga a recordar y ordenar; por eso se dice que quien enseña aprende dos veces.",
+        "check": "¿Qué tan bien le salió a la otra persona?"
       },
       "birthday": {
         "title": "Tres cumpleaños",
-        "goal": "Recordar tres cumpleaños sin mirar el calendario.",
+        "goal": "Recuerda tres cumpleaños sin mirar el calendario.",
         "steps": [
           "Piensa en tres personas cercanas.",
           "Di o escribe la fecha de cumpleaños de cada una.",
-          "Compruébalas en el calendario y corrige las que fallaste."
+          "Compruébalas en el calendario y cuenta cuántas acertaste."
         ],
-        "example": "Mamá: 12 de marzo. Carlos: 5 de agosto. Lucía: ¿30 de noviembre? El calendario dice 3 de noviembre.",
-        "done": "cuando dijiste las tres fechas y las comprobaste.",
-        "why": "Intentar recordar y luego corregir es la forma más eficaz de que un dato se quede."
+        "example": "Mamá: 12 de marzo. Carlos: 5 de agosto. Lucía: ¿30 de noviembre? El calendario dice 3 de noviembre. 2 de 3.",
+        "done": "cuando compruebas las tres fechas.",
+        "why": "Intentar recordar y luego corregir es la forma más eficaz de que un dato se quede.",
+        "check": "¿Cuántas acertaste?"
       },
       "handwrite": {
         "title": "Una nota a mano",
-        "goal": "Escribir a mano una nota corta para alguien.",
+        "goal": "Escribe a mano una nota corta para alguien.",
         "steps": [
           "Toma papel y un lápiz o un bolígrafo.",
-          "Escribe una nota corta para alguien: de agradecimiento, de ánimo o de cariño. Al menos tres frases.",
+          "Escribe una nota de agradecimiento, de ánimo o de cariño. Al menos tres frases.",
           "Entrégasela o déjala donde la encuentre."
         ],
         "example": "«Gracias por llevarme al médico el martes. No lo digo mucho, pero me alegraste el día. Te debo un café».",
@@ -481,15 +556,17 @@
       },
       "clock": {
         "title": "¿Cuánto falta?",
-        "goal": "Calcular de cabeza cuántos minutos faltan para tu próxima comida.",
+        "goal": "Calcula de cabeza cuántos minutos faltan para tu próxima comida. La app lo comprueba al instante.",
         "steps": [
           "Mira la hora una sola vez.",
           "Calcula de cabeza cuántos minutos faltan para tu próxima comida.",
-          "Pon una alarma con esos minutos y mira si suena justo a la hora de comer."
+          "Anota aquí la hora de la comida y tus minutos: la app te dice si acertaste."
         ],
         "example": "Son las 10:35 y almuerzas a la 1:00. Hasta las 11 van 25 minutos, más 2 horas: 145 minutos.",
-        "done": "cuando hiciste la cuenta y la comprobaste con la alarma.",
-        "why": "Contar con horas y minutos es un cálculo cotidiano que casi siempre le dejamos al teléfono."
+        "done": "cuando la app comprueba tu cuenta.",
+        "why": "Contar con horas y minutos es un cálculo cotidiano que casi siempre le dejamos al teléfono.",
+        "bet": "¿A qué hora es tu próxima comida?",
+        "check": "¿Cuántos minutos faltan? (de cabeza)"
       }
     }
   },
@@ -566,20 +643,7 @@
       }
     }
   },
-  "onboarding": {
-    "title": "Apaga el piloto automático",
-    "p1": "Los pilotos practican volar a mano para no perder la habilidad. Handfly hace lo mismo con lo que hoy le dejamos a la IA, al GPS y a la calculadora.",
-    "howTitle": "Así funciona, cada día:",
-    "b1": "Recibes una misión: algo concreto que haces tú mismo, sin IA, GPS ni calculadora. Trae pasos y un ejemplo, y dura pocos minutos.",
-    "b2": "La cumples. Unas se hacen aquí en la app y se marcan solas; otras se hacen en tu día, y al terminar tocas «¡La cumplí!».",
-    "b3": "Sumas horas de vuelo real y subes de rango. Si guardas tarjetas para repasar, la app te las pregunta justo antes de que se te olviden.",
-    "privacy": "Todo se queda en tu teléfono. No hay cuentas, anuncios ni rastreo.",
-    "cta": "Ver mi primera misión",
-    "more": "Más sobre Handfly"
-  },
   "today": {
-    "streakShort_one": "racha {{count}} día",
-    "streakShort_other": "racha {{count}} días",
     "panelTitle": "Panel de instrumentos",
     "altimeterAria": "Horas de vuelo real: {{hours}}",
     "altimeterLabel": "Horas de vuelo real",
@@ -593,22 +657,44 @@
     "sessionTitle": "Sesión de hoy",
     "sessionDone": "Sesión completada.",
     "sessionDoneHint": "Lo que queda es aplicarlo fuera. Hasta mañana.",
-    "sessionPlan_one": "{{count}} repaso (≈ {{minutes}} min) y una misión.",
-    "sessionPlan_other": "{{count}} repasos (≈ {{minutes}} min) y una misión.",
-    "sessionPlanNoCards": "Sin repasos pendientes: hoy solo hay misión.",
     "resume": "Continuar la sesión",
-    "start": "Empezar la sesión",
     "missionTitle": "Misión del día",
     "pendingTitle": "Pendiente",
     "openThinks_one": "{{count}} pregunta te espera: búscala y compara con tu intento",
     "openThinks_other": "{{count}} preguntas te esperan: búscalas y compara con tus intentos",
-    "weeklyPrompt": "Haz el chequeo semanal (2 minutos)"
+    "weeklyPrompt": "Haz el chequeo semanal (2 minutos)",
+    "nextRank": "Siguiente: {{rank}}",
+    "streak_one": "Racha de {{count}} día",
+    "streak_other": "Racha de {{count}} días",
+    "restFree": "Un día de descanso libre esta semana: no rompe tu racha.",
+    "restUsed": "Ya usaste el día de descanso de esta semana.",
+    "dayActive": "practicaste",
+    "dayEmpty": "sin práctica",
+    "dayFuture": "todavía no llega",
+    "reviewsDue_one": "{{count}} tarjeta por repasar",
+    "reviewsDue_other": "{{count}} tarjetas por repasar",
+    "reviewsHint": "Unos {{minutes}} min. Primero recuerdas, luego miras.",
+    "review": "Repasar",
+    "extraTitle": "¿Te sobran 2 minutos?",
+    "extraCalc": "Caja rápida",
+    "extraCalcHint": "5 cuentas de la vida real, sin calculadora. ¿Consigues las 3 estrellas?"
   },
   "practice": {
     "title": "Practicar",
-    "lead": "Cada módulo es una tarea real, no un juego. La insignia dice qué tan probada está.",
-    "whyNoGames": "¿Por qué no hay juegos de memoria ni acertijos?",
-    "seeEvidence": "Mira la evidencia."
+    "lead": "Seis habilidades para recuperar. Aquí entrenas; la misión del día es la prueba real.",
+    "whyNoGames": "¿Por qué no hay juegos de memoria ni acertijos sueltos?",
+    "seeEvidence": "Mira la evidencia.",
+    "quickTitle": "Retos rápidos",
+    "quickCalc": "Caja rápida",
+    "quickCalcHint": "5 cuentas reales, 3 estrellas",
+    "quickCompass": "¿Dónde está casa?",
+    "quickCompassHint": "Apunta con el teléfono",
+    "quickReview": "Repaso",
+    "quickReviewHint_one": "{{count}} tarjeta te espera",
+    "quickReviewHint_other": "{{count}} tarjetas te esperan",
+    "skillsTitle": "Tus habilidades",
+    "thisWeek_one": "{{count}} práctica esta semana",
+    "thisWeek_other": "{{count}} prácticas esta semana"
   },
   "log": {
     "title": "Registrar un vuelo",
@@ -678,7 +764,18 @@
       "estimateHint_one": "{{count}} estimación",
       "estimateHint_other": "{{count}} estimaciones"
     },
-    "achievementsTitle": "Logros"
+    "achievementsTitle": "Logros",
+    "toNext": "Para {{rank}} te falta: {{needs}}.",
+    "recordsTitle": "Tus récords",
+    "recordsEmpty": "Todavía no hay récords. Juega una misión con puntuación o una Caja rápida.",
+    "recordCalc": "Caja rápida",
+    "recordCalcValue": "{{correct}}/5 en {{seconds}} s",
+    "recordCompass": "¿Dónde está casa?",
+    "needFlights_one": "{{count}} vuelo real",
+    "needFlights_other": "{{count}} vuelos reales",
+    "needMinutes_one": "{{count}} minuto de vuelo",
+    "needMinutes_other": "{{count}} minutos de vuelo",
+    "and": " y "
   },
   "weekly": {
     "title": "Chequeo semanal",
@@ -744,7 +841,9 @@
     "aboutTitle": "Acerca de",
     "aboutLink": "Qué es Handfly y qué no puede hacer",
     "evidenceLink": "La evidencia detrás de cada ejercicio",
-    "sourceLink": "Código abierto en GitHub"
+    "sourceLink": "Código abierto en GitHub",
+    "focus": "Qué quieres recuperar",
+    "focusHint": "Tus misiones saldrán casi siempre de aquí. Sin nada marcado, de todas por igual."
   },
   "about": {
     "title": "Acerca de Handfly",
@@ -772,5 +871,69 @@
     "openTitle": "Código abierto",
     "open": "Handfly es gratuito y de código abierto, con licencia MIT. Cualquier módulo nuevo tiene que explicar por qué lo practicado sirve en la vida real y citar la evidencia que lo respalda.",
     "evidenceLink": "Ver la evidencia"
+  },
+  "crutch": {
+    "think-first": "La IA",
+    "recall": "Las notas",
+    "people": "«¿Cómo se llamaba?»",
+    "navigation": "El GPS",
+    "writing": "El autocompletar",
+    "calculation": "La calculadora"
+  },
+  "own": {
+    "think-first": "Tu cabeza",
+    "recall": "Tu memoria",
+    "people": "Su nombre",
+    "navigation": "Tu orientación",
+    "writing": "Tus palabras",
+    "calculation": "Tu cabeza"
+  },
+  "celebrate": {
+    "continue": "¡Seguir!",
+    "promoted": "¡Ascenso!",
+    "nowYouAre": "Ahora eres {{rank}}",
+    "nextRank": "Siguiente meta: {{rank}}. Cada misión cumplida te acerca.",
+    "topRank": "Llegaste al rango más alto. Ahora te toca enseñar.",
+    "record": "¡Nuevo récord!",
+    "recordDetail": "Precisión {{score}}. Tu mejor marca anterior era {{previous}}.",
+    "achievement_one": "Logro desbloqueado",
+    "achievement_other": "{{count}} logros desbloqueados"
+  },
+  "welcome": {
+    "progress": "Paso {{n}} de {{total}}",
+    "title": "Apaga el piloto automático",
+    "p1": "Los pilotos vuelan a mano de vez en cuando para no perder la habilidad. Handfly hace lo mismo con lo que hoy le dejas a la IA, al GPS y a la calculadora.",
+    "p2": "Nada de juegos de memoria: cada misión es algo real de tu día. Y sí, vas a sumar puntos.",
+    "start": "Empezar",
+    "pickTitle": "¿Qué quieres recuperar?",
+    "pickLead": "Elige lo que más te importa. Tus misiones saldrán casi siempre de ahí.",
+    "skills": {
+      "think-first": "Pensar antes de preguntar",
+      "recall": "Recordar lo que aprendo",
+      "people": "Recordar nombres",
+      "navigation": "Llegar sin GPS",
+      "writing": "Escribir con mis palabras",
+      "calculation": "Hacer cuentas de cabeza"
+    },
+    "instead": "En vez de: {{crutch}}",
+    "pickNote": "Puedes cambiarlo cuando quieras en Ajustes.",
+    "continueWith_one": "Seguir con {{count}} habilidad",
+    "continueWith_other": "Seguir con {{count}} habilidades",
+    "continueAll": "Quiero probar de todo",
+    "howTitle": "Así se juega",
+    "how1": "Cada día, una misión real",
+    "how1b": "Algo concreto de tu vida, con pasos y un ejemplo. Unos minutos.",
+    "how2": "Apuestas y compruebas",
+    "how2b": "Antes de hacerla anotas tu apuesta: el total de la compra, tu hora de llegada. Después ves tu precisión de 0 a 100 y buscas tu récord.",
+    "how3": "Subes de rango",
+    "how3b": "Cada misión suma minutos de vuelo real. De alumno piloto a instructor, con tus alas.",
+    "privacy": "Todo se queda en tu teléfono: sin cuentas, sin anuncios, sin rastreo.",
+    "more": "Cómo funciona",
+    "takeoff": "Despegar: mi primera misión"
+  },
+  "keypad": {
+    "label": "Teclado numérico",
+    "delete": "Borrar",
+    "decimal": "Coma decimal"
   }
 }

@@ -45,5 +45,20 @@
     "under": "You knew more than you thought. Trust your first attempt a bit more.",
     "over": "You were surer than you were right. That's exactly what's worth noticing."
   },
-  "notFound": "This question is no longer open"
+  "notFound": "This question is no longer open",
+  "result": {
+    "title": "How close were you?",
+    "precision": "Accuracy",
+    "tier": {
+      "bullseye": "You had it!",
+      "close": "So close!",
+      "fair": "Halfway there",
+      "learning": "Way off, and now you know"
+    },
+    "calibrationTitle": "How sure you were vs. how right",
+    "sure": "How sure",
+    "close": "How close",
+    "cardMade": "We made a card from what you learned: we'll ask it again just before you'd forget.",
+    "done": "Done"
+  }
 }

@@ -11,7 +11,7 @@ import { useSettings } from '../core/settings/settings'
 import { dueCards } from '../core/srs/scheduler'
 import { dayKey } from '../core/time'
 import { ALL_MISSIONS, ENABLED_MODULE_IDS } from '../modules/registry'
-import { MissionCard } from '../ui/MissionCard'
+import { MissionCard } from '../ui/mission/MissionCard'
 import { Button } from '../ui/primitives/Button'
 import { ReviewRunner, type RunnerResult } from '../ui/review/ReviewRunner'
 
@@ -96,7 +96,9 @@ export function Session() {
       {phase === 'mission' && (
         <div className="flex flex-1 flex-col gap-6">
           <h1 className="text-[1.75rem]">{t('session.missionTitle')}</h1>
-          <p className="prose-text text-ink-dim">{template?.to ? t('session.missionLeadApp') : t('session.missionLeadLife')}</p>
+          <p className="prose-text text-ink-dim">
+            {mission?.status === 'done' ? t('session.missionLeadDone') : template?.to ? t('session.missionLeadApp') : t('session.missionLeadLife')}
+          </p>
           {/* Si la misión se hace en la app, «Empezar» cierra la sesión antes de ir allá. */}
           {mission && <MissionCard mission={mission} onStart={completeSession} />}
           <Button block variant={mission?.status === 'done' || !template?.to ? 'primary' : 'secondary'} className="mt-auto" onClick={land}>
@@ -108,8 +110,18 @@ export function Session() {
 
       {phase === 'landing' && (
         <div className="animate-pop flex flex-1 flex-col gap-5">
-          <h1 className="text-[2rem]">{t('session.landedTitle')}</h1>
-          {result.reviewed > 0 && <p className="text-lg">{t('session.landedReviews', { recalled: result.recalled, total: result.reviewed })}</p>}
+          <span aria-hidden className="hf-badge mx-auto grid h-24 w-24 place-items-center rounded-full bg-green text-on-accent">
+            <PlaneLanding className="h-12 w-12" />
+          </span>
+          <h1 className="text-center text-[2rem]">{t('session.landedTitle')}</h1>
+          {result.reviewed > 0 && (
+            <p className="text-center">
+              <span className="readout block text-5xl">
+                {result.recalled}/{result.reviewed}
+              </span>
+              <span className="text-ink-dim">{t('session.landedReviewsShort')}</span>
+            </p>
+          )}
           <div className="rounded-2xl border border-line bg-panel p-5">
             <p className="mb-1 text-sm text-ink-dim">{t('session.applyLabel')}</p>
             <p className="text-lg font-bold">{template && mission?.status !== 'done' ? missionTitle(template) : t('session.applyGeneric')}</p>

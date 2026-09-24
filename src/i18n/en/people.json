@@ -48,5 +48,25 @@
     "talked": "You talked about",
     "question": "What's their name?",
     "yourImage": "Your image:"
+  },
+  "quiz": {
+    "cta": "What's their name? Test yourself",
+    "title": "What's their name?",
+    "exit": "Leave the test",
+    "progress": "Person {{n}} of {{total}}",
+    "check": "Check",
+    "right": "Spot on!",
+    "wrong": "You said “{{attempt}}”. You'll get it next time.",
+    "next": "Next",
+    "finish": "Finish",
+    "over": "Test over",
+    "perfect": "Every single name!",
+    "good": "Good memory!",
+    "keepGoing": "That's how names stick: by trying",
+    "realWorld": "The real test is out there: next time you see one of these people, greet them by name.",
+    "back": "Back to Names",
+    "emptyTitle": "Nobody here yet",
+    "simTitle_one": "What's their name?: {{count}} person",
+    "simTitle_other": "What's their name?: {{count}} people"
   }
 }

@@ -14,7 +14,7 @@ async function audit(path: string) {
 }
 
 describe('accesibilidad (axe)', () => {
-  for (const path of ['/practice', '/evidence', '/about', '/log', '/settings', '/m/think-first/new', '/m/people/new', '/m/navigation/new', '/m/calculation']) {
+  for (const path of ['/practice', '/evidence', '/about', '/log', '/settings', '/m/think-first/new', '/m/people/new', '/m/navigation/new', '/m/calculation', '/welcome', '/m/calculation/practice', '/m/navigation/compass', '/progress', '/m/people/quiz']) {
     it(`sin violaciones en ${path}`, async () => {
       expect(await audit(path)).toEqual([])
     })

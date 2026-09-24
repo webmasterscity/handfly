@@ -1,3 +1,4 @@
+import type { MissionCheck } from '../missions/scoring'
 import type { ComponentType } from 'react'
 import type { RouteObject } from 'react-router'
 import type { MemoryCard, ModuleId } from '../db/types'
@@ -48,7 +49,7 @@ export interface ModuleMeta {
  * con reportActivity() al guardar y la misión del día se marca cumplida sin que la
  * persona tenga que volver a confirmarla.
  */
-export type MissionEvent = 'think.saved' | 'person.saved' | 'draft.finished' | 'route.flown'
+export type MissionEvent = 'think.saved' | 'person.saved' | 'draft.finished' | 'route.flown' | 'compass.pointed'
 
 export interface MissionTemplate {
   id: string
@@ -64,10 +65,14 @@ export interface MissionTemplate {
   surprise?: boolean
   /** Pantalla de la app donde se hace la misión (botón «Empezar»). Sin ella, se hace fuera. */
   to?: string
+  /** Se hace en la calle aunque la app ayude (abre una pantalla, pero no es «aquí en la app»). */
+  outside?: boolean
   /** Acción de la app que la da por cumplida automáticamente. */
   completesOn?: MissionEvent
   /** La primera misión de alguien nuevo: corta, dentro de la app y sin salir de casa. */
   starter?: boolean
+  /** Cómo se juega al volver: apuesta previa y comprobación con puntuación. */
+  check?: MissionCheck
 }
 
 /** Cómo se pregunta un tipo de tarjeta propio (registrado en src/modules/cardRenderers.tsx). */

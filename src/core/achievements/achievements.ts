@@ -1,4 +1,5 @@
 import { db } from '../db/schema'
+import { rankIndex } from '../flight-log/flights'
 import type { Snapshot } from '../stats/stats'
 
 export interface AchievementDef {
@@ -18,7 +19,7 @@ export const ACHIEVEMENTS: AchievementDef[] = [
   { id: 'firstThink', hidden: false, check: (s) => s.think.closed >= 1 },
   { id: 'streak7', hidden: false, check: (s) => s.streak.best >= 7 },
   { id: 'streak30', hidden: false, check: (s) => s.streak.best >= 30 },
-  { id: 'rankPrivate', hidden: false, check: (s) => s.rank.rank.id !== 'student' },
+  { id: 'rankPrivate', hidden: false, check: (s) => rankIndex(s.rank.rank.id) >= rankIndex('private') },
   { id: 'names10', hidden: false, check: (s) => s.people.namesRecalled >= 10 },
   { id: 'firstRoute', hidden: false, check: (s) => s.navigation.flownNoGps >= 1 },
   { id: 'firstDraft', hidden: false, check: (s) => s.writing.longDrafts >= 1 },

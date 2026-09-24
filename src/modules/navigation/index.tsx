@@ -10,12 +10,13 @@ export const navigation: ModuleDefinition = {
     { index: true, lazy: () => import('./screens/NavHome').then((m) => ({ Component: m.NavHome })) },
     { path: 'new', lazy: () => import('./screens/RoutePlan').then((m) => ({ Component: m.RoutePlan })) },
     { path: 'r/:id/fly', lazy: () => import('./screens/RouteFly').then((m) => ({ Component: m.RouteFly })) },
+    { path: 'compass', lazy: () => import('./screens/Compass').then((m) => ({ Component: m.Compass })) },
     { path: 'r/:id/recall', lazy: () => import('./screens/RouteRecall').then((m) => ({ Component: m.RouteRecall })) },
   ],
   missions: [
-    { id: 'nv-plan', moduleId: 'navigation', textKey: 'navigation.plan', minutes: 30, to: '/m/navigation/new', completesOn: 'route.flown' },
-    { id: 'nv-return', moduleId: 'navigation', textKey: 'navigation.return', minutes: 20 },
-    { id: 'nv-landmarks', moduleId: 'navigation', textKey: 'navigation.landmarks', minutes: 15 },
-    { id: 'nv-home', moduleId: 'navigation', textKey: 'navigation.pointHome', minutes: 3 },
+    { id: 'nv-plan', moduleId: 'navigation', textKey: 'navigation.plan', minutes: 30, to: '/m/navigation/new', outside: true, completesOn: 'route.flown' },
+    { id: 'nv-return', moduleId: 'navigation', textKey: 'navigation.return', minutes: 20, check: { kind: 'peeks' } },
+    { id: 'nv-landmarks', moduleId: 'navigation', textKey: 'navigation.landmarks', minutes: 15, check: { kind: 'list' } },
+    { id: 'nv-home', moduleId: 'navigation', textKey: 'navigation.pointHome', minutes: 3, to: '/m/navigation/compass', outside: true, completesOn: 'compass.pointed', check: { kind: 'bearing' } },
   ],
 }

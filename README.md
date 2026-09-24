@@ -38,10 +38,12 @@ Los metaanálisis sobre entrenamiento cognitivo (Sala y Gobet, 2019–2023) mues
 
 ## Motivación sana
 
-- **Sesión diaria de 5 a 10 minutos:** repasos pendientes (con tope) y una misión del mundo real, elegida entre los módulos que menos practicas.
-- **Horas de vuelo real y rango de piloto:** solo suben con lo que resuelves fuera de la app. La práctica dentro de la app cuenta aparte, como «horas de simulador».
-- **Racha con un día de descanso protegido por semana**, misiones sorpresa y logros ocultos.
-- **Límites éticos:** sin contenido infinito; al terminar, la app se despide. Un solo recordatorio diario opcional, en tu calendario (`.ics`), sin mensajes que te hagan sentir culpable. Sin anuncios ni recogida de datos.
+- **Una misión al día, como un pase de abordar:** algo concreto de tu vida, con pasos, un ejemplo y cuándo está cumplida. Casi siempre sale de las habilidades que elegiste recuperar en la bienvenida.
+- **Apuesta y comprueba:** en muchas misiones anotas primero tu predicción (el total de la compra, tu hora de llegada, hacia dónde queda tu casa) y después el dato real. Recibes una precisión de 0 a 100 y compites contra tu propio récord. Predecir y corregir enseguida es lo que afina la estimación.
+- **Retos cortos con final:** «Caja rápida» (5 cuentas de la vida real dibujadas como el tique, la cuenta o la etiqueta; con estrellas, niveles que se ajustan solos y un máximo de 3 rondas al día) y «¿Dónde está casa?» (apuntas el teléfono hacia tu casa y la brújula mide cuántos grados te desviaste; sin brújula, se juega con los puntos cardinales).
+- **Horas de vuelo real y rango de piloto:** solo suben con lo que resuelves fuera de la app. El primer ascenso llega con la primera misión; cada rango tiene sus alas. La práctica dentro de la app cuenta aparte, como «horas de simulador».
+- **Celebraciones** al ascender, al desbloquear un logro o al batir un récord. **Racha** con un día de descanso protegido por semana, misiones sorpresa y logros ocultos.
+- **Límites éticos:** sin contenido infinito; al terminar, la app se despide. Un solo recordatorio diario opcional, en tu calendario (`.ics`), sin mensajes que te hagan sentir culpable. Sin anuncios ni recogida de datos: tu ubicación, si juegas con la brújula, tampoco sale del teléfono.
 
 ## Tecnología
 

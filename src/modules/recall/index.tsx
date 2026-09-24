@@ -13,8 +13,8 @@ export const recall: ModuleDefinition = {
     { path: 'review', lazy: () => import('./screens/ReviewNow').then((m) => ({ Component: m.ReviewNow })) },
   ],
   missions: [
-    { id: 'rc-explain', moduleId: 'recall', textKey: 'recall.explain', minutes: 10 },
-    { id: 'rc-agenda', moduleId: 'recall', textKey: 'recall.agenda', minutes: 3 },
-    { id: 'rc-shopping', moduleId: 'recall', textKey: 'recall.shopping', minutes: 15 },
+    { id: 'rc-explain', moduleId: 'recall', textKey: 'recall.explain', minutes: 10, check: { kind: 'closeness' } },
+    { id: 'rc-agenda', moduleId: 'recall', textKey: 'recall.agenda', minutes: 3, check: { kind: 'list' } },
+    { id: 'rc-shopping', moduleId: 'recall', textKey: 'recall.shopping', minutes: 15, check: { kind: 'count' } },
   ],
 }

@@ -1,7 +1,7 @@
 {
   "title": "Cálculo cotidiano",
   "lead": "Cuentas de la vida diaria, sin calculadora. Lo importante es que lo hagas también en la caja y en la mesa.",
-  "practiceCta": "Resolver 5 problemas",
+  "practiceCta": "Caja rápida: 5 cuentas",
   "estimateCta": "Estimar y comprobar",
   "realWorldNote": "La misión del día a veces será de cálculo en la vida real: esas son las que suben tu rango.",
   "estimatesTitle": "Tus estimaciones",
@@ -25,7 +25,7 @@
     "recipe": "Una receta para {{base}} personas lleva {{grams}} g de {{ingredient}}. ¿Cuántos gramos necesitas para {{target}}?"
   },
   "tips": {
-    "groceries": "Redondea cada precio a la unidad, suma, y al final ajusta los céntimos.",
+    "groceries": "Redondea cada precio a la unidad, suma, y al final ajusta los centavos.",
     "tip": "El 10 % es mover la coma un lugar. El 20 % es el doble de eso. El 15 % es el 10 % más su mitad.",
     "split": "Divide primero la parte entera y después reparte lo que sobra.",
     "discount": "Calcula lo que pagas, no lo que te ahorras: un 25 % menos es pagar tres cuartos.",
@@ -97,5 +97,59 @@
       "queso",
       "mantequilla"
     ]
-  }
+  },
+  "scene": {
+    "receipt": "Supermercado",
+    "total": "Total",
+    "budget": "Presupuesto del mes",
+    "monthBudget": "Presupuesto",
+    "food": "Comida",
+    "transport": "Transporte",
+    "fun": "Ocio",
+    "left": "Te queda",
+    "bill": "Restaurante",
+    "billTotal": "Cuenta",
+    "tipOf": "Propina {{pct}} %",
+    "each": "Cada uno",
+    "recipe": "Receta",
+    "forPeople_one": "Para {{count}} persona",
+    "forPeople_other": "Para {{count}} personas"
+  },
+  "ask": {
+    "groceries": "¿Cuánto es el total?",
+    "tip": "¿Cuánto es la propina del {{pct}} %?",
+    "split": "¿Cuánto paga cada uno?",
+    "discount": "¿Cuánto pagas con el descuento?",
+    "budget": "¿Cuánto te queda?",
+    "travel": "A {{speed}} km/h, ¿cuántos minutos tardas?",
+    "recipe": "¿Cuántos gramos para {{target}}?"
+  },
+  "game": {
+    "exit": "Salir de la ronda",
+    "level": "Nivel {{level}}",
+    "combo": "Racha de {{count}} aciertos",
+    "roundOver": "Ronda terminada",
+    "starsAria_one": "{{count}} estrella de 3",
+    "starsAria_other": "{{count}} estrellas de 3",
+    "score": "{{correct}} de {{total}}",
+    "time": "En {{seconds}} segundos",
+    "levelUp": "¡Subes al nivel {{level}}!",
+    "levelDown": "Bajamos al nivel {{level}} para afinar",
+    "again_one": "Otra ronda (te queda {{count}} hoy)",
+    "again_other": "Otra ronda (te quedan {{count}} hoy)",
+    "toToday": "Volver a Hoy",
+    "recordTitle": "¡Nuevo récord en Caja rápida!",
+    "recordSubtitle": "{{correct}} de 5 en {{seconds}} s",
+    "recordDetail": "Tu mejor ronda anterior: {{correct}} de 5 en {{seconds}} s.",
+    "enoughTitle": "Por hoy ya calentaste",
+    "enoughLead": "Jugaste las 3 rondas de hoy. Ahora viene lo que de verdad cuenta: la próxima vez que pagues algo, haz tú la cuenta antes que la caja.",
+    "tier": {
+      "0": "Ronda dura. Mira los trucos y vuelve a intentarlo.",
+      "1": "Vas calentando. La siguiente sale mejor.",
+      "2": "¡Muy bien! Te faltó una para la perfecta.",
+      "3": "¡Ronda perfecta!"
+    },
+    "title": "Caja rápida"
+  },
+  "bestRound": "Tu mejor ronda: {{correct}}/5 en {{seconds}} s"
 }

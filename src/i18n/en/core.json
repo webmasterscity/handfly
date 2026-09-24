@@ -37,6 +37,7 @@
   },
   "ranks": {
     "student": "Student pilot",
+    "rookie": "Rookie pilot",
     "private": "Private pilot",
     "commercial": "Commercial pilot",
     "firstOfficer": "First officer",
@@ -91,7 +92,10 @@
       "months_one": "in {{count}} month",
       "months_other": "in {{count}} months"
     },
-    "answer": "Answer"
+    "answer": "Answer",
+    "combo": "{{count}} recalled in a row",
+    "matched": "You had it! “{{attempt}}”",
+    "notMatched": "Not quite the same. You said:"
   },
   "session": {
     "simFlightTitle_one": "Daily session: {{count}} review",
@@ -113,14 +117,15 @@
     "missionTitle": "Today's mission",
     "land": "End the session",
     "landedTitle": "Landed",
-    "landedReviews": "You recalled {{recalled}} of {{total}}.",
     "applyLabel": "Now, in your day:",
     "applyGeneric": "Next time you reach for the AI, the map or the calculator, try it yourself first.",
     "goodbye": "That's all for today. The practice that counts happens out there. See you tomorrow.",
     "close": "Close",
     "missionLeadApp": "This mission happens right here. Tap “Start” and follow the steps: it marks itself when you finish.",
     "missionLeadLife": "This mission happens out in your day. Read it now; when you've done it, come back and tap “I did it!”.",
-    "applyHint": "When you've done it, come back to Handfly and mark it on the Today screen."
+    "applyHint": "When you've done it, come back to Handfly and mark it on the Today screen.",
+    "landedReviewsShort": "cards recalled before looking",
+    "missionLeadDone": "Today's mission is already done. Nice flying! All that's left is to land."
   },
   "missions": {
     "label": "Mission",
@@ -129,66 +134,115 @@
     "minutesChip": "≈ {{count}} min",
     "whereApp": "Right here in the app",
     "whereLife": "Out in your day",
-    "howTo": "How to do it",
+    "scored": "Scored",
+    "from": "Taking off from",
+    "to": "Landing at",
+    "routeAria": "From {{from}} to {{to}}",
+    "howTo": "How to play",
     "stepN": "Step {{n}}:",
-    "exampleLabel": "Example",
-    "doneWhen": "It's done:",
+    "exampleLabel": "See an example",
+    "doneWhen": "It's done",
     "whyLabel": "Why does it help?",
     "evidenceLink": "See the studies behind it",
     "start": "Start",
-    "autoHint": "It marks itself as done when you finish in the app.",
+    "autoHint": "It marks itself when you finish in the app.",
+    "placeBet": "Place my bet",
+    "betHint": "Write it down at step 2. Afterwards you check how close you got.",
+    "checkNow": "Check",
     "didIt": "I did it!",
-    "allSteps": "All steps checked!",
     "swap": "Can't today: give me another",
-    "reportTitle": "Well done! Save it to your log.",
-    "minutes": "How many minutes did you spend?",
-    "note": "How did it go? (optional)",
-    "noteHint": "What happened, what was hard, what you'd do differently.",
-    "logIt": "Save",
     "autoDone": "Mission accomplished! “{{title}}”",
-    "doneLabel": "Mission accomplished!",
-    "doneMinutes_one": "You added {{count}} minute of real flight.",
-    "doneMinutes_other": "You added {{count}} minutes of real flight.",
+    "stamp": "Done",
+    "precision": "Accuracy",
+    "tier": {
+      "bullseye": "Spot on!",
+      "close": "So close!",
+      "fair": "Good try",
+      "learning": "That's how you learn: closer next time"
+    },
+    "newRecord": "Record!",
+    "bestSoFar": "Your best here: {{best}}",
+    "doneMinutes_one": "+{{count}} minute of real flight",
+    "doneMinutes_other": "+{{count}} minutes of real flight",
     "doneLogged": "It's in your flight log.",
     "towardRank": "On the way to {{rank}}: {{pct}}%",
     "doneBye": "That's all for today. Another mission is waiting tomorrow.",
+    "play": {
+      "betNumber": "Your bet",
+      "betTime": "What time?",
+      "betList": "From memory, one at a time",
+      "betText": "Your answer",
+      "betNote": "Your bet is saved. Nobody sees it but you.",
+      "saveBet": "Save my bet",
+      "checkNumber": "The real figure",
+      "checkTime": "The real time",
+      "checkList": "Tap the ones you missed",
+      "listHint": "Green ones are hits. Tap one to mark it as a miss.",
+      "missed": "How many did you miss?",
+      "countTotal": "How many were there?",
+      "countGot": "How many did you get?",
+      "checkCloseness": "How close were you?",
+      "closenessLow": "Way off",
+      "closenessHigh": "Exact",
+      "checkPeeks": "How many times did you look?",
+      "untilTarget": "What time is it?",
+      "untilMine": "Your minutes, in your head",
+      "seeScore": "See my score",
+      "yourBet": "Your bet",
+      "addItem": "Add",
+      "removeItem": "Remove “{{item}}”",
+      "items_one": "{{count}} item",
+      "items_other": "{{count}} items",
+      "minutes_one": "{{count}} minute",
+      "minutes_other": "{{count}} minutes",
+      "lineNumber": "You bet {{bet}} · Real {{actual}}",
+      "lineTime": "You bet {{bet}} · Real {{actual}}",
+      "lineCount": "{{got}} out of {{total}}",
+      "lineCloseness": "Closeness {{closeness}} out of 5",
+      "linePeeks_one": "You looked {{count}} time",
+      "linePeeks_other": "You looked {{count}} times",
+      "lineNoPeeks": "Didn't look once",
+      "lineUntil": "Your sum: {{mine}} min · Real: {{actual}} min",
+      "lineBearing": "You were {{degrees}}° off · Home is {{km}} km away"
+    },
     "thinkFirst": {
       "beforeChat": {
         "title": "You first, the AI second",
-        "goal": "Answer a question with your own head before you look it up with an AI or Google.",
+        "goal": "Answer a question with your own head before you look it up. Two minutes.",
         "steps": [
           "Think of something you really want to know: about work, home, or plain curiosity.",
           "Tap “Start” and write the question the way you'd ask the AI.",
-          "Write your best answer, even if you're not sure, and mark how sure you are. Then tap “Save my attempt”."
+          "Write your best answer, even if you're not sure, and say how sure you are. Save."
         ],
-        "example": "Question: “How often should you water a cactus?” Your attempt: “About once a month, because it can handle drought.” Sure: 2 out of 5.",
+        "example": "“How often should you water a cactus?” Your attempt: “Once a month, it handles drought.” Sure: 2 out of 5.",
         "done": "when you save your attempt. It marks itself.",
-        "why": "Trying to answer before you see the answer, even if you get it wrong, makes you remember it much better later."
+        "why": "Trying to answer before you see the answer, even if you're wrong, makes you remember it much better later."
       },
       "sayIt": {
         "title": "Guess before you search",
-        "goal": "Next time you're about to look up a fact on your phone, say your answer first.",
+        "goal": "Today, before looking up a fact on your phone, bet your answer.",
         "steps": [
-          "Today, when a question pops up (a date, a fact, how to do something), don't look it up yet.",
-          "Say out loud, or jot on paper, what you think the answer is.",
-          "Now look it up and see how close you were."
+          "When a question pops up (a date, a fact, how to do something), don't look it up yet.",
+          "Write your answer here: that's your bet.",
+          "Look it up and say how close you were."
         ],
-        "example": "“What year did people land on the Moon?” You say: “1972.” You check: it was 1969. Close!",
-        "done": "when you've done all three once: guess, look up and compare.",
-        "why": "Risking an answer before seeing it makes the fact stick better, even when you're wrong."
+        "example": "“What year did people land on the Moon?” You bet 1972. It was 1969. Close!",
+        "done": "when you compare your bet with the real answer.",
+        "why": "Risking an answer before seeing it makes the fact stick better, even when you're wrong.",
+        "bet": "Your answer, before looking it up",
+        "check": "How close were you?"
       },
       "solveAlone": {
         "title": "One problem, no help",
-        "goal": "Solve a real work or study problem on your own, and use the AI only to compare at the end.",
+        "goal": "Solve a real problem yourself and use the AI only to compare at the end.",
         "steps": [
-          "Pick a problem from today that you'd normally hand to the AI: a tricky email, an exercise, a work question.",
+          "Pick a problem from today you'd hand to the AI: a tricky email, an exercise, a work question.",
           "Work on it alone for at least 15 minutes, on paper or in your head.",
-          "Tap “Start”, write the problem and your solution, and save it.",
-          "If you like, ask the AI at the end and compare."
+          "Tap “Start”, write the problem and your solution, and save. Then compare with the AI if you like."
         ],
-        "example": "Problem: “How do we share out the team's holidays without overlaps?” Your solution: a table of months where everyone picks in turns.",
-        "done": "when you save your solution in Think first. It marks itself.",
-        "why": "The effort of solving something yourself is exactly what keeps the skill alive; if someone else always does it, it rusts."
+        "example": "“How do we share out the team's holidays without overlaps?” Your solution: a table by month, everyone picks in turns.",
+        "done": "when you save your solution. It marks itself.",
+        "why": "The effort of solving something yourself is exactly what keeps the skill alive."
       }
     },
     "recall": {
@@ -196,37 +250,41 @@
         "title": "Tell someone about it",
         "goal": "Explain from memory something you learned this week.",
         "steps": [
-          "Pick something you learned or read recently: a news story, a recipe, something from work.",
-          "Tell someone about it (in person, on a call or in a voice note) without looking at notes or your phone.",
-          "Afterwards, check where you got it from and notice what you forgot or got wrong."
+          "Pick something you learned recently: a news story, a recipe, something from work.",
+          "Tell someone about it (in person, on a call or in a voice note) without notes.",
+          "Check the source and say how much of what you said was right."
         ],
-        "example": "You tell a friend what you read on Monday about new traffic fines, then notice you forgot the amount.",
-        "done": "when you've finished explaining and checked what you missed.",
-        "why": "Pulling what you learned out of memory fixes it far better than reading it again."
+        "example": "You tell a friend about the new traffic fines. Checking later, you see you forgot the amount.",
+        "done": "when you've explained it and checked what you missed.",
+        "why": "Pulling what you learned out of memory fixes it far better than reading it again.",
+        "check": "How much of what you said was right?"
       },
       "agenda": {
         "title": "Your day from memory",
-        "goal": "Recall what you have on today before you look at your calendar.",
+        "goal": "What's on today? Say it before you open your calendar.",
         "steps": [
-          "Before opening your planner or calendar, stop for a moment.",
-          "Say or write everything you have today: appointments, to-dos and times.",
-          "Open the calendar and compare. What did you miss?"
+          "Before opening your calendar, write here everything you remember having today.",
+          "Open the calendar and compare: mark what you got right and count what you missed."
         ],
-        "example": "“Meeting at 10, pick up the kids at 3, pay the power bill.” The calendar says you also had the dentist at 5.",
-        "done": "when you've compared your list with the calendar.",
-        "why": "Every time you try to recall something before looking, your memory gets practice. Looking first doesn't."
+        "example": "You write: meeting at 10, pick up the kids, pay the power bill. The calendar says you also had the dentist.",
+        "done": "when you compare your list with the calendar.",
+        "why": "Every time you try to recall before looking, your memory gets practice. Looking first doesn't.",
+        "bet": "What's on today, from memory (one at a time)",
+        "check": "Tap anything that wasn't on the calendar"
       },
       "shopping": {
         "title": "Shop from memory",
-        "goal": "Do the shopping remembering your list, without taking it out.",
+        "goal": "Do the shopping without taking the list out of your pocket.",
         "steps": [
           "Write your list as usual and read it through once, calmly.",
-          "Put it in your pocket and shop without taking it out.",
-          "Before paying, check the list for anything missing."
+          "Put it away and shop without taking it out.",
+          "Before paying, check the list and count how many things you remembered."
         ],
-        "example": "A list of 8 things: you remember 7. Before paying you see you forgot the coffee and go get it.",
-        "done": "when you've shopped without looking at the list and checked it only at the end.",
-        "why": "Trying to recall the list is real practice: each attempt makes it stick better."
+        "example": "A list of 8 things: you remember 7, and at the till you see the coffee was missing.",
+        "done": "when you've shopped without looking and checked the list at the end.",
+        "why": "Trying to recall the list is real practice: each attempt makes it stick better.",
+        "bet": "How many things were on the list?",
+        "check": "How many did you remember without looking?"
       }
     },
     "people": {
@@ -235,7 +293,7 @@
         "goal": "Greet someone you met recently by their name.",
         "steps": [
           "Think of someone you met recently: a neighbor, someone from work or church.",
-          "Before you see them, recall their name. If you saved them in People's names, go over it there.",
+          "Before you see them, recall their name. If you saved them in the app, go over it there.",
           "Greet them using their name."
         ],
         "example": "“Morning, Andrew! How did the move go?”",
@@ -246,36 +304,37 @@
         "title": "A new name",
         "goal": "Learn the name of someone you meet today.",
         "steps": [
-          "When you're introduced to someone, repeat their name in the conversation: “Nice to meet you, Laura.”",
+          "When you're introduced to someone, repeat their name: “Nice to meet you, Laura.”",
           "Notice something that sets them apart and something you talked about.",
-          "Afterwards, tap “Start” and save them. The app guides you to create a picture that helps you remember the name."
+          "Then tap “Start” and save them: the app helps you make a picture so the name sticks."
         ],
-        "example": "Laura, red glasses, works at a bakery. Picture: a giant laurel wreath wearing red glasses, coming out of the oven.",
-        "done": "when you save the person in the app. It marks itself.",
+        "example": "Laura, red glasses, works at a bakery. Picture: a laurel wreath in red glasses coming out of the oven.",
+        "done": "when you save them in the app. It marks itself.",
         "why": "Linking a name to an exaggerated picture is a technique for remembering names that has been studied for decades."
       },
       "meeting": {
         "title": "Go over who's coming",
-        "goal": "Before a get-together with several people, go over their names.",
+        "goal": "Before a meeting or meal, say everyone's name.",
         "steps": [
-          "Before a meeting, class or meal with several people, find one minute.",
-          "Without looking at anything, say the name of everyone who'll be there.",
-          "If one escapes you, find it out and use it during the get-together."
+          "Before the get-together, write here, from memory, the names of who'll be there.",
+          "At the get-together, check: mark the ones you got right and count the ones you missed.",
+          "Use at least one name in conversation."
         ],
-        "example": "Parents' meeting: “Caroline, George, Ms. Ines…” You can't recall Tom's dad; you find out and greet him by name.",
-        "done": "when you've gone over the names and used at least one.",
-        "why": "Recalling names just before you need them is well-timed practice, which is when it helps most."
+        "example": "You write: Caroline, George, Ms. Ines. Tom's dad turns up too, and you didn't remember his name.",
+        "done": "when you check your list at the get-together.",
+        "why": "Recalling names just before you need them is well-timed practice, which is when it helps most.",
+        "bet": "Who'll be there? (one at a time)",
+        "check": "Tap anyone who wasn't there"
       }
     },
     "navigation": {
       "plan": {
         "title": "A trip without GPS",
-        "goal": "Make one of today's trips guided only by what you planned before leaving.",
+        "goal": "Plan with the map, put it away, and get there without it.",
         "steps": [
           "Pick a real trip for today, ideally one you don't know well.",
-          "Tap “Start”, look at the map and write down 3 to 6 places you'll pass: a park, a gas station, where you turn.",
-          "Make the trip without GPS. If you get lost, ask someone or glance at the map for a second.",
-          "When you arrive, open the route in the app and say how it went."
+          "Tap “Start”, look at the map and write down 3 to 6 places on the way: a park, a gas station, where you turn.",
+          "Make the trip without GPS and, when you arrive, tell the app how it went."
         ],
         "example": "Home → new clinic: the church, right at the pharmacy, on to the bridge, blue building.",
         "done": "when you report how it went without having followed the GPS. It marks itself.",
@@ -283,39 +342,42 @@
       },
       "return": {
         "title": "Another way home",
-        "goal": "Go home by a different way, without looking at the map.",
+        "goal": "Go home by another route, no map.",
         "steps": [
-          "Today, on your way home, change part of your usual route. Do it in daylight and in an area you know.",
+          "On your way home today, change part of your usual route. In daylight and in an area you know.",
           "Go by what you know: which way home is, the big streets, places you recognize.",
-          "Look at the map only if you're really lost."
+          "When you arrive, say how many times you looked at the map. Zero is a perfect score."
         ],
         "example": "Instead of taking the avenue, you take the street by the park and come out two blocks further on.",
-        "done": "when you got home by another way without following the map.",
-        "why": "Finding a new route by yourself widens your mental map; always repeating the same one doesn't."
+        "done": "when you got home by another way.",
+        "why": "Finding a new route by yourself widens your mental map; always repeating the same one doesn't.",
+        "check": "How many times did you look at the map?"
       },
       "landmarks": {
         "title": "Five signs on the way",
-        "goal": "Notice what you see on a trip you always make.",
+        "goal": "Notice five things on a trip you always make and recall them in order.",
         "steps": [
           "On a trip you make often, look for 5 things that can serve as signs: a big tree, a billboard, a mural.",
-          "When you arrive, write them down in order on paper or in your notes.",
-          "Next time you pass by, check whether the order was right."
+          "When you arrive, write them here in order, without looking back.",
+          "Next time you pass by, check which ones you got right."
         ],
         "example": "Corner bakery, long traffic light, yellow church, bridge, gas station.",
-        "done": "when you've written down the 5 signs in order.",
-        "why": "People with a good sense of direction pay attention to landmarks. It's a habit you learn by practicing it."
+        "done": "when you check your list on the way.",
+        "why": "People with a good sense of direction pay attention to landmarks. It's a habit you learn by practicing it.",
+        "bet": "Your signs, in order",
+        "check": "Tap the ones that weren't right"
       },
       "pointHome": {
-        "title": "Which way is home?",
-        "goal": "Guess which way home is from a new place.",
+        "title": "Where's home?",
+        "goal": "From a new place, point your phone toward home. The compass tells you how close you got.",
         "steps": [
-          "When you leave a place you don't often go to, stop for a moment.",
-          "Without looking at your phone, point toward where you think home is.",
-          "Now open the map and check. How close were you?"
+          "The first time, while at home, tap “Start” and save where it is.",
+          "When you're somewhere you don't often go, tap “Start”.",
+          "Without looking at the map, point your phone toward home and tap “Here it is”."
         ],
-        "example": "You leave a mall and point left. The map says it was almost straight ahead: you were a bit off.",
-        "done": "when you've pointed and checked it on the map.",
-        "why": "Guessing and checking is the most direct way to sharpen your sense of direction."
+        "example": "You leave a mall, point to the left, and the compass says you were 25° off. Not bad!",
+        "done": "when you point and see your result. It marks itself.",
+        "why": "Pointing toward a place you can't see is exactly how studies measure sense of direction. Guessing and checking sharpens it."
       }
     },
     "writing": {
@@ -323,109 +385,119 @@
         "title": "In your own words",
         "goal": "Write an important message without AI and without keyboard suggestions.",
         "steps": [
-          "Pick a message from today that matters to you: congratulations, an apology, a reply to your boss.",
-          "Write it yourself from start to finish, without asking the AI and without tapping the words your keyboard suggests.",
-          "Read it once, fix whatever you like, and send it."
+          "Pick a message from today that matters: congratulations, an apology, a reply to your boss.",
+          "Write it yourself from start to finish, without tapping the words your keyboard suggests.",
+          "Read it once, fix it and send it."
         ],
-        "example": "A birthday message for your aunt that isn't just “Happy birthday!”, but something only you would say to her.",
+        "example": "A birthday message for your aunt that isn't just “Happy birthday!”, but something only you would say.",
         "done": "when you've sent a message written entirely by you.",
-        "why": "Writing is thinking: putting your ideas in order in your own words is the skill you lose if someone else always writes."
+        "why": "Writing is thinking: putting your ideas in order in your own words is what you lose if someone else always writes."
       },
       "email": {
         "title": "Your draft first",
-        "goal": "Write a real email yourself first, before asking for help.",
+        "goal": "Write a real email yourself before asking for help.",
         "steps": [
           "Think of an email you need to send today or tomorrow.",
-          "Tap “Start” and then “New draft”. Write the whole email (pasting text is off here).",
+          "Tap “Start” and then “New draft”. Write the whole thing (pasting is off here).",
           "Tap “Finish draft”. If you like, compare it afterwards with what an AI would suggest."
         ],
         "example": "An email asking your landlord to fix the shower: greeting, what's wrong, since when, and what you're asking for.",
-        "done": "when you finish the draft in the app. It marks itself.",
+        "done": "when you finish the draft. It marks itself.",
         "why": "If you write first, the AI becomes a second opinion instead of the one doing your thinking."
       },
       "summary": {
         "title": "Sum it up without looking",
-        "goal": "Write in your own words the main points of something you read or watched today.",
+        "goal": "Write the main points of something you read or watched today, without looking back.",
         "steps": [
           "Pick something you read or watched today: an article, a chapter, a video, a class.",
-          "Close it. Tap “Start”, then “New draft”, and write the main points in 5 to 10 lines without looking back.",
-          "Tap “Finish draft” and then check the original: what did you miss?"
+          "Close it. Tap “Start”, then “New draft”, and write the main points in 5 to 10 lines.",
+          "Tap “Finish draft” and check the original: what did you miss?"
         ],
-        "example": "An article about sleep: “Sleeping under 7 hours hurts memory. Phone light delays sleep. Going to bed at the same time helps.”",
-        "done": "when you finish the draft in the app. It marks itself.",
-        "why": "Summarizing from memory makes you recall and organize the ideas: two of the best-proven ways to learn."
+        "example": "About sleep: “Under 7 hours hurts memory. Phone light delays sleep. Going to bed at the same time helps.”",
+        "done": "when you finish the draft. It marks itself.",
+        "why": "Summarizing from memory makes you recall and organize: two of the best-proven ways to learn."
       }
     },
     "calculation": {
       "groceries": {
         "title": "The total before the till",
-        "goal": "Know what you'll pay for your shopping before you're told.",
+        "goal": "Bet your shopping total before the till tells you.",
         "steps": [
           "While you shop, keep a running total in your head. Round it: $2.95 is $3.",
-          "Before paying, say your total.",
-          "Compare it with what the till shows."
+          "Before paying, write your total here.",
+          "When the till shows the real total, enter it and see your accuracy."
         ],
-        "example": "Bread $3 + milk $4.50 + eggs $5 + coffee $9 = about $21.50. The till says $21.20.",
-        "done": "when you've said your total and compared it with the till.",
-        "why": "Doing sums with real money keeps the skill right where you need it."
+        "example": "Bread $3 + milk $4.50 + eggs $5 + coffee $9: you bet $21.50. The till says $21.20. 99 accuracy!",
+        "done": "when you compare your total with the till's.",
+        "why": "Doing sums with real money keeps the skill right where you need it.",
+        "bet": "Your total, worked out in your head",
+        "check": "The real total at the till"
       },
       "tip": {
         "title": "Your share, no calculator",
         "goal": "Work out the tip or everyone's share in your head.",
         "steps": [
-          "When the bill arrives for a meal or an outing, leave the calculator alone.",
-          "Work out the tip in your head (10% is moving the decimal point one place) or what each person pays.",
-          "If you like, check it on your phone afterwards."
+          "When a bill arrives to split, leave the calculator alone.",
+          "Do the sum in your head and write it here. Tip: 10% is moving the decimal point one place.",
+          "Check it with the calculator and enter the exact result."
         ],
-        "example": "An $84 bill split 4 ways: $80 ÷ 4 = $20 and $4 ÷ 4 = $1. Each person pays $21.",
-        "done": "when you've done the sum in your head before checking it.",
-        "why": "Breaking a sum into easy pieces is a skill that fades if the calculator always does it."
+        "example": "$84 split 4 ways: $80 ÷ 4 = $20 and $4 ÷ 4 = $1. You bet $21. Spot on!",
+        "done": "when you check your sum with the calculator.",
+        "why": "Breaking a sum into easy pieces is a skill that fades if the calculator always does it.",
+        "bet": "Your sum, done in your head",
+        "check": "The exact result (with a calculator)"
       },
       "budget": {
         "title": "How much did I spend this week?",
-        "goal": "Work out your spending for the week and see how close you were.",
+        "goal": "Work out your spending this week and compare it with your bank.",
         "steps": [
           "Without checking your bank, go over the week day by day: what you bought and roughly what it cost.",
-          "Add it up and write your total.",
-          "Open your bank app or receipts and compare."
+          "Add it up and write your total here.",
+          "Open your bank app or receipts and enter the real total."
         ],
-        "example": "Groceries $120, gas $60, lunches $45… Your total: $260. The bank says $290.",
-        "done": "when you've written your total and compared it with the real figure.",
-        "why": "Working it out before looking gives you a feel for amounts, and you also learn where your money goes."
+        "example": "Groceries $120, gas $60, lunches $45… You bet $260. The bank says $290.",
+        "done": "when you compare your total with the real figure.",
+        "why": "Working it out before looking gives you a feel for amounts, and you learn where your money goes.",
+        "bet": "What you think you spent",
+        "check": "What the bank says"
       },
       "arrival": {
         "title": "What time will I get there?",
-        "goal": "Work out your arrival time in your head before you leave.",
+        "goal": "Before you leave, bet your arrival time.",
         "steps": [
-          "Before heading somewhere, work out how long it takes and what time you'll arrive.",
-          "Say the time out loud: “I'll get there at 4:25.”",
-          "When you arrive, look at the clock and compare."
+          "Before leaving, work out in your head how long it takes and write here when you'll arrive.",
+          "Make the trip.",
+          "When you arrive, tap “Check”: the current time is already filled in."
         ],
-        "example": "It's 3:50. The trip is 25 minutes, plus 10 waiting for the bus: 3:50 + 35 minutes = 4:25.",
-        "done": "when you've said your arrival time and compared it when you got there.",
-        "why": "Adding hours and minutes in your head is an everyday sum the phone habit takes away."
+        "example": "It's 3:50. 25 minutes of travel plus 10 waiting for the bus: you bet 4:25. You arrive at 4:28. 85 accuracy!",
+        "done": "when you compare your time with when you arrived.",
+        "why": "Adding hours and minutes in your head is an everyday sum the phone habit takes away.",
+        "bet": "What time will you arrive?",
+        "check": "What time did you arrive?"
       },
       "estimate": {
         "title": "How much do you think it is?",
         "goal": "Guess a price or a figure before looking it up.",
         "steps": [
           "Today, before looking up a price or any number, stop.",
-          "Say your guess, as specific as you can.",
-          "Look up the real figure and see how far off you were."
+          "Write your guess here, as specific as you can.",
+          "Look up the real figure and enter it to see your accuracy."
         ],
-        "example": "“How much is a mid-size fridge?” You say $600. The store says $750: a little low.",
-        "done": "when you've guessed and checked at least once.",
-        "why": "Guessing and checking sharpens your feel for amounts: every miss brings you closer next time."
+        "example": "“How much is a mid-size fridge?” You bet $600. The store says $750: 80 accuracy.",
+        "done": "when you compare your guess with the real figure.",
+        "why": "Guessing and checking sharpens your feel for amounts: every miss brings you closer next time.",
+        "bet": "Your guess",
+        "check": "The real figure"
       }
     },
     "surprise": {
       "phone": {
         "title": "A number by heart",
-        "goal": "Learn the phone number of someone close to you.",
+        "goal": "Learn the phone number of someone close and dial it without your contacts.",
         "steps": [
           "Pick someone important whose number you don't know: your partner, a child, your mom.",
           "Learn it in chunks of 3 or 4 digits, repeating it out loud.",
-          "Later on, dial it without opening your contacts."
+          "Hours later, dial it without opening your contacts."
         ],
         "example": "555 · 201 · 1234: you repeat it three times in the morning and dial it from memory in the afternoon.",
         "done": "when you've dialed it without looking at your contacts.",
@@ -436,24 +508,26 @@
         "goal": "Get somewhere by asking a person instead of using the map.",
         "steps": [
           "Next time you don't know how to get somewhere nearby, put your phone away.",
-          "Ask someone: a shopkeeper, a security guard, a neighbor.",
-          "Repeat the directions out loud and follow them."
+          "Ask someone: a shopkeeper, a security guard, a neighbor. Repeat the directions out loud.",
+          "When you arrive, say how many times you took out your phone. Zero is perfect."
         ],
-        "example": "“Two blocks straight, left at the pharmacy, and it's the white building.” You: “Two straight, pharmacy, left, white.”",
+        "example": "“Two blocks straight, left at the pharmacy, white building.” You: “Two straight, pharmacy, left, white.”",
         "done": "when you've arrived following someone's directions.",
-        "why": "Following spoken directions makes you build the map in your head, exactly what GPS does for you."
+        "why": "Following spoken directions makes you build the map in your head, exactly what GPS does for you.",
+        "check": "How many times did you take out your phone?"
       },
       "teach": {
         "title": "Teach someone",
-        "goal": "Teach someone something you know how to do, without looking anything up.",
+        "goal": "Teach something you know how to do, without looking anything up.",
         "steps": [
           "Think of something you do well: a recipe, a phone trick, changing a tire.",
-          "Explain it to someone step by step, without watching videos or reading instructions.",
-          "Ask them to do it or repeat it back, to see whether you explained it well."
+          "Explain it step by step to someone, with no videos or instructions.",
+          "Ask them to do it or repeat it back, and say how well it went."
         ],
         "example": "You teach your nephew to make pancakes: flour, eggs, milk, mix, pour, flip.",
-        "done": "when the other person could do it or repeat it.",
-        "why": "Explaining something from memory makes you recall and organize it; that's why they say teaching is learning twice."
+        "done": "when the other person has had a go.",
+        "why": "Explaining from memory makes you recall and organize; that's why they say teaching is learning twice.",
+        "check": "How well did the other person do?"
       },
       "birthday": {
         "title": "Three birthdays",
@@ -461,35 +535,38 @@
         "steps": [
           "Think of three people close to you.",
           "Say or write each one's birthday.",
-          "Check them on the calendar and correct any you got wrong."
+          "Check them on the calendar and count how many you got right."
         ],
-        "example": "Mom: March 12. Charles: August 5. Lucy: November 30? The calendar says November 3.",
-        "done": "when you've said the three dates and checked them.",
-        "why": "Trying to recall and then correcting is the most effective way to make a fact stay."
+        "example": "Mom: March 12. Charles: August 5. Lucy: November 30? The calendar says November 3. 2 out of 3.",
+        "done": "when you've checked the three dates.",
+        "why": "Trying to recall and then correcting is the most effective way to make a fact stay.",
+        "check": "How many did you get right?"
       },
       "handwrite": {
         "title": "A handwritten note",
         "goal": "Handwrite a short note for someone.",
         "steps": [
           "Grab paper and a pencil or pen.",
-          "Write a short note to someone: thanks, encouragement or affection. At least three sentences.",
+          "Write a note of thanks, encouragement or affection. At least three sentences.",
           "Hand it over or leave it where they'll find it."
         ],
         "example": "“Thanks for taking me to the doctor on Tuesday. I don't say it much, but you made my day. I owe you a coffee.”",
         "done": "when the note has reached its person.",
-        "why": "Writing by hand, with no spell-check or suggestions, makes you think through each sentence before you write it."
+        "why": "Writing by hand, with no spell-check or suggestions, makes you think through each sentence first."
       },
       "clock": {
         "title": "How long to go?",
-        "goal": "Work out in your head how many minutes until your next meal.",
+        "goal": "Work out in your head how many minutes until your next meal. The app checks it instantly.",
         "steps": [
           "Look at the time just once.",
           "Work out in your head how many minutes until your next meal.",
-          "Set a timer for that many minutes and see if it goes off right at mealtime."
+          "Enter the meal time and your minutes here: the app tells you if you got it."
         ],
         "example": "It's 10:35 and lunch is at 1:00. To 11 is 25 minutes, plus 2 hours: 145 minutes.",
-        "done": "when you've done the sum and checked it with the timer.",
-        "why": "Counting in hours and minutes is an everyday sum we nearly always leave to the phone."
+        "done": "when the app checks your sum.",
+        "why": "Counting in hours and minutes is an everyday sum we nearly always leave to the phone.",
+        "bet": "What time is your next meal?",
+        "check": "How many minutes to go? (in your head)"
       }
     }
   },
@@ -566,20 +643,7 @@
       }
     }
   },
-  "onboarding": {
-    "title": "Switch off the autopilot",
-    "p1": "Pilots practice hand-flying so they don't lose the skill. Handfly does the same for what we now hand over to AI, GPS and calculators.",
-    "howTitle": "Here's how it works, every day:",
-    "b1": "You get a mission: something specific you do yourself, without AI, GPS or a calculator. It comes with steps and an example, and takes a few minutes.",
-    "b2": "You do it. Some happen right here in the app and mark themselves; others happen out in your day, and when you're done you tap “I did it!”.",
-    "b3": "You add real flight hours and move up in rank. If you save cards to review, the app asks them just before you'd forget.",
-    "privacy": "Everything stays on your phone. No accounts, ads or tracking.",
-    "cta": "Show my first mission",
-    "more": "More about Handfly"
-  },
   "today": {
-    "streakShort_one": "{{count}}-day streak",
-    "streakShort_other": "{{count}}-day streak",
     "panelTitle": "Instrument panel",
     "altimeterAria": "Real flight hours: {{hours}}",
     "altimeterLabel": "Real flight hours",
@@ -593,22 +657,44 @@
     "sessionTitle": "Today's session",
     "sessionDone": "Session complete.",
     "sessionDoneHint": "What's left is using it out there. See you tomorrow.",
-    "sessionPlan_one": "{{count}} review (≈ {{minutes}} min) and one mission.",
-    "sessionPlan_other": "{{count}} reviews (≈ {{minutes}} min) and one mission.",
-    "sessionPlanNoCards": "No reviews due: just a mission today.",
     "resume": "Resume the session",
-    "start": "Start the session",
     "missionTitle": "Today's mission",
     "pendingTitle": "Pending",
     "openThinks_one": "{{count}} question is waiting: look it up and compare with your attempt",
     "openThinks_other": "{{count}} questions are waiting: look them up and compare with your attempts",
-    "weeklyPrompt": "Do the weekly check (2 minutes)"
+    "weeklyPrompt": "Do the weekly check (2 minutes)",
+    "nextRank": "Next: {{rank}}",
+    "streak_one": "{{count}}-day streak",
+    "streak_other": "{{count}}-day streak",
+    "restFree": "One free rest day this week: it won't break your streak.",
+    "restUsed": "You've used this week's rest day.",
+    "dayActive": "practiced",
+    "dayEmpty": "no practice",
+    "dayFuture": "not here yet",
+    "reviewsDue_one": "{{count}} card to review",
+    "reviewsDue_other": "{{count}} cards to review",
+    "reviewsHint": "About {{minutes}} min. Recall first, then look.",
+    "review": "Review",
+    "extraTitle": "Got 2 more minutes?",
+    "extraCalc": "Quick checkout",
+    "extraCalcHint": "5 real-life sums, no calculator. Can you get all 3 stars?"
   },
   "practice": {
     "title": "Practice",
-    "lead": "Each module is a real task, not a game. The badge tells you how well tested it is.",
-    "whyNoGames": "Why no memory games or puzzles?",
-    "seeEvidence": "See the evidence."
+    "lead": "Six skills to win back. This is where you train; the daily mission is the real test.",
+    "whyNoGames": "Why no memory games or stand-alone puzzles?",
+    "seeEvidence": "See the evidence.",
+    "quickTitle": "Quick challenges",
+    "quickCalc": "Quick checkout",
+    "quickCalcHint": "5 real sums, 3 stars",
+    "quickCompass": "Where's home?",
+    "quickCompassHint": "Point with your phone",
+    "quickReview": "Review",
+    "quickReviewHint_one": "{{count}} card is waiting",
+    "quickReviewHint_other": "{{count}} cards are waiting",
+    "skillsTitle": "Your skills",
+    "thisWeek_one": "{{count}} practice this week",
+    "thisWeek_other": "{{count}} practices this week"
   },
   "log": {
     "title": "Log a flight",
@@ -678,7 +764,18 @@
       "estimateHint_one": "{{count}} estimate",
       "estimateHint_other": "{{count}} estimates"
     },
-    "achievementsTitle": "Achievements"
+    "achievementsTitle": "Achievements",
+    "toNext": "To reach {{rank}} you need: {{needs}}.",
+    "recordsTitle": "Your records",
+    "recordsEmpty": "No records yet. Play a scored mission or a Quick checkout.",
+    "recordCalc": "Quick checkout",
+    "recordCalcValue": "{{correct}}/5 in {{seconds}} s",
+    "recordCompass": "Where's home?",
+    "needFlights_one": "{{count}} real flight",
+    "needFlights_other": "{{count}} real flights",
+    "needMinutes_one": "{{count}} flight minute",
+    "needMinutes_other": "{{count}} flight minutes",
+    "and": " and "
   },
   "weekly": {
     "title": "Weekly check",
@@ -744,7 +841,9 @@
     "aboutTitle": "About",
     "aboutLink": "What Handfly is and what it can't do",
     "evidenceLink": "The evidence behind each exercise",
-    "sourceLink": "Open source on GitHub"
+    "sourceLink": "Open source on GitHub",
+    "focus": "What you want back",
+    "focusHint": "Your missions will mostly come from here. With nothing selected, from all of them equally."
   },
   "about": {
     "title": "About Handfly",
@@ -772,5 +871,69 @@
     "openTitle": "Open source",
     "open": "Handfly is free and open source under the MIT license. Every new module must explain why its practice helps in real life and cite the evidence behind it.",
     "evidenceLink": "See the evidence"
+  },
+  "crutch": {
+    "think-first": "The AI",
+    "recall": "Your notes",
+    "people": "“What was their name?”",
+    "navigation": "The GPS",
+    "writing": "Autocomplete",
+    "calculation": "The calculator"
+  },
+  "own": {
+    "think-first": "Your own head",
+    "recall": "Your memory",
+    "people": "Their name",
+    "navigation": "Your inner compass",
+    "writing": "Your own words",
+    "calculation": "Your own head"
+  },
+  "celebrate": {
+    "continue": "Keep going!",
+    "promoted": "Promoted!",
+    "nowYouAre": "New rank: {{rank}}",
+    "nextRank": "Next goal: {{rank}}. Every mission you complete brings you closer.",
+    "topRank": "You've reached the top rank. Now it's your turn to teach.",
+    "record": "New record!",
+    "recordDetail": "Accuracy {{score}}. Your previous best was {{previous}}.",
+    "achievement_one": "Achievement unlocked",
+    "achievement_other": "{{count}} achievements unlocked"
+  },
+  "welcome": {
+    "progress": "Step {{n}} of {{total}}",
+    "title": "Switch off the autopilot",
+    "p1": "Pilots fly by hand now and then so they don't lose the skill. Handfly does the same for what you now hand over to AI, GPS and calculators.",
+    "p2": "No memory games: every mission is something real from your day. And yes, you'll score points.",
+    "start": "Get started",
+    "pickTitle": "What do you want back?",
+    "pickLead": "Pick what matters most to you. Your missions will mostly come from there.",
+    "skills": {
+      "think-first": "Thinking before asking",
+      "recall": "Remembering what I learn",
+      "people": "Remembering names",
+      "navigation": "Getting there without GPS",
+      "writing": "Writing in my own words",
+      "calculation": "Doing sums in my head"
+    },
+    "instead": "Instead of: {{crutch}}",
+    "pickNote": "You can change this anytime in Settings.",
+    "continueWith_one": "Continue with {{count}} skill",
+    "continueWith_other": "Continue with {{count}} skills",
+    "continueAll": "I want to try everything",
+    "howTitle": "How to play",
+    "how1": "One real mission a day",
+    "how1b": "Something specific from your life, with steps and an example. A few minutes.",
+    "how2": "Bet, then check",
+    "how2b": "Before doing it you place your bet: the shopping total, your arrival time. Afterwards you see your accuracy from 0 to 100 and chase your record.",
+    "how3": "Move up in rank",
+    "how3b": "Every mission adds real flight minutes. From student pilot to instructor, with your wings.",
+    "privacy": "Everything stays on your phone: no accounts, no ads, no tracking.",
+    "more": "How it works",
+    "takeoff": "Take off: my first mission"
+  },
+  "keypad": {
+    "label": "Number pad",
+    "delete": "Delete",
+    "decimal": "Decimal point"
   }
 }

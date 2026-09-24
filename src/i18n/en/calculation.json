@@ -1,7 +1,7 @@
 {
   "title": "Everyday math",
   "lead": "Everyday sums, no calculator. What matters is doing it at the checkout and at the table too.",
-  "practiceCta": "Solve 5 problems",
+  "practiceCta": "Quick checkout: 5 sums",
   "estimateCta": "Estimate and check",
   "realWorldNote": "Some days the mission will be real-life math: those are the ones that raise your rank.",
   "estimatesTitle": "Your estimates",
@@ -97,5 +97,59 @@
       "cheese",
       "butter"
     ]
-  }
+  },
+  "scene": {
+    "receipt": "Supermarket",
+    "total": "Total",
+    "budget": "Monthly budget",
+    "monthBudget": "Budget",
+    "food": "Food",
+    "transport": "Transport",
+    "fun": "Fun",
+    "left": "Left over",
+    "bill": "Restaurant",
+    "billTotal": "Bill",
+    "tipOf": "Tip {{pct}}%",
+    "each": "Each",
+    "recipe": "Recipe",
+    "forPeople_one": "Serves {{count}}",
+    "forPeople_other": "Serves {{count}}"
+  },
+  "ask": {
+    "groceries": "What's the total?",
+    "tip": "What's a {{pct}}% tip?",
+    "split": "How much does each person pay?",
+    "discount": "What do you pay after the discount?",
+    "budget": "How much is left?",
+    "travel": "At {{speed}} km/h, how many minutes?",
+    "recipe": "How many grams to serve {{target}}?"
+  },
+  "game": {
+    "exit": "Leave the round",
+    "level": "Level {{level}}",
+    "combo": "{{count}} in a row",
+    "roundOver": "Round over",
+    "starsAria_one": "{{count}} star out of 3",
+    "starsAria_other": "{{count}} stars out of 3",
+    "score": "{{correct}} out of {{total}}",
+    "time": "In {{seconds}} seconds",
+    "levelUp": "Up to level {{level}}!",
+    "levelDown": "Back to level {{level}} to sharpen up",
+    "again_one": "Another round ({{count}} left today)",
+    "again_other": "Another round ({{count}} left today)",
+    "toToday": "Back to Today",
+    "recordTitle": "New Quick checkout record!",
+    "recordSubtitle": "{{correct}} out of 5 in {{seconds}} s",
+    "recordDetail": "Your previous best: {{correct}} out of 5 in {{seconds}} s.",
+    "enoughTitle": "You've warmed up enough for today",
+    "enoughLead": "You've played today's 3 rounds. Now for what really counts: next time you pay for something, do the sum before the till does.",
+    "tier": {
+      "0": "Tough round. Check the tips and try again.",
+      "1": "Warming up. The next one will go better.",
+      "2": "Great! One away from perfect.",
+      "3": "Perfect round!"
+    },
+    "title": "Quick checkout"
+  },
+  "bestRound": "Your best round: {{correct}}/5 in {{seconds}} s"
 }

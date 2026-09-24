@@ -40,7 +40,10 @@
   "recallTitle": "Reconstruye la ruta",
   "recallLead": "Sin mirar el plan. Escribe las referencias en orden, dibuja un croquis, o las dos cosas.",
   "recallModes": "Formas de reconstruir",
-  "mode": { "list": "Describir", "sketch": "Croquis" },
+  "mode": {
+    "list": "Describir",
+    "sketch": "Croquis"
+  },
   "recallLegend": "Referencias que recuerdas, en orden",
   "sketchHelp": "Dibuja el recorrido con el dedo: salida, giros y referencias. No tiene que ser bonito.",
   "sketchLabel": "Lienzo para dibujar el croquis de la ruta",
@@ -57,5 +60,61 @@
   "sketchAlt": "Tu croquis de la ruta",
   "backToRoutes": "Volver a las rutas",
   "recallSimTitle": "Reconstrucción: {{title}}",
-  "notFound": "Esta ruta no existe"
+  "notFound": "Esta ruta no existe",
+  "compass": {
+    "title": "¿Dónde está casa?",
+    "exit": "Salir del juego",
+    "setupTitle": "Primero, guarda dónde está tu casa",
+    "setupLead": "Hazlo estando en casa. Después, cuando estés en otro lugar, jugarás a apuntar hacia ella sin mirar el mapa.",
+    "privacy": "Tu ubicación se guarda solo en este teléfono. Nunca sale de aquí.",
+    "saveHome": "Estoy en casa: guardar este lugar",
+    "locating": "Buscando tu ubicación…",
+    "errorLocation": "No pude saber dónde estás. Revisa que el teléfono tenga activada la ubicación y que Handfly tenga permiso.",
+    "readyTitle": "Juega cuando estés lejos de casa",
+    "readyLead": "En un lugar al que no vas a menudo, toca «Jugar». Apuntarás con el teléfono hacia tu casa, sin mirar el mapa.",
+    "play": "Jugar",
+    "moveHome": "Me mudé: guardar mi casa otra vez",
+    "tooClose": "Estás muy cerca de casa. Juega cuando estés en otro lugar, a más de unas cuadras.",
+    "pointLead": "Sostén el teléfono plano, gira y apunta la parte de arriba hacia tu casa.",
+    "waiting": "Esperando la brújula…",
+    "you": "Tú",
+    "home": "Casa",
+    "hereItIs": "Aquí está",
+    "cardinalTitle": "Tu teléfono no tiene brújula",
+    "cardinalLead": "Juguemos igual: ¿hacia qué punto cardinal queda tu casa desde aquí?",
+    "dir": {
+      "0": "N",
+      "1": "NE",
+      "2": "E",
+      "3": "SE",
+      "4": "S",
+      "5": "SO",
+      "6": "O",
+      "7": "NO"
+    },
+    "card": {
+      "N": "N",
+      "E": "E",
+      "S": "S",
+      "W": "O"
+    },
+    "tier": {
+      "bullseye": "¡En el blanco!",
+      "close": "¡Muy cerca!",
+      "fair": "Buen intento",
+      "learning": "Te despistaste, y así se aprende"
+    },
+    "off": "Te desviaste {{degrees}}°",
+    "distance": "Tu casa está a {{km}} km",
+    "precision": "Precisión",
+    "legendYou": "Donde apuntaste",
+    "legendHome": "Donde está tu casa",
+    "afterTip": "De camino, fíjate en por dónde sale el sol o en una calle grande que vaya hacia tu casa: son tus pistas para la próxima.",
+    "toToday": "Volver a Hoy",
+    "flightTitle": "Señalé mi casa sin mapa",
+    "dialAria": "Brújula con la dirección que señalaste y la dirección real de tu casa",
+    "recordTitle": "¡Nuevo récord de orientación!",
+    "recordSubtitle": "Solo {{degrees}}° de desvío",
+    "recordDetail": "Tu mejor precisión anterior era {{best}}."
+  }
 }

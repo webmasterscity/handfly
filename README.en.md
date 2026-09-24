@@ -37,10 +37,12 @@ Meta-analyses of cognitive training (Sala & Gobet, 2019–2023) show that practi
 
 ## Healthy motivation
 
-- **5–10 minute daily session:** due reviews (capped) plus one real-world mission picked from your least-practiced modules.
-- **Real flight hours and pilot rank:** they only rise with what you solve outside the app. In-app practice is tracked separately as "simulator hours".
-- **Streak with one protected rest day per week**, surprise missions and hidden achievements.
-- **Ethical limits:** no endless content; when the session ends the app says goodbye. One optional daily reminder in your own calendar (`.ics`), no guilt-tripping. No ads or data collection.
+- **One mission a day, like a boarding pass:** something specific from your life, with steps, an example and when it counts as done. It mostly comes from the skills you chose to win back in the welcome.
+- **Bet, then check:** in many missions you first write down your prediction (the shopping total, your arrival time, which way home is) and then the real figure. You get an accuracy from 0 to 100 and play against your own record. Predicting and getting corrected right away is what sharpens estimation.
+- **Short challenges that end:** “Quick checkout” (5 real-life sums drawn as the receipt, the bill or the price tag; with stars, self-adjusting levels and at most 3 rounds a day) and “Where's home?” (point your phone toward home and the compass measures how many degrees off you were; without a compass, you play with the cardinal directions).
+- **Real flight hours and pilot rank:** they only rise with what you solve outside the app. The first promotion comes with the first mission; each rank has its own wings. In-app practice is tracked separately as "simulator hours".
+- **Celebrations** when you're promoted, unlock an achievement or beat a record. **Streak** with one protected rest day per week, surprise missions and hidden achievements.
+- **Ethical limits:** no endless content; when you're done, the app says goodbye. One optional daily reminder, in your calendar (`.ics`), with no guilt-trip messages. No ads, no data collection: if you play with the compass, your location never leaves your phone either.
 
 ## Tech
 
