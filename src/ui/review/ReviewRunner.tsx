@@ -33,6 +33,7 @@ export function ReviewRunner({
   const [ready, setReady] = useState(false)
   const [busy, setBusy] = useState(false)
   const [combo, setCombo] = useState(0)
+  const [writing, setWriting] = useState(false)
   const stats = useRef<RunnerResult>({ reviewed: 0, recalled: 0 })
   const headingRef = useRef<HTMLHeadingElement>(null)
   const card = cards[index]
@@ -120,16 +121,24 @@ export function ReviewRunner({
 
       {!revealed ? (
         <div className="flex flex-col gap-3">
-          <label className="flex flex-col gap-1.5">
-            <span className="font-display text-[0.95rem] font-bold">{t('review.attemptLabel')}</span>
-            <span className="text-sm text-ink-dim">{t('review.attemptHint')}</span>
-            <textarea
-              value={attempt}
-              onChange={(e) => setAttempt(e.target.value)}
-              rows={2}
-              className="w-full rounded-xl border border-line bg-panel px-4 py-3 focus:border-accent focus:outline-none"
-            />
-          </label>
+          {/* Recordar antes de mirar: basta con pensarlo o decirlo en voz alta. Escribir es opcional. */}
+          <p className="text-center font-display font-bold">{t('review.sayIt')}</p>
+          {writing ? (
+            <label className="flex flex-col gap-1.5">
+              <span className="text-sm text-ink-dim">{t('review.attemptLabel')}</span>
+              <input
+                value={attempt}
+                autoFocus
+                autoComplete="off"
+                onChange={(e) => setAttempt(e.target.value)}
+                className="w-full rounded-xl border border-line bg-panel px-4 py-3 focus:border-accent focus:outline-none"
+              />
+            </label>
+          ) : (
+            <button type="button" onClick={() => setWriting(true)} className="self-center py-1 text-sm text-accent underline underline-offset-4">
+              {t('review.preferWriting')}
+            </button>
+          )}
           <Button
             block
             disabled={!ready && !attempt.trim()}

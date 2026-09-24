@@ -354,3 +354,8 @@
 .hf-bank {
   animation: hf-bank 2600ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
+
+/* Registro de personas: unos segundos para imaginar la escena antes de guardar. */
+.hf-imagine-bar {
+  animation: hf-think 5000ms linear both;
+}

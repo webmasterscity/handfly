@@ -71,7 +71,6 @@
     "progressAria": "Tarjeta {{current}} de {{total}}",
     "cardHeading": "Tarjeta {{n}}",
     "attemptLabel": "Tu respuesta",
-    "attemptHint": "Escríbela o dila en voz alta. Recordar antes de mirar es lo que hace que funcione.",
     "reveal": "Mostrar la respuesta",
     "thinking": "Intenta recordar…",
     "yourAttempt": "Tu intento:",
@@ -95,7 +94,9 @@
     "answer": "Respuesta",
     "combo": "{{count}} seguidas recordadas",
     "matched": "¡La tenías! «{{attempt}}»",
-    "notMatched": "No coincide del todo. Tú dijiste:"
+    "notMatched": "No coincide del todo. Tú dijiste:",
+    "sayIt": "Piensa la respuesta o dila en voz alta",
+    "preferWriting": "Prefiero escribirla (la app la comprueba)"
   },
   "session": {
     "simFlightTitle_one": "Sesión diaria: {{count}} repaso",
@@ -170,29 +171,18 @@
     "play": {
       "betNumber": "Tu apuesta",
       "betTime": "¿A qué hora?",
-      "betList": "De memoria, uno por uno",
-      "betText": "Tu respuesta",
       "betNote": "Tu apuesta queda guardada. Nadie la ve más que tú.",
       "saveBet": "Guardar mi apuesta",
       "checkNumber": "El dato real",
       "checkTime": "La hora real",
-      "checkList": "Toca los que fallaste",
-      "listHint": "Los verdes son aciertos. Toca uno para marcarlo como fallo.",
-      "missed": "¿Cuántos se te escaparon?",
       "countTotal": "¿Cuántos había?",
       "countGot": "¿Cuántos acertaste?",
       "checkCloseness": "¿Qué tan cerca estuviste?",
-      "closenessLow": "Nada que ver",
-      "closenessHigh": "Exacto",
       "checkPeeks": "¿Cuántas veces miraste?",
       "untilTarget": "¿A qué hora es?",
       "untilMine": "Tus minutos, de cabeza",
       "seeScore": "Ver mi puntuación",
       "yourBet": "Tu apuesta",
-      "addItem": "Añadir",
-      "removeItem": "Quitar «{{item}}»",
-      "items_one": "{{count}} cosa",
-      "items_other": "{{count}} cosas",
       "minutes_one": "{{count}} minuto",
       "minutes_other": "{{count}} minutos",
       "lineNumber": "Apostaste {{bet}} · Real {{actual}}",
@@ -203,19 +193,24 @@
       "linePeeks_other": "Miraste {{count}} veces",
       "lineNoPeeks": "Sin mirar ni una vez",
       "lineUntil": "Tu cuenta: {{mine}} min · Real: {{actual}} min",
-      "lineBearing": "Te desviaste {{degrees}}° · Tu casa está a {{km}} km"
+      "lineBearing": "Te desviaste {{degrees}}° · Tu casa está a {{km}} km",
+      "closeness": {
+        "yes": "¡Exacto!",
+        "partly": "Más o menos",
+        "no": "Nada que ver"
+      }
     },
     "thinkFirst": {
       "beforeChat": {
         "title": "Tú primero, después buscas",
         "goal": "Antes de buscar algo, di tu respuesta. Dos minutos.",
         "steps": [
-          "Piensa en algo que de verdad quieras saber: de tu trabajo, de tu casa o por pura curiosidad.",
-          "Toca «Empezar», escribe la pregunta y lo que tú crees, y toca qué tan seguro estás.",
-          "Compruébalo donde quieras (la IA, Google o preguntando) y di si acertaste."
+          "Cuando te surja una duda (del trabajo, de la casa o por curiosidad), toca «Empezar» antes de buscarla.",
+          "Piensa tu respuesta, o dila en voz alta, y toca qué tan seguro estás. No hay que escribir nada.",
+          "Búscala donde quieras (la IA, Google o preguntando) y toca si acertaste."
         ],
-        "example": "«¿Cada cuánto se riega un cactus?». Tú crees: «una vez al mes». Seguridad: «Creo que sí». Lo buscas: cada 2 o 3 semanas en verano. «Más o menos».",
-        "done": "cuando guardas tu intento. Se marca sola.",
+        "example": "Te preguntas cada cuánto se riega un cactus. Dices: «una vez al mes» y tocas «Creo que sí». Lo buscas: cada 2 o 3 semanas. Tocas «Más o menos».",
+        "done": "cuando tocas qué tan seguro estás. Se marca sola.",
         "why": "Intentar responder antes de ver la respuesta, aunque te equivoques, hace que después la recuerdes mucho mejor."
       },
       "sayIt": {
@@ -223,13 +218,12 @@
         "goal": "Hoy, antes de buscar un dato en el teléfono, apuesta tu respuesta.",
         "steps": [
           "Cuando te surja una duda (una fecha, un dato, cómo se hace algo), no la busques todavía.",
-          "Anota aquí tu respuesta: esa es tu apuesta.",
-          "Búscala y di qué tan cerca estuviste."
+          "Di en voz alta tu respuesta: esa es tu apuesta.",
+          "Búscala y toca qué tan cerca estuviste."
         ],
         "example": "«¿En qué año llegó el hombre a la Luna?». Apuestas 1972. Era 1969. ¡Casi!",
         "done": "cuando comparas tu apuesta con la respuesta real.",
         "why": "Arriesgar una respuesta antes de verla deja el dato mejor guardado en la memoria, aunque falles.",
-        "bet": "Tu respuesta, antes de buscar",
         "check": "¿Qué tan cerca estuviste?"
       },
       "solveAlone": {
@@ -238,10 +232,10 @@
         "steps": [
           "Elige un problema de hoy que le pasarías a la IA: un correo difícil, un ejercicio, una duda del trabajo.",
           "Trabájalo solo al menos 15 minutos, en papel o en tu cabeza.",
-          "Toca «Empezar», escribe el problema y tu solución, y guárdala. Luego, si quieres, compara con la IA."
+          "Toca «Empezar» y toca qué tan seguro estás de tu solución. Después, si quieres, compárala con la IA."
         ],
         "example": "«¿Cómo repartir las vacaciones del equipo sin que se crucen?». Tu solución: una tabla por meses y cada quien elige por turnos.",
-        "done": "cuando guardas tu solución. Se marca sola.",
+        "done": "cuando lo registras en la app. Se marca sola.",
         "why": "El esfuerzo de resolver algo tú mismo es justo lo que mantiene viva la habilidad."
       }
     },
@@ -263,14 +257,15 @@
         "title": "Tu día de memoria",
         "goal": "¿Qué tienes hoy? Dilo antes de abrir la agenda.",
         "steps": [
-          "Antes de abrir tu agenda, anota aquí todo lo que recuerdas que tienes hoy.",
-          "Abre la agenda y compara: marca lo que acertaste y cuenta lo que se te escapó."
+          "Antes de abrir tu agenda, di en voz alta todo lo que tienes hoy y cuéntalo con los dedos.",
+          "Abre la agenda y compara.",
+          "Toca cuántas cosas había y cuántas recordaste."
         ],
-        "example": "Anotas: reunión a las 10, recoger a los niños, pagar la luz. La agenda dice que también tenías dentista.",
-        "done": "cuando comparas tu lista con la agenda.",
+        "example": "Dices: reunión a las 10, recoger a los niños, pagar la luz. La agenda tenía 4 cosas: olvidaste el dentista. 3 de 4.",
+        "done": "cuando comparas con la agenda.",
         "why": "Cada vez que intentas recordar antes de mirar, tu memoria practica. Mirar primero no la ejercita.",
-        "bet": "Lo que tienes hoy, de memoria (uno por uno)",
-        "check": "Toca lo que no estaba en la agenda"
+        "bet": "¿Cuántas cosas tenías en la agenda?",
+        "check": "¿Cuántas recordaste antes de mirar?"
       },
       "shopping": {
         "title": "Compras de memoria",
@@ -314,17 +309,17 @@
       },
       "meeting": {
         "title": "Repasa quién va",
-        "goal": "Antes de una reunión o comida, di los nombres de todos.",
+        "goal": "Antes de una reunión o comida, repasa los nombres de todos.",
         "steps": [
-          "Antes del encuentro, anota aquí, de memoria, los nombres de quienes estarán.",
-          "En el encuentro, comprueba: marca los que acertaste y cuenta los que se te escaparon.",
-          "Usa al menos un nombre en la conversación."
+          "Antes del encuentro, repasa en tu cabeza el nombre de quienes estarán.",
+          "En el encuentro, fíjate de cuántos lo recordabas. Usa al menos uno en la conversación.",
+          "Toca cuántas personas había y de cuántas recordaste el nombre."
         ],
-        "example": "Anotas: Carolina, Jorge, la profesora Inés. Llega también el papá de Tomás, y no recordabas su nombre.",
-        "done": "cuando compruebas tu lista en el encuentro.",
+        "example": "Eran 5 en la reunión de padres. Recordabas a Carolina, Jorge, la profesora Inés y Tomás, pero no al papá de Tomás. 4 de 5.",
+        "done": "cuando cuentas cuántos nombres recordaste.",
         "why": "Recordar los nombres justo antes de necesitarlos es un repaso a tiempo, que es cuando más sirve.",
-        "bet": "¿Quiénes van a estar? (uno por uno)",
-        "check": "Toca los que no estaban"
+        "bet": "¿Cuántas personas había?",
+        "check": "¿De cuántas recordaste el nombre?"
       }
     },
     "navigation": {
@@ -357,15 +352,14 @@
         "title": "Cinco señales en el camino",
         "goal": "Fíjate en cinco cosas de un trayecto de siempre y recuérdalas en orden.",
         "steps": [
-          "En un trayecto que haces a menudo, busca 5 cosas que te sirvan de señal: un árbol grande, un letrero, un mural.",
-          "Al llegar, anótalas aquí en orden, sin mirar atrás.",
-          "La próxima vez que pases, comprueba cuáles acertaste."
+          "En un trayecto que haces a menudo, fíjate en 5 cosas que te sirvan de señal: un árbol grande, un letrero, un mural.",
+          "Al llegar, repásalas en orden en tu cabeza, sin mirar atrás.",
+          "La próxima vez que pases, comprueba y toca cuántas tenías bien."
         ],
-        "example": "Panadería de la esquina, semáforo largo, iglesia amarilla, puente, gasolinera.",
-        "done": "cuando compruebas tu lista en el camino.",
+        "example": "Panadería de la esquina, semáforo largo, iglesia amarilla, puente, gasolinera. Al volver a pasar ves que el puente iba antes que la iglesia: 3 de 5.",
+        "done": "cuando compruebas en el camino.",
         "why": "Quien se orienta bien se fija en puntos de referencia. Es una costumbre que se aprende practicándola.",
-        "bet": "Tus señales, en orden",
-        "check": "Toca las que no eran así"
+        "check": "¿Cuántas de las 5 tenías bien?"
       },
       "pointHome": {
         "title": "¿Dónde está tu casa?",
@@ -662,7 +656,7 @@
     "pendingTitle": "Pendiente",
     "openThinks_one": "{{count}} pregunta te espera: búscala y compara con tu intento",
     "openThinks_other": "{{count}} preguntas te esperan: búscalas y compara con tus intentos",
-    "weeklyPrompt": "Haz el chequeo semanal (2 minutos)",
+    "weeklyPrompt": "Chequeo semanal: 6 toques, medio minuto",
     "nextRank": "Siguiente: {{rank}}",
     "streak_one": "Racha de {{count}} día",
     "streak_other": "Racha de {{count}} días",
@@ -699,10 +693,9 @@
   "log": {
     "title": "Registrar un vuelo",
     "lead": "Un vuelo real es cualquier cosa que resolviste en tu vida sin IA, GPS o calculadora.",
-    "what": "¿Qué resolviste por tu cuenta?",
-    "whatHint": "Por ejemplo: «Escribí la propuesta sin IA» o «Llegué al médico sin GPS».",
-    "which": "¿Qué ayuda dejaste de usar?",
-    "minutes": "Minutos",
+    "what": "¿Qué fue? (opcional)",
+    "whatHint": "Por ejemplo: «Llegué al médico sin GPS».",
+    "which": "¿Qué hiciste sin ayuda?",
     "date": "Fecha",
     "save": "Registrar vuelo",
     "saved": "Vuelo registrado.",
@@ -710,7 +703,9 @@
     "empty": "Todavía no hay vuelos reales. El primero puede ser hoy.",
     "minutesShort_one": "{{count}} min",
     "minutesShort_other": "{{count}} min",
-    "delete": "Borrar «{{title}}»"
+    "delete": "Borrar «{{title}}»",
+    "howLong": "¿Cuántos minutos?",
+    "defaultTitle": "Sin muletas: {{module}}"
   },
   "progress": {
     "title": "Progreso",
@@ -779,15 +774,23 @@
   },
   "weekly": {
     "title": "Chequeo semanal",
-    "lead": "Dos minutos de honestidad. Una situación real por línea. Nadie más lo ve.",
-    "soloLabel": "¿Qué resolviste por tu cuenta esta semana?",
-    "soloHint": "Cosas reales: un correo, una ruta, una cuenta, una decisión.",
-    "crutchLabel": "¿Dónde usaste la IA, el GPS o la calculadora como muleta?",
-    "crutchHint": "Cuando lo usaste para no pensar, no porque hiciera falta. No es un juicio: es un dato.",
-    "noteLabel": "Algo para la próxima semana (opcional)",
-    "noteHint": "Una situación que quieras intentar por tu cuenta.",
+    "lead": "Un toque por habilidad. Solo tú lo ves y no es un examen: es para que el panel muestre cómo vas.",
     "save": "Guardar chequeo",
-    "saved": "Chequeo guardado."
+    "saved": "Chequeo guardado.",
+    "q": {
+      "think-first": "Cuando tuviste una duda…",
+      "recall": "Para recordar pendientes y datos…",
+      "people": "Con los nombres de la gente…",
+      "navigation": "Para llegar a los sitios…",
+      "writing": "Al escribir mensajes…",
+      "calculation": "Con las cuentas del día…"
+    },
+    "a": {
+      "solo": "Casi siempre yo",
+      "mixed": "Mitad y mitad",
+      "crutch": "Casi siempre la ayuda"
+    },
+    "skipHint": "Si alguna no te tocó esta semana, déjala sin marcar."
   },
   "notFound": {
     "title": "Esta pantalla no existe",

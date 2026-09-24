@@ -10,52 +10,50 @@ import { ALL_MISSIONS } from '../../../modules/registry'
 import { buildCard } from '../../../core/srs/scheduler'
 import { dayKey, minutesBetween, newId } from '../../../core/time'
 import { Button } from '../../../ui/primitives/Button'
-import { TextArea, TextField } from '../../../ui/primitives/Field'
+import { TextField } from '../../../ui/primitives/Field'
 import { Page } from '../../../ui/primitives/Page'
 import { personCardText } from '../personCard'
 
-type Step = 0 | 1 | 2 | 3
+type Step = 0 | 1 | 2
 
 /**
- * Registro guiado en cuatro pasos. Los pasos 3 y 4 son la técnica mnemotécnica:
- * nombre → imagen concreta, rasgo destacado, escena que los une, y visualizarla.
+ * Registro en tres pasos y casi sin escribir: el nombre (lo único que hay que teclear),
+ * dónde se conocieron y qué la distingue con un toque, y la técnica de la imagen, que se
+ * hace en la cabeza: el nombre convertido en algo visible, pegado a su rasgo, en una
+ * escena exagerada. Anotar la imagen es opcional.
  */
 export function PersonNew() {
   const { t } = useTranslation('people')
   const navigate = useNavigate()
   const openedAt = useRef(new Date())
   const [step, setStep] = useState<Step>(0)
-  const [p, setP] = useState({
-    name: '',
-    whereMet: '',
-    metOn: dayKey(),
-    trait: '',
-    conversation: '',
-    nameImage: '',
-    featureChosen: '',
-    linkImage: '',
-  })
-  const set = (k: keyof typeof p) => (e: { target: { value: string } }) => setP({ ...p, [k]: e.target.value })
+  const [name, setName] = useState('')
+  const [where, setWhere] = useState('')
+  const [whereOther, setWhereOther] = useState('')
+  const [trait, setTrait] = useState('')
+  const [traitOther, setTraitOther] = useState('')
+  const [image, setImage] = useState('')
+  const [writingImage, setWritingImage] = useState(false)
 
-  const valid = [
-    p.name.trim() && p.whereMet.trim(),
-    p.trait.trim(),
-    p.nameImage.trim() && (p.featureChosen.trim() || p.trait.trim()) && p.linkImage.trim(),
-    true,
-  ][step]
+  const whereChips = t('whereChips', { returnObjects: true }) as string[]
+  const traitChips = t('traitChips', { returnObjects: true }) as string[]
+  const other = t('other')
+  const whereMet = (where === other ? whereOther : where).trim()
+  const traitText = (trait === other ? traitOther : trait).trim()
+  const valid = [name.trim() && whereMet, traitText, true][step]
 
   async function save() {
     const id = newId()
     const person: Person = {
       id,
-      name: p.name.trim(),
-      whereMet: p.whereMet.trim(),
-      metOn: p.metOn,
-      trait: p.trait.trim(),
-      conversation: p.conversation.trim(),
-      nameImage: p.nameImage.trim(),
-      featureChosen: (p.featureChosen || p.trait).trim(),
-      linkImage: p.linkImage.trim(),
+      name: name.trim(),
+      whereMet,
+      metOn: dayKey(),
+      trait: traitText,
+      conversation: '',
+      nameImage: '',
+      featureChosen: traitText,
+      linkImage: image.trim(),
       createdAt: new Date().toISOString(),
     }
     const text = personCardText(person)
@@ -69,7 +67,7 @@ export function PersonNew() {
       kind: 'real',
       moduleId: 'people',
       title: t('flightTitle', { name: person.name }),
-      minutes: Math.min(20, minutesBetween(openedAt.current, new Date())),
+      minutes: Math.max(1, Math.min(20, minutesBetween(openedAt.current, new Date()))),
       source: 'measured',
       refId: id,
     })
@@ -80,71 +78,94 @@ export function PersonNew() {
     navigate('/m/people')
   }
 
-  const titles = [t('step1Title'), t('step2Title'), t('step3Title'), t('step4Title')]
+  const titles = [t('step1Title'), t('step2Title'), t('step3Title')]
 
   return (
     <Page title={titles[step]} back="/m/people">
-      <p className="readout mb-4 text-sm text-ink-dim" aria-label={t('stepAria', { n: step + 1, total: 4 })}>
-        {step + 1}/4
-      </p>
+      <ol className="mb-6 flex gap-1.5" aria-label={t('stepAria', { n: step + 1, total: 3 })}>
+        {[0, 1, 2].map((i) => (
+          <li key={i} className={`h-2 flex-1 rounded-full ${i <= step ? 'bg-magenta' : 'bg-line'}`} />
+        ))}
+      </ol>
       <form
         onSubmit={(e) => {
           e.preventDefault()
           if (!valid) return
-          if (step < 3) setStep((step + 1) as Step)
+          if (step < 2) setStep((step + 1) as Step)
           else void save()
         }}
         className="flex flex-col gap-6"
       >
         {step === 0 && (
           <>
-            <TextField label={t('name')} value={p.name} onChange={set('name')} autoComplete="off" required />
-            <TextField label={t('whereMet')} hint={t('whereMetHint')} value={p.whereMet} onChange={set('whereMet')} required />
-            <TextField label={t('metOn')} type="date" value={p.metOn} onChange={set('metOn')} max={dayKey()} />
+            <TextField label={t('name')} value={name} onChange={(e) => setName(e.target.value)} autoComplete="off" autoCapitalize="words" required />
+            <Chips legend={t('whereMet')} options={whereChips} value={where} onChange={setWhere} />
+            {where === other && <TextField label={t('whereOther')} value={whereOther} onChange={(e) => setWhereOther(e.target.value)} autoFocus />}
           </>
         )}
         {step === 1 && (
           <>
-            <TextField label={t('trait')} hint={t('traitHint')} value={p.trait} onChange={set('trait')} required />
-            <TextArea label={t('conversation')} hint={t('conversationHint')} value={p.conversation} onChange={set('conversation')} rows={3} />
+            <Chips legend={t('traitQuestion', { name })} hint={t('traitHint')} options={traitChips} value={trait} onChange={setTrait} />
+            {trait === other && <TextField label={t('traitOther')} value={traitOther} onChange={(e) => setTraitOther(e.target.value)} autoFocus />}
           </>
         )}
         {step === 2 && (
           <>
-            <p className="rounded-xl bg-panel-2 p-4">{t('mnemonicIntro')}</p>
-            <TextField
-              label={t('nameImage', { name: p.name })}
-              hint={t('nameImageHint')}
-              value={p.nameImage}
-              onChange={set('nameImage')}
-              required
-            />
-            <TextField
-              label={t('featureChosen')}
-              hint={t('featureChosenHint')}
-              value={p.featureChosen}
-              placeholder={p.trait}
-              onChange={set('featureChosen')}
-            />
-            <TextArea label={t('linkImage')} hint={t('linkImageHint')} value={p.linkImage} onChange={set('linkImage')} rows={3} required />
+            <ol className="flex flex-col gap-3">
+              {[t('imageStep1', { name }), t('imageStep2', { trait: traitText.toLowerCase() }), t('imageStep3')].map((text, i) => (
+                <li key={i} className="flex items-start gap-3 rounded-xl bg-panel-2 p-3">
+                  <span aria-hidden className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-magenta font-display text-sm font-bold text-on-accent">
+                    {i + 1}
+                  </span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ol>
+            <p className="rounded-xl border-l-4 border-magenta pl-3 text-ink-dim">{t('imageExample')}</p>
+            <div>
+              <p className="mb-2 text-center font-display font-bold">{t('imageNow')}</p>
+              <div className="h-1.5 overflow-hidden rounded-full bg-line" aria-hidden>
+                <div className="hf-imagine-bar h-full bg-magenta" />
+              </div>
+            </div>
+            {writingImage ? (
+              <TextField label={t('imageNote')} value={image} onChange={(e) => setImage(e.target.value)} autoFocus />
+            ) : (
+              <button type="button" onClick={() => setWritingImage(true)} className="self-start py-1 text-sm text-accent underline underline-offset-4">
+                {t('imageNoteCta')}
+              </button>
+            )}
           </>
-        )}
-        {step === 3 && (
-          <div className="rounded-2xl border border-line bg-panel p-5">
-            <p className="mb-4">{t('visualize')}</p>
-            <p className="font-display text-xl font-bold">{p.linkImage}</p>
-            <p className="mt-4 text-sm text-ink-dim">{t('visualizeAfter', { name: p.name })}</p>
-          </div>
         )}
         <div className="grid grid-cols-2 gap-3">
           <Button variant="secondary" onClick={() => (step ? setStep((step - 1) as Step) : navigate('/m/people'))}>
             {step ? t('prev') : t('cancel')}
           </Button>
           <Button type="submit" disabled={!valid}>
-            {step < 3 ? t('next') : t('finish')}
+            {step < 2 ? t('next') : t('finish')}
           </Button>
         </div>
       </form>
     </Page>
+  )
+}
+
+/** Opciones para tocar en vez de escribir. */
+function Chips({ legend, hint, options, value, onChange }: { legend: string; hint?: string; options: string[]; value: string; onChange: (v: string) => void }) {
+  return (
+    <fieldset>
+      <legend className="mb-1 font-display text-[0.95rem] font-bold">{legend}</legend>
+      {hint && <p className="mb-2 text-sm text-ink-dim">{hint}</p>}
+      <div className="mt-2 flex flex-wrap gap-2">
+        {options.map((o) => (
+          <label key={o} className="relative">
+            <input type="radio" name={legend} value={o} checked={value === o} onChange={() => onChange(o)} className="peer absolute inset-0 opacity-0" />
+            <span className="flex min-h-11 items-center rounded-full border-2 border-line bg-panel px-4 font-bold transition-colors peer-checked:border-magenta peer-checked:bg-magenta peer-checked:text-on-accent peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--focus)]">
+              {o}
+            </span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
   )
 }

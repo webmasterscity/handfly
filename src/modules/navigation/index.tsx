@@ -16,7 +16,7 @@ export const navigation: ModuleDefinition = {
   missions: [
     { id: 'nv-plan', moduleId: 'navigation', textKey: 'navigation.plan', minutes: 30, to: '/m/navigation/new', outside: true, completesOn: 'route.flown' },
     { id: 'nv-return', moduleId: 'navigation', textKey: 'navigation.return', minutes: 20, check: { kind: 'peeks' } },
-    { id: 'nv-landmarks', moduleId: 'navigation', textKey: 'navigation.landmarks', minutes: 15, check: { kind: 'list' } },
+    { id: 'nv-landmarks', moduleId: 'navigation', textKey: 'navigation.landmarks', minutes: 15, check: { kind: 'count', total: 5 } },
     { id: 'nv-home', moduleId: 'navigation', textKey: 'navigation.pointHome', minutes: 3, to: '/m/navigation/compass', outside: true, completesOn: 'compass.pointed', check: { kind: 'bearing' } },
   ],
 }

@@ -12,21 +12,20 @@
     "partly": "Más o menos",
     "no": "No acertaste"
   },
-  "newTitle": "¿Qué quieres saber?",
-  "newLead": "Primero di lo que crees. Aunque falles, intentarlo te ayuda a recordar la respuesta.",
-  "questionLabel": "Tu pregunta",
+  "newTitle": "¿Te surgió una duda?",
+  "newLead": "Antes de buscarla, piensa tu respuesta. No hace falta escribir nada.",
+  "questionLabel": "La duda",
   "questionPlaceholder": "Por ejemplo: ¿cada cuánto se riega un cactus?",
-  "attemptLabel": "¿Qué crees tú?",
-  "attemptHint": "Tu mejor intento, aunque no estés seguro.",
+  "attemptLabel": "Mi respuesta",
   "attemptPlaceholder": "Por ejemplo: una vez al mes, porque aguanta la sequía.",
-  "confidenceLabel": "¿Qué tan seguro estás?",
+  "confidenceLabel": "¿Qué tan seguro estás de tu respuesta?",
   "confidence": {
     "noIdea": "Ni idea",
     "think": "Creo que sí",
     "sure": "Muy seguro"
   },
-  "saveAttempt": "Guardar mi intento",
-  "saveNeeds": "Para guardar: escribe la pregunta, lo que crees y toca qué tan seguro estás.",
+  "saveAttempt": "Listo, ahora a comprobarlo",
+  "saveNeeds": "Toca qué tan seguro estás para seguir.",
   "savedTitle": "Ahora compruébalo",
   "yourQuestion": "Tu pregunta",
   "yourGuess": "Lo que tú creías",
@@ -60,5 +59,10 @@
     "cardSave": "Guardar para repasar",
     "cardMade": "Guardada. Te la preguntaremos justo antes de que se te olvide.",
     "done": "Listo"
-  }
+  },
+  "thinkTitle": "Piensa tu respuesta",
+  "thinkLead": "Tu mejor intento, aunque no estés seguro. Si puedes, dila en voz alta: comprometerte con una respuesta es lo que te hace recordarla después.",
+  "untitled": "Duda del {{date}}",
+  "flightTitle": "Pensé antes de buscar",
+  "addNotes": "Anotar la duda o mi respuesta (opcional)"
 }

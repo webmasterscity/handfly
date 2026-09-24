@@ -25,8 +25,10 @@ export function LogFlight() {
 
   async function save(e: FormEvent) {
     e.preventDefault()
-    if (!title.trim() || !moduleId) return
-    await logFlight({ kind: 'real', moduleId, title: title.trim(), minutes: Math.max(1, Number(minutes) || 1), source: 'declared', date })
+    if (!moduleId) return
+    // Describirlo es opcional: sin texto, el vuelo se titula con la habilidad.
+    const what = title.trim() || t('log.defaultTitle', { module: t(`modules.${moduleId}`) })
+    await logFlight({ kind: 'real', moduleId, title: what, minutes: Math.max(1, Number(minutes) || 1), source: 'declared', date })
     feedback.land()
     toast(t('log.saved'), 'success')
     setTitle('')
@@ -37,7 +39,6 @@ export function LogFlight() {
   return (
     <Page title={t('log.title')} lead={t('log.lead')}>
       <form onSubmit={save} className="flex flex-col gap-6">
-        <TextField label={t('log.what')} hint={t('log.whatHint')} value={title} onChange={(e) => setTitle(e.target.value)} required />
         <fieldset>
           <legend className="mb-2 font-display text-[0.95rem] font-bold">{t('log.which')}</legend>
           <div className="grid grid-cols-2 gap-2">
@@ -52,11 +53,22 @@ export function LogFlight() {
             ))}
           </div>
         </fieldset>
-        <div className="grid grid-cols-2 gap-3">
-          <TextField label={t('log.minutes')} type="number" inputMode="numeric" min={1} max={600} value={minutes} onChange={(e) => setMinutes(e.target.value)} />
-          <TextField label={t('log.date')} type="date" max={dayKey()} value={date} onChange={(e) => setDate(e.target.value || dayKey())} />
-        </div>
-        <Button type="submit" block disabled={!title.trim() || !moduleId}>
+        <fieldset>
+          <legend className="mb-2 font-display text-[0.95rem] font-bold">{t('log.howLong')}</legend>
+          <div className="grid grid-cols-5 gap-2">
+            {['5', '10', '20', '30', '60'].map((m) => (
+              <label key={m} className="relative">
+                <input type="radio" name="minutes" className="peer absolute inset-0 opacity-0" checked={minutes === m} onChange={() => setMinutes(m)} />
+                <span className="readout flex min-h-12 items-center justify-center rounded-xl border border-line bg-panel text-sm peer-checked:border-accent peer-checked:bg-accent peer-checked:text-on-accent peer-focus-visible:outline-3 peer-focus-visible:outline-[var(--focus)]">
+                  {m}′
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <TextField label={t('log.what')} hint={t('log.whatHint')} value={title} onChange={(e) => setTitle(e.target.value)} />
+        <TextField label={t('log.date')} type="date" max={dayKey()} value={date} onChange={(e) => setDate(e.target.value || dayKey())} />
+        <Button type="submit" block disabled={!moduleId}>
           {t('log.save')}
         </Button>
       </form>

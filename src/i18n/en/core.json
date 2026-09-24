@@ -71,7 +71,6 @@
     "progressAria": "Card {{current}} of {{total}}",
     "cardHeading": "Card {{n}}",
     "attemptLabel": "Your answer",
-    "attemptHint": "Type it or say it out loud. Recalling before looking is what makes it work.",
     "reveal": "Show the answer",
     "thinking": "Try to recall…",
     "yourAttempt": "Your attempt:",
@@ -95,7 +94,9 @@
     "answer": "Answer",
     "combo": "{{count}} recalled in a row",
     "matched": "You had it! “{{attempt}}”",
-    "notMatched": "Not quite the same. You said:"
+    "notMatched": "Not quite the same. You said:",
+    "sayIt": "Think of the answer or say it out loud",
+    "preferWriting": "I'd rather type it (the app checks it)"
   },
   "session": {
     "simFlightTitle_one": "Daily session: {{count}} review",
@@ -170,29 +171,18 @@
     "play": {
       "betNumber": "Your bet",
       "betTime": "What time?",
-      "betList": "From memory, one at a time",
-      "betText": "Your answer",
       "betNote": "Your bet is saved. Nobody sees it but you.",
       "saveBet": "Save my bet",
       "checkNumber": "The real figure",
       "checkTime": "The real time",
-      "checkList": "Tap the ones you missed",
-      "listHint": "Green ones are hits. Tap one to mark it as a miss.",
-      "missed": "How many did you miss?",
       "countTotal": "How many were there?",
       "countGot": "How many did you get?",
       "checkCloseness": "How close were you?",
-      "closenessLow": "Way off",
-      "closenessHigh": "Exact",
       "checkPeeks": "How many times did you look?",
       "untilTarget": "What time is it?",
       "untilMine": "Your minutes, in your head",
       "seeScore": "See my score",
       "yourBet": "Your bet",
-      "addItem": "Add",
-      "removeItem": "Remove “{{item}}”",
-      "items_one": "{{count}} item",
-      "items_other": "{{count}} items",
       "minutes_one": "{{count}} minute",
       "minutes_other": "{{count}} minutes",
       "lineNumber": "You bet {{bet}} · Real {{actual}}",
@@ -203,19 +193,24 @@
       "linePeeks_other": "You looked {{count}} times",
       "lineNoPeeks": "Didn't look once",
       "lineUntil": "Your sum: {{mine}} min · Real: {{actual}} min",
-      "lineBearing": "You were {{degrees}}° off · Home is {{km}} km away"
+      "lineBearing": "You were {{degrees}}° off · Home is {{km}} km away",
+      "closeness": {
+        "yes": "Spot on!",
+        "partly": "Sort of",
+        "no": "Way off"
+      }
     },
     "thinkFirst": {
       "beforeChat": {
         "title": "You first, then look it up",
         "goal": "Before looking something up, give your answer. Two minutes.",
         "steps": [
-          "Think of something you really want to know: about work, home, or plain curiosity.",
-          "Tap “Start”, write the question and what you think, and tap how sure you are.",
-          "Check it wherever you like (an AI, Google or asking someone) and say whether you got it."
+          "When a question pops up (about work, home or plain curiosity), tap “Start” before looking it up.",
+          "Think of your answer, or say it out loud, and tap how sure you are. Nothing to write.",
+          "Look it up wherever you like (an AI, Google or asking someone) and tap whether you got it."
         ],
-        "example": "“How often should you water a cactus?” You think: “once a month”. Sure: “I think so”. You look it up: every 2–3 weeks in summer. “Sort of”.",
-        "done": "when you save your attempt. It marks itself.",
+        "example": "You wonder how often to water a cactus. You say “once a month” and tap “I think so”. You look it up: every 2–3 weeks. You tap “Sort of”.",
+        "done": "when you tap how sure you are. It marks itself.",
         "why": "Trying to answer before you see the answer, even if you're wrong, makes you remember it much better later."
       },
       "sayIt": {
@@ -223,13 +218,12 @@
         "goal": "Today, before looking up a fact on your phone, bet your answer.",
         "steps": [
           "When a question pops up (a date, a fact, how to do something), don't look it up yet.",
-          "Write your answer here: that's your bet.",
-          "Look it up and say how close you were."
+          "Say your answer out loud: that's your bet.",
+          "Look it up and tap how close you were."
         ],
         "example": "“What year did people land on the Moon?” You bet 1972. It was 1969. Close!",
         "done": "when you compare your bet with the real answer.",
         "why": "Risking an answer before seeing it makes the fact stick better, even when you're wrong.",
-        "bet": "Your answer, before looking it up",
         "check": "How close were you?"
       },
       "solveAlone": {
@@ -238,10 +232,10 @@
         "steps": [
           "Pick a problem from today you'd hand to the AI: a tricky email, an exercise, a work question.",
           "Work on it alone for at least 15 minutes, on paper or in your head.",
-          "Tap “Start”, write the problem and your solution, and save. Then compare with the AI if you like."
+          "Tap “Start” and tap how sure you are of your solution. Then compare with the AI if you like."
         ],
         "example": "“How do we share out the team's holidays without overlaps?” Your solution: a table by month, everyone picks in turns.",
-        "done": "when you save your solution. It marks itself.",
+        "done": "when you log it in the app. It marks itself.",
         "why": "The effort of solving something yourself is exactly what keeps the skill alive."
       }
     },
@@ -263,14 +257,15 @@
         "title": "Your day from memory",
         "goal": "What's on today? Say it before you open your calendar.",
         "steps": [
-          "Before opening your calendar, write here everything you remember having today.",
-          "Open the calendar and compare: mark what you got right and count what you missed."
+          "Before opening your calendar, say out loud everything you have today and count it on your fingers.",
+          "Open the calendar and compare.",
+          "Tap how many things there were and how many you remembered."
         ],
-        "example": "You write: meeting at 10, pick up the kids, pay the power bill. The calendar says you also had the dentist.",
-        "done": "when you compare your list with the calendar.",
+        "example": "You say: meeting at 10, pick up the kids, pay the power bill. The calendar had 4 things: you forgot the dentist. 3 out of 4.",
+        "done": "when you compare with the calendar.",
         "why": "Every time you try to recall before looking, your memory gets practice. Looking first doesn't.",
-        "bet": "What's on today, from memory (one at a time)",
-        "check": "Tap anything that wasn't on the calendar"
+        "bet": "How many things were on your calendar?",
+        "check": "How many did you remember before looking?"
       },
       "shopping": {
         "title": "Shop from memory",
@@ -314,17 +309,17 @@
       },
       "meeting": {
         "title": "Go over who's coming",
-        "goal": "Before a meeting or meal, say everyone's name.",
+        "goal": "Before a meeting or meal, go over everyone's name.",
         "steps": [
-          "Before the get-together, write here, from memory, the names of who'll be there.",
-          "At the get-together, check: mark the ones you got right and count the ones you missed.",
-          "Use at least one name in conversation."
+          "Before the get-together, go over in your head the names of who'll be there.",
+          "At the get-together, notice how many you remembered. Use at least one in conversation.",
+          "Tap how many people there were and how many names you remembered."
         ],
-        "example": "You write: Caroline, George, Ms. Ines. Tom's dad turns up too, and you didn't remember his name.",
-        "done": "when you check your list at the get-together.",
+        "example": "There were 5 at the parents' meeting. You remembered Caroline, George, Ms. Ines and Tom, but not Tom's dad. 4 out of 5.",
+        "done": "when you count how many names you remembered.",
         "why": "Recalling names just before you need them is well-timed practice, which is when it helps most.",
-        "bet": "Who'll be there? (one at a time)",
-        "check": "Tap anyone who wasn't there"
+        "bet": "How many people were there?",
+        "check": "How many names did you remember?"
       }
     },
     "navigation": {
@@ -357,15 +352,14 @@
         "title": "Five signs on the way",
         "goal": "Notice five things on a trip you always make and recall them in order.",
         "steps": [
-          "On a trip you make often, look for 5 things that can serve as signs: a big tree, a billboard, a mural.",
-          "When you arrive, write them here in order, without looking back.",
-          "Next time you pass by, check which ones you got right."
+          "On a trip you make often, notice 5 things that can serve as signs: a big tree, a billboard, a mural.",
+          "When you arrive, go over them in order in your head, without looking back.",
+          "Next time you pass by, check and tap how many you had right."
         ],
-        "example": "Corner bakery, long traffic light, yellow church, bridge, gas station.",
-        "done": "when you check your list on the way.",
+        "example": "Corner bakery, long traffic light, yellow church, bridge, gas station. Passing again, you see the bridge came before the church: 3 out of 5.",
+        "done": "when you check on the way.",
         "why": "People with a good sense of direction pay attention to landmarks. It's a habit you learn by practicing it.",
-        "bet": "Your signs, in order",
-        "check": "Tap the ones that weren't right"
+        "check": "How many of the 5 did you have right?"
       },
       "pointHome": {
         "title": "Where's home?",
@@ -662,7 +656,7 @@
     "pendingTitle": "Pending",
     "openThinks_one": "{{count}} question is waiting: look it up and compare with your attempt",
     "openThinks_other": "{{count}} questions are waiting: look them up and compare with your attempts",
-    "weeklyPrompt": "Do the weekly check (2 minutes)",
+    "weeklyPrompt": "Weekly check: 6 taps, half a minute",
     "nextRank": "Next: {{rank}}",
     "streak_one": "{{count}}-day streak",
     "streak_other": "{{count}}-day streak",
@@ -699,10 +693,9 @@
   "log": {
     "title": "Log a flight",
     "lead": "A real flight is anything you solved in your life without AI, GPS or a calculator.",
-    "what": "What did you solve on your own?",
-    "whatHint": "For example: \"Wrote the proposal without AI\" or \"Got to the doctor without GPS\".",
-    "which": "Which help did you skip?",
-    "minutes": "Minutes",
+    "what": "What was it? (optional)",
+    "whatHint": "For example: “Got to the doctor's without GPS”.",
+    "which": "What did you do without help?",
     "date": "Date",
     "save": "Log flight",
     "saved": "Flight logged.",
@@ -710,7 +703,9 @@
     "empty": "No real flights yet. The first one can be today.",
     "minutesShort_one": "{{count}} min",
     "minutesShort_other": "{{count}} min",
-    "delete": "Delete \"{{title}}\""
+    "delete": "Delete \"{{title}}\"",
+    "howLong": "How many minutes?",
+    "defaultTitle": "No crutches: {{module}}"
   },
   "progress": {
     "title": "Progress",
@@ -779,15 +774,23 @@
   },
   "weekly": {
     "title": "Weekly check",
-    "lead": "Two minutes of honesty. One real situation per line. Nobody else sees it.",
-    "soloLabel": "What did you solve on your own this week?",
-    "soloHint": "Real things: an email, a route, a sum, a decision.",
-    "crutchLabel": "Where did you use AI, GPS or a calculator as a crutch?",
-    "crutchHint": "When you used it to avoid thinking, not because it was needed. Not a judgment, just data.",
-    "noteLabel": "Something for next week (optional)",
-    "noteHint": "A situation you want to try on your own.",
+    "lead": "One tap per skill. Only you see it and it's not a test: it's so the panel can show how you're doing.",
     "save": "Save check",
-    "saved": "Check saved."
+    "saved": "Check saved.",
+    "q": {
+      "think-first": "When you had a question…",
+      "recall": "To remember to-dos and facts…",
+      "people": "With people's names…",
+      "navigation": "Getting to places…",
+      "writing": "Writing messages…",
+      "calculation": "With everyday sums…"
+    },
+    "a": {
+      "solo": "Mostly me",
+      "mixed": "Half and half",
+      "crutch": "Mostly the help"
+    },
+    "skipHint": "If one didn't come up this week, leave it blank."
   },
   "notFound": {
     "title": "This screen doesn't exist",

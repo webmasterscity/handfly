@@ -12,21 +12,20 @@
     "partly": "Sort of",
     "no": "Missed"
   },
-  "newTitle": "What do you want to know?",
-  "newLead": "Say what you think first. Even if you're wrong, trying helps you remember the answer.",
-  "questionLabel": "Your question",
+  "newTitle": "Got a question?",
+  "newLead": "Before looking it up, think of your answer. No need to write anything.",
+  "questionLabel": "The question",
   "questionPlaceholder": "For example: how often should you water a cactus?",
-  "attemptLabel": "What do you think?",
-  "attemptHint": "Your best guess, even if you're not sure.",
+  "attemptLabel": "My answer",
   "attemptPlaceholder": "For example: once a month, it handles drought.",
-  "confidenceLabel": "How sure are you?",
+  "confidenceLabel": "How sure are you of your answer?",
   "confidence": {
     "noIdea": "No idea",
     "think": "I think so",
     "sure": "Very sure"
   },
-  "saveAttempt": "Save my attempt",
-  "saveNeeds": "To save: write the question, what you think, and tap how sure you are.",
+  "saveAttempt": "Done, now let's check it",
+  "saveNeeds": "Tap how sure you are to continue.",
   "savedTitle": "Now check it",
   "yourQuestion": "Your question",
   "yourGuess": "What you thought",
@@ -60,5 +59,10 @@
     "cardSave": "Save to review",
     "cardMade": "Saved. We'll ask it again just before you'd forget.",
     "done": "Done"
-  }
+  },
+  "thinkTitle": "Think of your answer",
+  "thinkLead": "Your best guess, even if you're not sure. If you can, say it out loud: committing to an answer is what makes you remember it later.",
+  "untitled": "Question from {{date}}",
+  "flightTitle": "Thought before looking it up",
+  "addNotes": "Write down the question or my answer (optional)"
 }

@@ -9,7 +9,8 @@ import { Empty, Page, Rows, Section } from '../../../ui/primitives/Page'
 import { meta } from '../meta'
 
 export function ThinkHome() {
-  const { t } = useTranslation('think-first')
+  const { t, i18n } = useTranslation('think-first')
+  const fmt = new Intl.DateTimeFormat(i18n.language, { day: 'numeric', month: 'short' })
   const entries = useLiveQuery(() => db.thinkEntries.orderBy('createdAt').reverse().toArray(), [])
   const open = entries?.filter((e) => e.status === 'open') ?? []
   const closed = entries?.filter((e) => e.status === 'closed') ?? []
@@ -32,7 +33,7 @@ export function ThinkHome() {
             {open.map((e) => (
               <li key={e.id}>
                 <Link to={`/m/think-first/close/${e.id}`} className="flex flex-col gap-1 px-4 py-3 hover:bg-panel-2">
-                  <span className="font-bold">{e.question}</span>
+                  <span className="font-bold">{e.question || t('untitled', { date: fmt.format(new Date(e.createdAt)) })}</span>
                   <span className="text-sm text-ink-dim">{t('openRowHint')}</span>
                 </Link>
               </li>
@@ -49,7 +50,7 @@ export function ThinkHome() {
             {closed.map((e) => (
               <li key={e.id} className="flex items-center justify-between gap-3 px-4 py-3">
                 <div className="min-w-0">
-                  <p className="truncate font-bold">{e.question}</p>
+                  <p className="truncate font-bold">{e.question || t('untitled', { date: fmt.format(new Date(e.createdAt)) })}</p>
                   {e.learned && <p className="line-clamp-2 text-sm text-ink-dim">{e.learned}</p>}
                 </div>
                 <span className={`shrink-0 rounded-full px-3 py-1 text-sm font-bold ${(e.closeness ?? 0) >= 4 ? 'bg-green text-on-accent' : 'bg-panel-2'}`}>

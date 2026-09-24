@@ -1,3 +1,4 @@
+import { MessageCircle } from 'lucide-react'
 import { useRef, useState, type FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import { db } from '../../../core/db/schema'
@@ -8,26 +9,30 @@ import { afterActivity, reportActivity } from '../../../core/session/session'
 import { minutesBetween, newId } from '../../../core/time'
 import { ALL_MISSIONS } from '../../registry'
 import { Button } from '../../../ui/primitives/Button'
-import { TextArea } from '../../../ui/primitives/Field'
+import { TextArea, TextField } from '../../../ui/primitives/Field'
 import { Page } from '../../../ui/primitives/Page'
 import { CONFIDENCE } from '../think'
 import { CheckStep, ThinkResult } from './ThinkCheck'
 
 /**
- * Pensar primero en una sola pantalla: qué quieres saber, qué crees tú y qué tan seguro
- * estás (un toque). Después lo compruebas donde quieras —la IA, un buscador, un libro o
- * preguntándole a alguien— y dices si acertaste. Lo que entrena es intentarlo antes.
+ * Pensar primero sin escribir: piensas (o dices en voz alta) tu respuesta y tocas qué tan
+ * seguro estás. Después lo compruebas donde quieras —la IA, un buscador, un libro o
+ * preguntándole a alguien— y dices si acertaste. Lo que entrena es intentarlo antes;
+ * anotar la duda o la respuesta es opcional.
  */
 export function ThinkNew() {
   const { t } = useTranslation('think-first')
   const openedAt = useRef(new Date())
   const [question, setQuestion] = useState('')
   const [attempt, setAttempt] = useState('')
+  const [notes, setNotes] = useState(false)
   const [confidence, setConfidence] = useState<number>()
   const [entry, setEntry] = useState<ThinkEntry>()
   const [closeness, setCloseness] = useState<number>()
 
-  const canSave = Boolean(question.trim() && attempt.trim() && confidence)
+  // Nada que escribir: basta con pensar (o decir en voz alta) la respuesta y tocar qué tan
+  // seguro estás. Escribir la duda o la respuesta es opcional.
+  const canSave = Boolean(confidence)
 
   async function save(e: FormEvent) {
     e.preventDefault()
@@ -46,8 +51,8 @@ export function ThinkNew() {
     await logFlight({
       kind: 'real',
       moduleId: 'think-first',
-      title: saved.question,
-      minutes: Math.min(30, minutesBetween(openedAt.current, new Date())),
+      title: saved.question || t('flightTitle'),
+      minutes: Math.max(1, Math.min(30, minutesBetween(openedAt.current, new Date()))),
       source: 'measured',
       refId: saved.id,
     })
@@ -75,23 +80,17 @@ export function ThinkNew() {
   return (
     <Page title={t('newTitle')} lead={t('newLead')} back="/m/think-first">
       <form onSubmit={save} className="flex flex-col gap-6">
-        <TextArea
-          label={t('questionLabel')}
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          placeholder={t('questionPlaceholder')}
-          rows={2}
-          required
-        />
-        <TextArea
-          label={t('attemptLabel')}
-          hint={t('attemptHint')}
-          value={attempt}
-          onChange={(e) => setAttempt(e.target.value)}
-          placeholder={t('attemptPlaceholder')}
-          rows={3}
-          required
-        />
+        {/* El paso que importa: pensar la respuesta antes de buscarla. */}
+        <div className="flex items-start gap-4 rounded-2xl border-2 border-accent bg-panel p-4">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-on-accent">
+            <MessageCircle className="h-6 w-6" aria-hidden />
+          </span>
+          <div>
+            <p className="font-display text-lg font-bold">{t('thinkTitle')}</p>
+            <p className="prose-text text-ink-dim">{t('thinkLead')}</p>
+          </div>
+        </div>
+
         <fieldset>
           <legend className="mb-2 font-display text-[0.95rem] font-bold">{t('confidenceLabel')}</legend>
           <div className="grid grid-cols-3 gap-2">
@@ -112,12 +111,25 @@ export function ThinkNew() {
             ))}
           </div>
         </fieldset>
+
         <div className="flex flex-col gap-2">
           <Button type="submit" block disabled={!canSave}>
             {t('saveAttempt')}
           </Button>
           {!canSave && <p className="text-center text-sm text-ink-dim">{t('saveNeeds')}</p>}
         </div>
+
+        {/* Notas opcionales, para quien quiera acordarse después de qué era. */}
+        {notes ? (
+          <div className="flex flex-col gap-4">
+            <TextField label={t('questionLabel')} value={question} onChange={(e) => setQuestion(e.target.value)} placeholder={t('questionPlaceholder')} autoComplete="off" autoFocus />
+            <TextArea label={t('attemptLabel')} value={attempt} onChange={(e) => setAttempt(e.target.value)} placeholder={t('attemptPlaceholder')} rows={2} />
+          </div>
+        ) : (
+          <button type="button" onClick={() => setNotes(true)} className="self-center py-2 text-sm text-accent underline underline-offset-4">
+            {t('addNotes')}
+          </button>
+        )}
       </form>
     </Page>
   )

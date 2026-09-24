@@ -23,12 +23,22 @@ export function CheckStep({ entry, onClosed }: { entry: ThinkEntry; onClosed: (c
 
   return (
     <div className="animate-pop flex flex-col gap-5">
-      <div className="rounded-2xl border border-line bg-panel p-4">
-        <p className="text-sm text-ink-dim">{t('yourQuestion')}</p>
-        <p className="mb-3 font-bold">{entry.question}</p>
-        <p className="text-sm text-ink-dim">{t('yourGuess')}</p>
-        <p className="whitespace-pre-wrap">{entry.attempt}</p>
-      </div>
+      {(entry.question || entry.attempt) && (
+        <div className="rounded-2xl border border-line bg-panel p-4">
+          {entry.question && (
+            <>
+              <p className="text-sm text-ink-dim">{t('yourQuestion')}</p>
+              <p className="font-bold">{entry.question}</p>
+            </>
+          )}
+          {entry.attempt && (
+            <>
+              <p className="mt-3 text-sm text-ink-dim">{t('yourGuess')}</p>
+              <p className="whitespace-pre-wrap">{entry.attempt}</p>
+            </>
+          )}
+        </div>
+      )}
       <div>
         <h2 className="text-xl">{t('checkTitle')}</h2>
         <p className="prose-text mt-1 text-ink-dim">{t('checkLead')}</p>
@@ -76,7 +86,7 @@ export function ThinkResult({ entry, closeness }: { entry: ThinkEntry; closeness
       </div>
       <p className="prose-text rounded-2xl bg-panel-2 p-4">{t(`calibration.${calibration}`)}</p>
 
-      {saved ? (
+      {!entry.question ? null : saved ? (
         <p className="rounded-2xl border-2 border-green p-4 font-bold">{t('result.cardMade')}</p>
       ) : (
         <form onSubmit={saveCard} className="flex flex-col gap-2 rounded-2xl border border-line bg-panel p-4">

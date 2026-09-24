@@ -9,7 +9,6 @@ import {
   scoreBearing,
   scoreCloseness,
   scoreCount,
-  scoreList,
   scoreMinutesUntil,
   scoreNumber,
   scorePeeks,
@@ -33,9 +32,7 @@ describe('apuesta y comprueba', () => {
     expect(scoreTime('10:00', '11:00')).toBe(0)
   })
 
-  it('lista, conteo, cercanía y vistazos', () => {
-    expect(scoreList(3, 3, 1)).toBe(75)
-    expect(scoreList(4, 2, 0)).toBe(50)
+  it('conteo, cercanía y vistazos', () => {
     expect(scoreCount(2, 3)).toBe(67)
     expect(scoreCount(5, 3)).toBe(100)
     expect(scoreCloseness(5)).toBe(100)
@@ -69,8 +66,9 @@ describe('apuesta y comprueba', () => {
     expect(scoreTier(100)).toBe('bullseye')
     expect(scoreTier(10)).toBe('learning')
     expect(needsBet({ kind: 'number' })).toBe(true)
+    expect(needsBet({ kind: 'time' })).toBe(true)
     expect(needsBet({ kind: 'closeness' })).toBe(false)
-    expect(needsBet({ kind: 'closeness', bet: true })).toBe(true)
+    expect(needsBet({ kind: 'count' })).toBe(false)
     expect(needsBet({ kind: 'minutesUntil' })).toBe(false)
   })
 

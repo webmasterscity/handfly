@@ -23,6 +23,9 @@ export function PeopleQuiz() {
   const [people, setPeople] = useState<Person[]>()
   const [index, setIndex] = useState(0)
   const [attempt, setAttempt] = useState('')
+  const [writing, setWriting] = useState(false)
+  // Destapado sin escribir: la persona dice si lo sabía (checked queda pendiente hasta entonces).
+  const [revealed, setRevealed] = useState(false)
   const [checked, setChecked] = useState<boolean>()
   const [right, setRight] = useState(0)
   const [combo, setCombo] = useState(0)
@@ -36,16 +39,14 @@ export function PeopleQuiz() {
 
   useEffect(() => {
     inputRef.current?.focus()
-  }, [index])
+  }, [index, writing])
 
   if (!people) return null
   const person = people[index]
 
-  function check(e: FormEvent) {
-    e.preventDefault()
-    if (!attempt.trim() || checked !== undefined) return
-    const ok = matchesAnswer(attempt, person.name, 'person')
+  function grade(ok: boolean) {
     setChecked(ok)
+    setRevealed(true)
     if (ok) {
       setRight((r) => r + 1)
       setCombo((c) => c + 1)
@@ -56,11 +57,19 @@ export function PeopleQuiz() {
     }
   }
 
+  /** Con el nombre escrito, la app comprueba sola. */
+  function check(e: FormEvent) {
+    e.preventDefault()
+    if (!attempt.trim() || checked !== undefined) return
+    grade(matchesAnswer(attempt, person.name, 'person'))
+  }
+
   async function next() {
     if (index + 1 < people!.length) {
       setIndex(index + 1)
       setAttempt('')
       setChecked(undefined)
+      setRevealed(false)
       return
     }
     setDone(true)
@@ -136,7 +145,7 @@ export function PeopleQuiz() {
       {/* Tarjeta de contacto sin foto: solo contexto, como en la vida real. */}
       <section key={person.id} className="animate-pop rounded-3xl border border-line bg-panel p-5" aria-live="polite">
         <span aria-hidden className="mx-auto mb-4 grid h-20 w-20 place-items-center rounded-full bg-magenta font-display text-4xl font-bold text-on-accent">
-          {checked === undefined ? '?' : person.name.charAt(0).toUpperCase()}
+          {revealed ? person.name.charAt(0).toUpperCase() : '?'}
         </span>
         <dl className="grid gap-3">
           <div>
@@ -154,7 +163,7 @@ export function PeopleQuiz() {
             </div>
           )}
         </dl>
-        {checked !== undefined && (
+        {revealed && (
           <div className="hf-flip mt-4 border-t border-line pt-4">
             <p className="font-display text-3xl font-bold">{person.name}</p>
             {person.linkImage && (
@@ -167,7 +176,27 @@ export function PeopleQuiz() {
       </section>
 
       <form onSubmit={check} className="mt-auto flex flex-col gap-3 pt-6">
-        {checked === undefined ? (
+        {checked !== undefined ? (
+          <>
+            <p className={`flex items-center gap-2 rounded-xl border-2 px-4 py-3 font-bold ${checked ? 'border-green text-green' : 'hf-shake border-amber'}`}>
+              {checked && <CircleCheckBig className="h-5 w-5 shrink-0" aria-hidden />}
+              {checked ? t('quiz.right') : attempt.trim() ? t('quiz.wrong', { attempt }) : t('quiz.wrongSaid')}
+            </p>
+            <Button block onClick={() => void next()}>
+              {index + 1 < people.length ? t('quiz.next') : t('quiz.finish')}
+            </Button>
+          </>
+        ) : revealed ? (
+          <fieldset className="flex flex-col gap-2">
+            <legend className="mb-2 text-center font-display text-lg font-bold">{t('quiz.didYouKnow')}</legend>
+            <div className="grid grid-cols-2 gap-2">
+              <Button variant="secondary" onClick={() => grade(false)}>
+                {t('quiz.no')}
+              </Button>
+              <Button onClick={() => grade(true)}>{t('quiz.yes')}</Button>
+            </div>
+          </fieldset>
+        ) : writing ? (
           <>
             <label htmlFor="quiz-name" className="font-display font-bold">
               {t('card.question')}
@@ -187,13 +216,13 @@ export function PeopleQuiz() {
           </>
         ) : (
           <>
-            <p className={`flex items-center gap-2 rounded-xl border-2 px-4 py-3 font-bold ${checked ? 'border-green text-green' : 'hf-shake border-amber'}`}>
-              {checked && <CircleCheckBig className="h-5 w-5 shrink-0" aria-hidden />}
-              {checked ? t('quiz.right') : t('quiz.wrong', { attempt })}
-            </p>
-            <Button block onClick={() => void next()}>
-              {index + 1 < people.length ? t('quiz.next') : t('quiz.finish')}
+            <p className="text-center font-display text-lg font-bold">{t('quiz.sayIt')}</p>
+            <Button block onClick={() => setRevealed(true)}>
+              {t('quiz.show')}
             </Button>
+            <button type="button" onClick={() => setWriting(true)} className="self-center py-1 text-sm text-accent underline underline-offset-4">
+              {t('quiz.preferWriting')}
+            </button>
           </>
         )}
       </form>

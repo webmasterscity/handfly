@@ -12,7 +12,6 @@ export function resultLine(check: MissionCheck | undefined, mission: Mission, t:
       return mission.bet?.value !== undefined && r.actual !== undefined ? t('missions.play.lineNumber', { bet: amount(mission.bet.value), actual: amount(r.actual) }) : undefined
     case 'time':
       return t('missions.play.lineTime', { bet: mission.bet?.time, actual: r.time })
-    case 'list':
     case 'count':
       return t('missions.play.lineCount', { got: r.got, total: r.total })
     case 'closeness':

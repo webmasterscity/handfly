@@ -7,7 +7,7 @@
  * Todas las puntuaciones van de 0 a 100 y son funciones puras (se prueban aparte).
  */
 
-export type CheckKind = 'number' | 'time' | 'list' | 'count' | 'closeness' | 'peeks' | 'bearing' | 'minutesUntil'
+export type CheckKind = 'number' | 'time' | 'count' | 'closeness' | 'peeks' | 'bearing' | 'minutesUntil'
 
 export interface MissionCheck {
   kind: CheckKind
@@ -20,16 +20,12 @@ export interface MissionCheck {
   maxError?: number
   /** count: total fijo conocido de antemano (p. ej. tres cumpleaños). */
   total?: number
-  /** closeness: si se anota primero la respuesta propia (texto). */
-  bet?: boolean
 }
 
-/** Qué se anota antes de ir a hacer la misión. */
+/** Qué se anota antes de ir a hacer la misión (un número o una hora: nada que escribir). */
 export interface MissionBet {
   at: string
   value?: number
-  text?: string
-  items?: string[]
   /** 'HH:MM' */
   time?: string
 }
@@ -51,8 +47,7 @@ export interface MissionResult {
 
 /** Tipos que necesitan una apuesta antes de salir; el resto solo se comprueban al final. */
 export function needsBet(check: MissionCheck | undefined): boolean {
-  if (!check) return false
-  return ['number', 'time', 'list'].includes(check.kind) || (check.kind === 'closeness' && Boolean(check.bet))
+  return check?.kind === 'number' || check?.kind === 'time'
 }
 
 const clamp = (n: number) => Math.max(0, Math.min(100, Math.round(n)))
@@ -87,12 +82,6 @@ export function clockDiff(a: string, b: string): number | undefined {
 export function scoreTime(bet: string, actual: string): number {
   const d = clockDiff(bet, actual)
   return d === undefined ? 0 : clamp(100 - d * 5)
-}
-
-/** Lista recordada: aciertos frente a lo anotado de más y lo que faltó. */
-export function scoreList(listed: number, right: number, missed: number): number {
-  const denominator = Math.max(listed, right) + missed
-  return denominator ? clamp((100 * right) / denominator) : 0
 }
 
 export function scoreCount(got: number, total: number): number {
